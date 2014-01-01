@@ -17,12 +17,8 @@
 					</section>
 
 					<section class="search">
-							<p><?php get_search_form(); ?></p>
+						<p><?php get_search_form(); ?></p>
 					</section>
-
-					<footer class="article-footer">
-							<p><?php _e( 'This is the 404.php template.', 'lillehummer' ); ?></p>
-					</footer>
 
 				</article>
 

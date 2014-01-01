@@ -3,6 +3,8 @@
 require_once( 'library/bones.php' );
 require_once( 'library/custom-post-type.php' );
 require_once( 'library/admin.php' );
+require_once( 'library/activation.php' );
+//require_once( 'library/nav.php' );
 
 /************* AFTER THEME SETUP ******************/
 function bones_after_setup_theme() {
@@ -37,17 +39,24 @@ function bones_after_setup_theme() {
 	update_option('large_size_w', 100);
 	update_option('large_size_h', 100);
 	update_option("large_crop", 1);
+
+	// Tell the TinyMCE editor to use a custom stylesheet
+	add_editor_style('/assets/css/editor-style.css');
 }
 
 add_action( 'after_setup_theme', 'bones_after_setup_theme' );
 
-/************* THUMBNAIL SIZE OPTIONS *************/
+/************* IMAGE/EMBED SIZE OPTIONS *************/
+
+// Limit size of embeds.
+if (!isset($content_width)) { $content_width = 1140; }
 
 // default thumb size
 set_post_thumbnail_size(100, 100, true);
 
 // Thumbnail sizes
 //add_image_size( 'custom-size', 100, 100, true );
+
 
 /*********************
 SCRIPTS & ENQUEUEING
