@@ -84,7 +84,7 @@
 
 				<?php endwhile; ?>
 
-				<?php if ( function_exists( 'bones_page_navi' ) ) : bones_page_navi(); ?>
+				<?php if ( function_exists( 'bones_page_navi' ) ) bones_page_navi(); ?>
 
 			</div>
 
