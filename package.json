@@ -1,0 +1,20 @@
+{
+  "name": "lillehummernl",
+  "description": "WordPress theme created by Lille Hummer.",
+  "version": "1.0",
+  "maintainers": [
+    {
+      "name": "Charles Beaumont",
+      "email": "charles@lillehummer.nl",
+      "web": "http://lillehummer.nl"
+    }
+  ],
+  "dependencies": {
+    "gulp": "*",
+    "gulp-jshint": "*",
+    "gulp-sass": "*",
+    "gulp-concat": "*",
+    "gulp-uglify": "*",
+    "gulp-rename": "*"
+  }
+}
