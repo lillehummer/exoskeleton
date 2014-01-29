@@ -4,6 +4,7 @@ require_once( 'library/bones.php' );
 require_once( 'library/custom-post-type.php' );
 require_once( 'library/admin.php' );
 require_once( 'library/activation.php' );
+require_once( 'library/acf.php' );
 //require_once( 'library/nav.php' );
 
 /************* AFTER THEME SETUP ******************/
