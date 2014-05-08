@@ -110,5 +110,31 @@ function bones_wpsearch($form) {
 	return $form;
 }
 
+/************* DISABLE PINGBACK *****************/
+add_filter( 'xmlrpc_methods', 'remove_xmlrpc_pingback_ping' );
+function remove_xmlrpc_pingback_ping( $methods ) {
+   unset( $methods['pingback.ping'] );
+   return $methods;
+} ;
+
+/************* CUSTOM GALLERY SIZE *****************/
+remove_shortcode('gallery');
+add_shortcode('gallery', 'custom_size_gallery');
+ 
+function custom_size_gallery($attr) {
+     $attr['size'] = 'medium';
+     return gallery_shortcode($attr);
+}
+
+/************* OUTPUT HTML5 TAGS *****************/
+function prefix_gallery_atts( $atts ) {
+    $atts['itemtag']    = 'figure';
+    $atts['icontag']    = 'div';
+    $atts['captiontag'] = 'figcaption';
+ 
+    return $atts;
+}
+add_filter( 'shortcode_atts_gallery', 'prefix_gallery_atts' );
+
 
 ?>
