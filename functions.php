@@ -4,8 +4,44 @@ require_once( 'library/bones.php' );
 require_once( 'library/custom-post-type.php' );
 require_once( 'library/admin.php' );
 require_once( 'library/activation.php' );
-require_once( 'library/acf.php' );
-//require_once( 'library/nav.php' );
+
+/************* AFTER THEME SETUP ******************/
+function bones_ahoy() {
+
+  // let's get language support going, if you need it
+  load_theme_textdomain( 'lillehummer', get_template_directory() . '/library/translation' );
+
+  // launching operation cleanup
+  add_action( 'init', 'bones_head_cleanup' );
+  // A better title
+  //add_filter( 'wp_title', 'rw_title', 10, 3 );
+  // remove WP version from RSS
+  add_filter( 'the_generator', 'bones_rss_version' );
+  // remove pesky injected css for recent comments widget
+  add_filter( 'wp_head', 'bones_remove_wp_widget_recent_comments_style', 1 );
+  // clean up comment styles in the head
+  add_action( 'wp_head', 'bones_remove_recent_comments_style', 1 );
+  // clean up gallery output in wp
+  add_filter( 'gallery_style', 'bones_gallery_style' );
+
+  // enqueue base scripts and styles
+  add_action( 'wp_enqueue_scripts', 'bones_scripts_and_styles', 999 );
+  // ie conditional wrapper
+
+  // launching this stuff after theme setup
+  bones_theme_support();
+
+  // adding sidebars to Wordpress (these are created in functions.php)
+  add_action( 'widgets_init', 'bones_register_sidebars' );
+
+  // cleaning up random code around images
+  add_filter( 'the_content', 'bones_filter_ptags_on_images' );
+  // cleaning up excerpt
+  add_filter( 'excerpt_more', 'bones_excerpt_more' );
+
+}
+
+add_action( 'after_setup_theme', 'bones_ahoy' );
 
 /************* AFTER THEME SETUP ******************/
 function bones_after_setup_theme() {
@@ -50,13 +86,22 @@ add_action( 'after_setup_theme', 'bones_after_setup_theme' );
 /************* IMAGE/EMBED SIZE OPTIONS *************/
 
 // Limit size of embeds.
-if (!isset($content_width)) { $content_width = 1140; }
+if (!isset($content_width)) { $content_width = 640; }
 
 // default thumb size
 set_post_thumbnail_size(100, 100, true);
 
 // Thumbnail sizes
 //add_image_size( 'custom-size', 100, 100, true );
+
+add_filter( 'image_size_names_choose', 'bones_custom_image_sizes' );
+
+function bones_custom_image_sizes( $sizes ) {
+    return array_merge( $sizes, array(
+        //'bones-thumb-600' => __('600px by 150px', 'lillehummer'),
+        //'bones-thumb-300' => __('300px by 100px', 'lillehummer')
+    ));
+}
 
 
 /*********************

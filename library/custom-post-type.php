@@ -1,4 +1,5 @@
 <?php
+
 // Flush rewrite rules for custom post types
 add_action( 'after_switch_theme', 'bones_flush_rewrite_rules' );
 
@@ -7,9 +8,11 @@ function bones_flush_rewrite_rules() {
 	flush_rewrite_rules();
 }
 
-function bones_custom_post_type() { 
+// let's create the function for the custom type
+function custom_post_example() { 
 	// creating (registering) the custom type 
-	register_post_type( 'custom_type',
+	register_post_type( 'custom_type', /* (http://codex.wordpress.org/Function_Reference/register_post_type) */
+		// let's now add all the options for this post type
 		array( 'labels' => array(
 			'name' => __( 'Custom Types', 'lillehummer' ), /* This is the Title of the Group */
 			'singular_name' => __( 'Custom Post', 'lillehummer' ), /* This is the individual type */
@@ -32,7 +35,7 @@ function bones_custom_post_type() {
 			'show_ui' => true,
 			'query_var' => true,
 			'menu_position' => 8, /* this is what order you want it to appear in on the left hand side menu */ 
-			'menu_icon' => get_stylesheet_directory_uri() . '/imb/custom-post-icon.png', /* the icon for the custom post type menu */
+			'menu_icon' => get_stylesheet_directory_uri() . '/library/images/custom-post-icon.png', /* the icon for the custom post type menu */
 			'rewrite'	=> array( 'slug' => 'custom_type', 'with_front' => false ), /* you can specify its url slug */
 			'has_archive' => 'custom_type', /* you can rename the slug here */
 			'capability_type' => 'post',
@@ -49,52 +52,56 @@ function bones_custom_post_type() {
 	
 }
 
-// adding the function to the Wordpress init
-add_action( 'init', 'bones_custom_post_type');
-
-// now let's add custom categories (these act like categories)
-register_taxonomy( 'custom_cat', 
-	array('custom_type'), /* if you change the name of register_post_type( 'custom_type', then you have to change this */
-	array('hierarchical' => true,     /* if this is true, it acts like categories */
-		'labels' => array(
-			'name' => __( 'Custom Categories', 'lillehummer' ), /* name of the custom taxonomy */
-			'singular_name' => __( 'Custom Category', 'lillehummer' ), /* single taxonomy name */
-			'search_items' =>  __( 'Search Custom Categories', 'lillehummer' ), /* search title for taxomony */
-			'all_items' => __( 'All Custom Categories', 'lillehummer' ), /* all title for taxonomies */
-			'parent_item' => __( 'Parent Custom Category', 'lillehummer' ), /* parent title for taxonomy */
-			'parent_item_colon' => __( 'Parent Custom Category:', 'lillehummer' ), /* parent taxonomy title */
-			'edit_item' => __( 'Edit Custom Category', 'lillehummer' ), /* edit custom taxonomy title */
-			'update_item' => __( 'Update Custom Category', 'lillehummer' ), /* update title for taxonomy */
-			'add_new_item' => __( 'Add New Custom Category', 'lillehummer' ), /* add new title for taxonomy */
-			'new_item_name' => __( 'New Custom Category Name', 'lillehummer' ) /* name title for taxonomy */
-		),
-		'show_admin_column' => true, 
-		'show_ui' => true,
-		'query_var' => true,
-		'rewrite' => array( 'slug' => 'custom-slug' ),
-	)
-);
-
-// now let's add custom tags (these act like categories)
-register_taxonomy( 'custom_tag', 
-	array('custom_type'), /* if you change the name of register_post_type( 'custom_type', then you have to change this */
-	array('hierarchical' => false,    /* if this is false, it acts like tags */
-		'labels' => array(
-			'name' => __( 'Custom Tags', 'lillehummer' ), /* name of the custom taxonomy */
-			'singular_name' => __( 'Custom Tag', 'lillehummer' ), /* single taxonomy name */
-			'search_items' =>  __( 'Search Custom Tags', 'lillehummer' ), /* search title for taxomony */
-			'all_items' => __( 'All Custom Tags', 'lillehummer' ), /* all title for taxonomies */
-			'parent_item' => __( 'Parent Custom Tag', 'lillehummer' ), /* parent title for taxonomy */
-			'parent_item_colon' => __( 'Parent Custom Tag:', 'lillehummer' ), /* parent taxonomy title */
-			'edit_item' => __( 'Edit Custom Tag', 'lillehummer' ), /* edit custom taxonomy title */
-			'update_item' => __( 'Update Custom Tag', 'lillehummer' ), /* update title for taxonomy */
-			'add_new_item' => __( 'Add New Custom Tag', 'lillehummer' ), /* add new title for taxonomy */
-			'new_item_name' => __( 'New Custom Tag Name', 'lillehummer' ) /* name title for taxonomy */
-		),
-		'show_admin_column' => true,
-		'show_ui' => true,
-		'query_var' => true,
-	)
-);	
-
+	// adding the function to the Wordpress init
+	add_action( 'init', 'custom_post_example');
+	
+	/*
+	for more information on taxonomies, go here:
+	http://codex.wordpress.org/Function_Reference/register_taxonomy
+	*/
+	
+	// now let's add custom categories (these act like categories)
+	register_taxonomy( 'custom_cat', 
+		array('custom_type'), /* if you change the name of register_post_type( 'custom_type', then you have to change this */
+		array('hierarchical' => true,     /* if this is true, it acts like categories */
+			'labels' => array(
+				'name' => __( 'Custom Categories', 'lillehummer' ), /* name of the custom taxonomy */
+				'singular_name' => __( 'Custom Category', 'lillehummer' ), /* single taxonomy name */
+				'search_items' =>  __( 'Search Custom Categories', 'lillehummer' ), /* search title for taxomony */
+				'all_items' => __( 'All Custom Categories', 'lillehummer' ), /* all title for taxonomies */
+				'parent_item' => __( 'Parent Custom Category', 'lillehummer' ), /* parent title for taxonomy */
+				'parent_item_colon' => __( 'Parent Custom Category:', 'lillehummer' ), /* parent taxonomy title */
+				'edit_item' => __( 'Edit Custom Category', 'lillehummer' ), /* edit custom taxonomy title */
+				'update_item' => __( 'Update Custom Category', 'lillehummer' ), /* update title for taxonomy */
+				'add_new_item' => __( 'Add New Custom Category', 'lillehummer' ), /* add new title for taxonomy */
+				'new_item_name' => __( 'New Custom Category Name', 'lillehummer' ) /* name title for taxonomy */
+			),
+			'show_admin_column' => true, 
+			'show_ui' => true,
+			'query_var' => true,
+			'rewrite' => array( 'slug' => 'custom-slug' ),
+		)
+	);
+	
+	// now let's add custom tags (these act like categories)
+	register_taxonomy( 'custom_tag', 
+		array('custom_type'), /* if you change the name of register_post_type( 'custom_type', then you have to change this */
+		array('hierarchical' => false,    /* if this is false, it acts like tags */
+			'labels' => array(
+				'name' => __( 'Custom Tags', 'lillehummer' ), /* name of the custom taxonomy */
+				'singular_name' => __( 'Custom Tag', 'lillehummer' ), /* single taxonomy name */
+				'search_items' =>  __( 'Search Custom Tags', 'lillehummer' ), /* search title for taxomony */
+				'all_items' => __( 'All Custom Tags', 'lillehummer' ), /* all title for taxonomies */
+				'parent_item' => __( 'Parent Custom Tag', 'lillehummer' ), /* parent title for taxonomy */
+				'parent_item_colon' => __( 'Parent Custom Tag:', 'lillehummer' ), /* parent taxonomy title */
+				'edit_item' => __( 'Edit Custom Tag', 'lillehummer' ), /* edit custom taxonomy title */
+				'update_item' => __( 'Update Custom Tag', 'lillehummer' ), /* update title for taxonomy */
+				'add_new_item' => __( 'Add New Custom Tag', 'lillehummer' ), /* add new title for taxonomy */
+				'new_item_name' => __( 'New Custom Tag Name', 'lillehummer' ) /* name title for taxonomy */
+			),
+			'show_admin_column' => true,
+			'show_ui' => true,
+			'query_var' => true,
+		)
+	);
 ?>

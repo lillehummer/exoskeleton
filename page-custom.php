@@ -6,37 +6,33 @@ Template Name: Custom Page
 
 <?php get_header(); ?>
 
-	<div id="content">
+	<div class="content">
 
-		<div id="inner-content" class="wrap clearfix">
+		<div class="main clearfix" role="main">
 
-			<div id="main" class="eightcol first clearfix" role="main">
+			<?php while (have_posts()) : the_post(); ?>
 
-				<?php while (have_posts()) : the_post(); ?>
+			<article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
 
-				<article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
+				<header class="article-header">
+					<h1 class="page-title"><?php the_title(); ?></h1>
+				</header>
 
-					<header class="article-header">
-						<h1 class="page-title"><?php the_title(); ?></h1>
-					</header>
+				<section class="entry-content clearfix" itemprop="articleBody">
+					<?php the_content(); ?>
+				</section>
 
-					<section class="entry-content clearfix" itemprop="articleBody">
-						<?php the_content(); ?>
-					</section>
+				<footer class="article-footer">
+					<p class="clearfix"><?php the_tags( '<span class="tags">' . __( 'Tags:', 'lillehummer' ) . '</span> ', ', ', '' ); ?></p>
+				</footer>
 
-					<footer class="article-footer">
-						<p class="clearfix"><?php the_tags( '<span class="tags">' . __( 'Tags:', 'lillehummer' ) . '</span> ', ', ', '' ); ?></p>
-					</footer>
+			</article>
 
-				</article>
-
-				<?php endwhile; ?>
-
-			</div>
-
-			<?php get_sidebar(); ?>
+			<?php endwhile; ?>
 
 		</div>
+
+		<?php get_sidebar(); ?>
 
 	</div>
 

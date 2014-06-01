@@ -12,8 +12,3 @@ $column: 47px;
 $gutter: 36px;
 $grid-columns: 12;
 $max-width: 960px;
-
-//Breakpoints
-$medium: new-breakpoint(max-width 1200px);
-$small: new-breakpoint(max-width 500px);
-$tiny: new-breakpoint(max-width 340px);

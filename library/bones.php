@@ -1,37 +1,4 @@
 <?php
-// we're firing all out initial functions at the start
-add_action( 'after_setup_theme', 'bones_ahoy', 16 );
-
-function bones_ahoy() {
-
-	// launching operation cleanup
-	add_action( 'init', 'bones_head_cleanup' );
-	// remove WP version from RSS
-	add_filter( 'the_generator', 'bones_rss_version' );
-	// remove pesky injected css for recent comments widget
-	add_filter( 'wp_head', 'bones_remove_wp_widget_recent_comments_style', 1 );
-	// clean up comment styles in the head
-	add_action( 'wp_head', 'bones_remove_recent_comments_style', 1 );
-	// clean up gallery output in wp
-	add_filter( 'gallery_style', 'bones_gallery_style' );
-
-	// enqueue base scripts and styles
-	add_action( 'wp_enqueue_scripts', 'bones_scripts_and_styles', 999 );
-
-	// launching this stuff after theme setup
-	bones_theme_support();
-
-	// adding sidebars to Wordpress (these are created in functions.php)
-	add_action( 'widgets_init', 'bones_register_sidebars' );
-	// adding the bones search form (created in functions.php)
-	add_filter( 'get_search_form', 'bones_wpsearch' );
-
-	// cleaning up random code around images
-	add_filter( 'the_content', 'bones_filter_ptags_on_images' );
-	// cleaning up excerpt
-	add_filter( 'excerpt_more', 'bones_excerpt_more' );
-
-}
 
 function bones_head_cleanup() {
 	// category feeds
@@ -94,24 +61,27 @@ THEME SUPPORT
 *********************/
 function bones_theme_support() {
 
-	add_theme_support('woocommerce');
-
 	// wp thumbnails (sizes handled in functions.php)
 	add_theme_support( 'post-thumbnails' );
 
-	// wp custom background
+	// default thumb size
+	set_post_thumbnail_size(125, 125, true);
+
+	// wp custom background (thx to @bransonwerner for update)
 	add_theme_support( 'custom-background',
-		array(
-		'default-image' => '',  // background image default
-		'default-color' => '', // background color default (dont add the #)
-		'wp-head-callback' => '_custom_background_cb',
-		'admin-head-callback' => '',
-		'admin-preview-callback' => ''
-		)
+	    array(
+	    'default-image' => '',    // background image default
+	    'default-color' => '',    // background color default (dont add the #)
+	    'wp-head-callback' => '_custom_background_cb',
+	    'admin-head-callback' => '',
+	    'admin-preview-callback' => ''
+	    )
 	);
 
 	// rss thingy
 	add_theme_support('automatic-feed-links');
+
+	// to add header image support go here: http://themble.com/support/adding-header-background-image-support/
 
 	// adding post format support
 	add_theme_support( 'post-formats',
@@ -134,47 +104,10 @@ function bones_theme_support() {
 	// registering wp3+ menus
 	register_nav_menus(
 		array(
-			'main-nav' => __( 'Primary Navigation', 'lillehummer' ),   // main nav in header
+			'main-nav' => __( 'The Main Menu', 'lillehummer' ),   // main nav in header
 			'footer-links' => __( 'Footer Links', 'lillehummer' ) // secondary nav in footer
 		)
 	);
-}
-
-
-/*********************
-MENUS & NAVIGATION
-*********************/
-
-// the main menu
-function bones_main_nav() {
-	wp_nav_menu(array(
-		'container' => false,                           // remove nav container
-		'container_class' => 'menu clearfix',           // class of container (should you choose to use it)
-		'menu' => __( 'The Main Menu', 'lillehummer' ),  // nav name
-		'menu_class' => 'nav top-nav clearfix',         // adding custom nav class
-		'theme_location' => 'main-nav',                 // where it's located in the theme
-		'before' => '',                                 // before the menu
-		'after' => '',                                  // after the menu
-		'link_before' => '',                            // before each link
-		'link_after' => '',                             // after each link
-		'depth' => 0                                   // limit the depth of the nav
-	));
-}
-
-function bones_footer_links() {
-	// display the wp3 menu if available
-	wp_nav_menu(array(
-		'container' => '',                              // remove nav container
-		'container_class' => 'footer-links clearfix',   // class of container (should you choose to use it)
-		'menu' => __( 'Footer Links', 'lillehummer' ),   // nav name
-		'menu_class' => 'nav footer-nav clearfix',      // adding custom nav class
-		'theme_location' => 'footer-links',             // where it's located in the theme
-		'before' => '',                                 // before the menu
-		'after' => '',                                  // after the menu
-		'link_before' => '',                            // before each link
-		'link_after' => '',                             // after each link
-		'depth' => 0
-	));
 }
 
 /*********************
@@ -207,8 +140,6 @@ function bones_page_navi() {
 /*********************
 RANDOM CLEANUP ITEMS
 *********************/
-
-
 
 // Add and remove body_class() classes
 function bones_body_class($classes) {

@@ -1,10 +1,8 @@
 <?php get_header(); ?>
 
-	<div id="content">
+	<div class="content">
 
-		<div id="inner-content" class="wrap clearfix">
-
-			<div id="main" class="eightcol first clearfix" role="main">
+		<div class="main clearfix" role="main">
 
 			<h1 class="archive-title"><?php post_type_archive_title(); ?></h1>
 
@@ -26,11 +24,9 @@
 
 				<?php if ( function_exists( 'bones_page_navi' ) ) bones_page_navi(); ?>
 
-			</div>
-
-			<?php get_sidebar(); ?>
-
 		</div>
+
+		<?php get_sidebar(); ?>
 
 	</div>
 
