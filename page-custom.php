@@ -23,7 +23,7 @@ Template Name: Custom Page
 				</section>
 
 				<footer class="article-footer">
-					<p class="clearfix"><?php the_tags( '<span class="tags">' . __( 'Tags:', 'lillehummer' ) . '</span> ', ', ', '' ); ?></p>
+					<p class="clearfix"><?php the_tags( '<span class="tags">' . __( 'Tags:', 'lillehummernl' ) . '</span> ', ', ', '' ); ?></p>
 				</footer>
 
 			</article>

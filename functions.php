@@ -9,7 +9,7 @@ require_once( 'library/activation.php' );
 function bones_ahoy() {
 
   // let's get language support going, if you need it
-  load_theme_textdomain( 'lillehummer', get_template_directory() . '/library/translation' );
+  load_theme_textdomain( 'lillehummernl', get_template_directory() . '/library/translation' );
 
   // launching operation cleanup
   add_action( 'init', 'bones_head_cleanup' );
@@ -43,9 +43,13 @@ function bones_ahoy() {
 
 add_action( 'after_setup_theme', 'bones_ahoy' );
 
-/************* AFTER THEME SETUP ******************/
-function bones_after_setup_theme() {
-    $catalog = array(
+/************* AFTER SWITCH THEME ******************/
+// Flush rewrite rules for custom post types
+add_action( 'after_switch_theme', 'bones_set_image_dimensions' );
+
+// Flush your rewrite rules
+function bones_set_image_dimensions() {
+	$catalog = array(
 		'width' 	=> '100',
 		'height'	=> '100',
 		'crop'		=> 1
@@ -76,7 +80,10 @@ function bones_after_setup_theme() {
 	update_option('large_size_w', 100);
 	update_option('large_size_h', 100);
 	update_option("large_crop", 1);
+}
 
+/************* AFTER THEME SETUP ******************/
+function bones_after_setup_theme() {
 	// Tell the TinyMCE editor to use a custom stylesheet
 	add_editor_style('/assets/css/editor-style.css');
 }
@@ -98,8 +105,8 @@ add_filter( 'image_size_names_choose', 'bones_custom_image_sizes' );
 
 function bones_custom_image_sizes( $sizes ) {
     return array_merge( $sizes, array(
-        //'bones-thumb-600' => __('600px by 150px', 'lillehummer'),
-        //'bones-thumb-300' => __('300px by 100px', 'lillehummer')
+        //'bones-thumb-600' => __('600px by 150px', 'lillehummernl'),
+        //'bones-thumb-300' => __('300px by 100px', 'lillehummernl')
     ));
 }
 
@@ -117,7 +124,6 @@ function bones_scripts_and_styles() {
 		wp_enqueue_script( 'html5shiv', '//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js', array(), '', false );
 
 		// local scripts
-		wp_enqueue_script( 'plugins', get_stylesheet_directory_uri() . '/js/plugins.min.js', array(), '', false );
 		wp_enqueue_script( 'scripts', get_stylesheet_directory_uri() . '/js/scripts.min.js', array(), '', false );
 
 		// register main stylesheet
@@ -135,8 +141,8 @@ function bones_scripts_and_styles() {
 function bones_register_sidebars() {
 	register_sidebar(array(
 		'id' => 'sidebar',
-		'name' => __( 'Sidebar', 'lillehummer' ),
-		'description' => __( 'The primary sidebar.', 'lillehummer' ),
+		'name' => __( 'Sidebar', 'lillehummernl' ),
+		'description' => __( 'The primary sidebar.', 'lillehummernl' ),
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget' => '</div>',
 		'before_title' => '<h4 class="widgettitle">',
@@ -148,8 +154,8 @@ function bones_register_sidebars() {
 
 function bones_wpsearch($form) {
 	$form = '<form role="search" method="get" id="searchform" action="' . home_url( '/' ) . '" >
-	<label class="screen-reader-text" for="s">' . __( 'Search for:', 'lillehummer' ) . '</label>
-	<input type="text" value="' . get_search_query() . '" name="s" id="s" placeholder="' . esc_attr__( 'Search the Site...', 'lillehummer' ) . '" />
+	<label class="screen-reader-text" for="s">' . __( 'Search for:', 'lillehummernl' ) . '</label>
+	<input type="text" value="' . get_search_query() . '" name="s" id="s" placeholder="' . esc_attr__( 'Search the Site...', 'lillehummernl' ) . '" />
 	<input type="submit" id="searchsubmit" value="' . esc_attr__( 'Search' ) .'" />
 	</form>';
 	return $form;

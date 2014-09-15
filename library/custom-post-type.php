@@ -14,21 +14,21 @@ function custom_post_example() {
 	register_post_type( 'custom_type', /* (http://codex.wordpress.org/Function_Reference/register_post_type) */
 		// let's now add all the options for this post type
 		array( 'labels' => array(
-			'name' => __( 'Custom Types', 'lillehummer' ), /* This is the Title of the Group */
-			'singular_name' => __( 'Custom Post', 'lillehummer' ), /* This is the individual type */
-			'all_items' => __( 'All Custom Posts', 'lillehummer' ), /* the all items menu item */
-			'add_new' => __( 'Add New', 'lillehummer' ), /* The add new menu item */
-			'add_new_item' => __( 'Add New Custom Type', 'lillehummer' ), /* Add New Display Title */
-			'edit' => __( 'Edit', 'lillehummer' ), /* Edit Dialog */
-			'edit_item' => __( 'Edit Post Types', 'lillehummer' ), /* Edit Display Title */
-			'new_item' => __( 'New Post Type', 'lillehummer' ), /* New Display Title */
-			'view_item' => __( 'View Post Type', 'lillehummer' ), /* View Display Title */
-			'search_items' => __( 'Search Post Type', 'lillehummer' ), /* Search Custom Type Title */ 
-			'not_found' =>  __( 'Nothing found in the Database.', 'lillehummer' ), /* This displays if there are no entries yet */ 
-			'not_found_in_trash' => __( 'Nothing found in Trash', 'lillehummer' ), /* This displays if there is nothing in the trash */
+			'name' => __( 'Custom Types', 'lillehummernl' ), /* This is the Title of the Group */
+			'singular_name' => __( 'Custom Post', 'lillehummernl' ), /* This is the individual type */
+			'all_items' => __( 'All Custom Posts', 'lillehummernl' ), /* the all items menu item */
+			'add_new' => __( 'Add New', 'lillehummernl' ), /* The add new menu item */
+			'add_new_item' => __( 'Add New Custom Type', 'lillehummernl' ), /* Add New Display Title */
+			'edit' => __( 'Edit', 'lillehummernl' ), /* Edit Dialog */
+			'edit_item' => __( 'Edit Post Types', 'lillehummernl' ), /* Edit Display Title */
+			'new_item' => __( 'New Post Type', 'lillehummernl' ), /* New Display Title */
+			'view_item' => __( 'View Post Type', 'lillehummernl' ), /* View Display Title */
+			'search_items' => __( 'Search Post Type', 'lillehummernl' ), /* Search Custom Type Title */ 
+			'not_found' =>  __( 'Nothing found in the Database.', 'lillehummernl' ), /* This displays if there are no entries yet */ 
+			'not_found_in_trash' => __( 'Nothing found in Trash', 'lillehummernl' ), /* This displays if there is nothing in the trash */
 			'parent_item_colon' => ''
 			), /* end of arrays */
-			'description' => __( 'This is the example custom post type', 'lillehummer' ), /* Custom Type Description */
+			'description' => __( 'This is the example custom post type', 'lillehummernl' ), /* Custom Type Description */
 			'public' => true,
 			'publicly_queryable' => true,
 			'exclude_from_search' => false,
@@ -65,16 +65,16 @@ function custom_post_example() {
 		array('custom_type'), /* if you change the name of register_post_type( 'custom_type', then you have to change this */
 		array('hierarchical' => true,     /* if this is true, it acts like categories */
 			'labels' => array(
-				'name' => __( 'Custom Categories', 'lillehummer' ), /* name of the custom taxonomy */
-				'singular_name' => __( 'Custom Category', 'lillehummer' ), /* single taxonomy name */
-				'search_items' =>  __( 'Search Custom Categories', 'lillehummer' ), /* search title for taxomony */
-				'all_items' => __( 'All Custom Categories', 'lillehummer' ), /* all title for taxonomies */
-				'parent_item' => __( 'Parent Custom Category', 'lillehummer' ), /* parent title for taxonomy */
-				'parent_item_colon' => __( 'Parent Custom Category:', 'lillehummer' ), /* parent taxonomy title */
-				'edit_item' => __( 'Edit Custom Category', 'lillehummer' ), /* edit custom taxonomy title */
-				'update_item' => __( 'Update Custom Category', 'lillehummer' ), /* update title for taxonomy */
-				'add_new_item' => __( 'Add New Custom Category', 'lillehummer' ), /* add new title for taxonomy */
-				'new_item_name' => __( 'New Custom Category Name', 'lillehummer' ) /* name title for taxonomy */
+				'name' => __( 'Custom Categories', 'lillehummernl' ), /* name of the custom taxonomy */
+				'singular_name' => __( 'Custom Category', 'lillehummernl' ), /* single taxonomy name */
+				'search_items' =>  __( 'Search Custom Categories', 'lillehummernl' ), /* search title for taxomony */
+				'all_items' => __( 'All Custom Categories', 'lillehummernl' ), /* all title for taxonomies */
+				'parent_item' => __( 'Parent Custom Category', 'lillehummernl' ), /* parent title for taxonomy */
+				'parent_item_colon' => __( 'Parent Custom Category:', 'lillehummernl' ), /* parent taxonomy title */
+				'edit_item' => __( 'Edit Custom Category', 'lillehummernl' ), /* edit custom taxonomy title */
+				'update_item' => __( 'Update Custom Category', 'lillehummernl' ), /* update title for taxonomy */
+				'add_new_item' => __( 'Add New Custom Category', 'lillehummernl' ), /* add new title for taxonomy */
+				'new_item_name' => __( 'New Custom Category Name', 'lillehummernl' ) /* name title for taxonomy */
 			),
 			'show_admin_column' => true, 
 			'show_ui' => true,
@@ -88,16 +88,16 @@ function custom_post_example() {
 		array('custom_type'), /* if you change the name of register_post_type( 'custom_type', then you have to change this */
 		array('hierarchical' => false,    /* if this is false, it acts like tags */
 			'labels' => array(
-				'name' => __( 'Custom Tags', 'lillehummer' ), /* name of the custom taxonomy */
-				'singular_name' => __( 'Custom Tag', 'lillehummer' ), /* single taxonomy name */
-				'search_items' =>  __( 'Search Custom Tags', 'lillehummer' ), /* search title for taxomony */
-				'all_items' => __( 'All Custom Tags', 'lillehummer' ), /* all title for taxonomies */
-				'parent_item' => __( 'Parent Custom Tag', 'lillehummer' ), /* parent title for taxonomy */
-				'parent_item_colon' => __( 'Parent Custom Tag:', 'lillehummer' ), /* parent taxonomy title */
-				'edit_item' => __( 'Edit Custom Tag', 'lillehummer' ), /* edit custom taxonomy title */
-				'update_item' => __( 'Update Custom Tag', 'lillehummer' ), /* update title for taxonomy */
-				'add_new_item' => __( 'Add New Custom Tag', 'lillehummer' ), /* add new title for taxonomy */
-				'new_item_name' => __( 'New Custom Tag Name', 'lillehummer' ) /* name title for taxonomy */
+				'name' => __( 'Custom Tags', 'lillehummernl' ), /* name of the custom taxonomy */
+				'singular_name' => __( 'Custom Tag', 'lillehummernl' ), /* single taxonomy name */
+				'search_items' =>  __( 'Search Custom Tags', 'lillehummernl' ), /* search title for taxomony */
+				'all_items' => __( 'All Custom Tags', 'lillehummernl' ), /* all title for taxonomies */
+				'parent_item' => __( 'Parent Custom Tag', 'lillehummernl' ), /* parent title for taxonomy */
+				'parent_item_colon' => __( 'Parent Custom Tag:', 'lillehummernl' ), /* parent taxonomy title */
+				'edit_item' => __( 'Edit Custom Tag', 'lillehummernl' ), /* edit custom taxonomy title */
+				'update_item' => __( 'Update Custom Tag', 'lillehummernl' ), /* update title for taxonomy */
+				'add_new_item' => __( 'Add New Custom Tag', 'lillehummernl' ), /* add new title for taxonomy */
+				'new_item_name' => __( 'New Custom Tag Name', 'lillehummernl' ) /* name title for taxonomy */
 			),
 			'show_admin_column' => true,
 			'show_ui' => true,

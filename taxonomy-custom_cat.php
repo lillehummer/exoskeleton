@@ -4,7 +4,7 @@
 
 		<div class="main clearfix" role="main">
 
-			<h1 class="archive-title"><span><?php _e( 'Posts Categorized:', 'lillehummer' ); ?></span> <?php single_cat_title(); ?></h1>
+			<h1 class="archive-title"><span><?php _e( 'Posts Categorized:', 'lillehummernl' ); ?></span> <?php single_cat_title(); ?></h1>
 
 			<?php while (have_posts()) : the_post(); ?>
 
@@ -15,7 +15,7 @@
 					</header>
 
 					<section class="entry-content">
-						<?php the_excerpt( '<span class="read-more">' . __( 'Read More &raquo;', 'lillehummer' ) . '</span>' ); ?>
+						<?php the_excerpt( '<span class="read-more">' . __( 'Read More &raquo;', 'lillehummernl' ) . '</span>' ); ?>
 					</section>
 
 				</article>

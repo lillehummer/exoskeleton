@@ -17,7 +17,7 @@
 				</section>
 
 				<footer class="article-footer">
-					<p class="tags"><?php the_tags( '<span class="tags-title">' . __( 'Tags:', 'lillehummer' ) . '</span> ', ', ', '' ); ?></p>
+					<p class="tags"><?php the_tags( '<span class="tags-title">' . __( 'Tags:', 'lillehummernl' ) . '</span> ', ', ', '' ); ?></p>
 				</footer>
 
 			</article>

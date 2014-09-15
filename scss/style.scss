@@ -4,6 +4,7 @@
 // Imports
 @import "bourbon";
 @import "neat";
+@import "jeet";
 
 //Breakpoints
 $medium: new-breakpoint(max-width 1200px);
@@ -16,6 +17,7 @@ $tiny: new-breakpoint(max-width 340px);
 @import "wp-default";
 @import "header";
 @import "footer";
+@import "content";
 
 //Sitewide CSS
 * {
@@ -32,7 +34,6 @@ html {
 }
 
 body {
-	position: relative;
 	min-height: 100%;
 	width: 100%;
 	line-height: 1.2;

@@ -30,20 +30,24 @@
 
 <body <?php body_class(); ?>>
 
-<div id="container">
+<div class="wrapper">
 
 	<header class="header" role="banner">
 
 		<div class="header-inner clearfix">
 
-			<p class="logo"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
+			<p class="logo">
+				<a href="<?php echo home_url(); ?>" rel="nofollow">
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/logo.png" width="" height="">
+				</a>
+			</p>
 
-			<nav role="navigation">
+			<nav role="navigation" class="navigation">
 				<?php
 				wp_nav_menu(array(
 					'container' => false,                           // remove nav container
 					'container_class' => 'menu cf',                 // class of container (should you choose to use it)
-					'menu' => __( 'The Main Menu', 'lillehummer' ),  // nav name
+					'menu' => __( 'The Main Menu', 'lillehummernl' ),  // nav name
 					'menu_class' => 'nav top-nav cf',               // adding custom nav class
 					'theme_location' => 'main-nav',                 // where it's located in the theme
 					'before' => '',                                 // before the menu

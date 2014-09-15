@@ -1,7 +1,7 @@
 {
   "name": "lillehummernl",
-  "description": "WordPress theme created by Lille Hummer.",
-  "version": "1.0",
+  "description": "WordPress theme created by Lille Hummer, based on Bones.",
+  "version": "1.1",
   "maintainers": [
     {
       "name": "Charles Beaumont",

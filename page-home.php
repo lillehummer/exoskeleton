@@ -1,3 +1,9 @@
+<?php
+/*
+Template Name: Home
+*/
+?>
+
 <?php get_header(); ?>
 
 	<div class="content">
@@ -9,7 +15,7 @@
 			<article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
 
 				<header class="article-header">
-					<h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1>
+					<h1 class="page-title"><?php the_title(); ?></h1>
 				</header>
 
 				<section class="entry-content clearfix" itemprop="articleBody">
@@ -17,7 +23,7 @@
 				</section>
 
 				<footer class="article-footer">
-					<?php the_tags( '<span class="tags">' . __( 'Tags:', 'lillehummernl' ) . '</span> ', ', ', '' ); ?>
+					<p class="clearfix"><?php the_tags( '<span class="tags">' . __( 'Tags:', 'lillehummernl' ) . '</span> ', ', ', '' ); ?></p>
 				</footer>
 
 			</article>

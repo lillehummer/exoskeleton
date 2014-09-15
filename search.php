@@ -4,7 +4,7 @@
 
 		<div class="main clearfix" role="main">
 
-			<h1 class="archive-title"><span><?php _e( 'Search Results for:', 'lillehummer' ); ?></span> <?php echo esc_attr(get_search_query()); ?></h1>
+			<h1 class="archive-title"><span><?php _e( 'Search Results for:', 'lillehummernl' ); ?></span> <?php echo esc_attr(get_search_query()); ?></h1>
 
 			<?php while (have_posts()) : the_post(); ?>
 
@@ -15,7 +15,7 @@
 				</header>
 
 				<section class="entry-content">
-					<?php the_excerpt( '<span class="read-more">' . __( 'Read more &raquo;', 'lillehummer' ) . '</span>' ); ?>
+					<?php the_excerpt( '<span class="read-more">' . __( 'Read more &raquo;', 'lillehummernl' ) . '</span>' ); ?>
 				</section>
 
 			</article>

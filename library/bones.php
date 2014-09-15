@@ -104,8 +104,8 @@ function bones_theme_support() {
 	// registering wp3+ menus
 	register_nav_menus(
 		array(
-			'main-nav' => __( 'The Main Menu', 'lillehummer' ),   // main nav in header
-			'footer-links' => __( 'Footer Links', 'lillehummer' ) // secondary nav in footer
+			'main-nav' => __( 'The Main Menu', 'lillehummernl' ),   // main nav in header
+			'footer-links' => __( 'Footer Links', 'lillehummernl' ) // secondary nav in footer
 		)
 	);
 }
@@ -183,7 +183,7 @@ function bones_filter_ptags_on_images($content){
 function bones_excerpt_more($more) {
 	global $post;
 	// edit here if you like
-	return '...  <a class="excerpt-read-more" href="'. get_permalink($post->ID) . '" title="'. __( 'Read', 'lillehummer' ) . get_the_title($post->ID).'">'. __( 'Read more &raquo;', 'lillehummer' ) .'</a>';
+	return '...  <a class="excerpt-read-more" href="'. get_permalink($post->ID) . '" title="'. __( 'Read', 'lillehummernl' ) . get_the_title($post->ID).'">'. __( 'Read more &raquo;', 'lillehummernl' ) .'</a>';
 }
 
 // Clean up output of stylesheet <link> tags

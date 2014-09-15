@@ -7,11 +7,11 @@
 			<article id="post-not-found" class="hentry clearfix">
 
 				<header class="article-header">
-					<h1><?php _e( 'Epic 404 - Article Not Found', 'lillehummer' ); ?></h1>
+					<h1><?php _e( 'Epic 404 - Article Not Found', 'lillehummernl' ); ?></h1>
 				</header>
 
 				<section class="entry-content">
-					<p><?php _e( 'The article you were looking for was not found, but maybe try looking again!', 'lillehummer' ); ?></p>
+					<p><?php _e( 'The article you were looking for was not found, but maybe try looking again!', 'lillehummernl' ); ?></p>
 				</section>
 
 				<section class="search">
