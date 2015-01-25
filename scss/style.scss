@@ -1,5 +1,5 @@
 // Variables
-@import "vars";
+@import "utils/vars";
 
 // Imports
 @import "bourbon";
@@ -12,12 +12,19 @@ $small: new-breakpoint(max-width 500px);
 $tiny: new-breakpoint(max-width 340px);
 
 // Imports
-@import "mixins";
-@import "normalize";
-@import "wp-default";
-@import "header";
-@import "footer";
-@import "content";
+@import "utils/functions";
+@import "utils/mixins";
+
+@import "base/normalize";
+@import "base/typography";
+@import "base/wp-default";
+
+@import "layout/header";
+@import "layout/footer";
+
+@import "pages/home";
+
+@import "components/carousel";
 
 //Sitewide CSS
 * {

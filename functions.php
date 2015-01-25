@@ -1,43 +1,48 @@
 <?php
 
 require_once( 'library/bones.php' );
-require_once( 'library/custom-post-type.php' );
 require_once( 'library/admin.php' );
 require_once( 'library/activation.php' );
 
 /************* AFTER THEME SETUP ******************/
 function bones_ahoy() {
 
-  // let's get language support going, if you need it
-  load_theme_textdomain( 'lillehummernl', get_template_directory() . '/library/translation' );
+	//Allow editor style.
+  	add_editor_style( get_stylesheet_directory_uri() . '/library/css/editor-style.css' );
 
-  // launching operation cleanup
-  add_action( 'init', 'bones_head_cleanup' );
-  // A better title
-  //add_filter( 'wp_title', 'rw_title', 10, 3 );
-  // remove WP version from RSS
-  add_filter( 'the_generator', 'bones_rss_version' );
-  // remove pesky injected css for recent comments widget
-  add_filter( 'wp_head', 'bones_remove_wp_widget_recent_comments_style', 1 );
-  // clean up comment styles in the head
-  add_action( 'wp_head', 'bones_remove_recent_comments_style', 1 );
-  // clean up gallery output in wp
-  add_filter( 'gallery_style', 'bones_gallery_style' );
+	// let's get language support going, if you need it
+	load_theme_textdomain( 'lillehummernl', get_template_directory() . '/library/translation' );
 
-  // enqueue base scripts and styles
-  add_action( 'wp_enqueue_scripts', 'bones_scripts_and_styles', 999 );
-  // ie conditional wrapper
+	// USE THIS TEMPLATE TO CREATE CUSTOM POST TYPES EASILY
+  	require_once( 'library/custom-post-type.php' );
 
-  // launching this stuff after theme setup
-  bones_theme_support();
+	// launching operation cleanup
+	add_action( 'init', 'bones_head_cleanup' );
+	// A better title
+	//add_filter( 'wp_title', 'rw_title', 10, 3 );
+	// remove WP version from RSS
+	add_filter( 'the_generator', 'bones_rss_version' );
+	// remove pesky injected css for recent comments widget
+	add_filter( 'wp_head', 'bones_remove_wp_widget_recent_comments_style', 1 );
+	// clean up comment styles in the head
+	add_action( 'wp_head', 'bones_remove_recent_comments_style', 1 );
+	// clean up gallery output in wp
+	add_filter( 'gallery_style', 'bones_gallery_style' );
 
-  // adding sidebars to Wordpress (these are created in functions.php)
-  add_action( 'widgets_init', 'bones_register_sidebars' );
+	// enqueue base scripts and styles
+	add_action( 'wp_enqueue_scripts', 'bones_scripts_and_styles', 999 );
+	// ie conditional wrapper
 
-  // cleaning up random code around images
-  add_filter( 'the_content', 'bones_filter_ptags_on_images' );
-  // cleaning up excerpt
-  add_filter( 'excerpt_more', 'bones_excerpt_more' );
+	// launching this stuff after theme setup
+	bones_theme_support();
+
+	// adding sidebars to Wordpress (these are created in functions.php)
+	add_action( 'widgets_init', 'bones_register_sidebars' );
+
+	// cleaning up random code around images
+	add_filter( 'the_content', 'bones_filter_ptags_on_images' );
+	// cleaning up excerpt
+	add_filter( 'excerpt_more', 'bones_excerpt_more' );
 
 }
 
@@ -82,18 +87,12 @@ function bones_set_image_dimensions() {
 	update_option("large_crop", 1);
 }
 
-/************* AFTER THEME SETUP ******************/
-function bones_after_setup_theme() {
-	// Tell the TinyMCE editor to use a custom stylesheet
-	add_editor_style('/assets/css/editor-style.css');
-}
-
-add_action( 'after_setup_theme', 'bones_after_setup_theme' );
-
 /************* IMAGE/EMBED SIZE OPTIONS *************/
 
 // Limit size of embeds.
-if (!isset($content_width)) { $content_width = 640; }
+if (!isset($content_width)) {
+	$content_width = 640;
+}
 
 // default thumb size
 set_post_thumbnail_size(100, 100, true);
@@ -136,6 +135,43 @@ function bones_scripts_and_styles() {
 	}
 }
 
+/************* THEME CUSTOMIZE *********************/
+
+/* 
+  A good tutorial for creating your own Sections, Controls and Settings:
+  http://code.tutsplus.com/series/a-guide-to-the-wordpress-theme-customizer--wp-33722
+  
+  Good articles on modifying the default options:
+  http://natko.com/changing-default-wordpress-theme-customization-api-sections/
+  http://code.tutsplus.com/tutorials/digging-into-the-theme-customizer-components--wp-27162
+  
+  To do:
+  - Create a js for the postmessage transport method
+  - Create some sanitize functions to sanitize inputs
+  - Create some boilerplate Sections, Controls and Settings
+*/
+
+function bones_theme_customizer($wp_customize) {
+  // $wp_customize calls go here.
+  //
+  // Uncomment the below lines to remove the default customize sections 
+
+  // $wp_customize->remove_section('title_tagline');
+  // $wp_customize->remove_section('colors');
+  // $wp_customize->remove_section('background_image');
+  // $wp_customize->remove_section('static_front_page');
+  // $wp_customize->remove_section('nav');
+
+  // Uncomment the below lines to remove the default controls
+  // $wp_customize->remove_control('blogdescription');
+  
+  // Uncomment the following to change the default section titles
+  // $wp_customize->get_section('colors')->title = __( 'Theme Colors' );
+  // $wp_customize->get_section('background_image')->title = __( 'Images' );
+}
+
+add_action( 'customize_register', 'bones_theme_customizer' );
+
 /************* ACTIVE SIDEBARS ********************/
 
 function bones_register_sidebars() {
@@ -149,43 +185,5 @@ function bones_register_sidebars() {
 		'after_title' => '</h4>',
 	));
 }
-
-/************* SEARCH FORM LAYOUT *****************/
-
-function bones_wpsearch($form) {
-	$form = '<form role="search" method="get" id="searchform" action="' . home_url( '/' ) . '" >
-	<label class="screen-reader-text" for="s">' . __( 'Search for:', 'lillehummernl' ) . '</label>
-	<input type="text" value="' . get_search_query() . '" name="s" id="s" placeholder="' . esc_attr__( 'Search the Site...', 'lillehummernl' ) . '" />
-	<input type="submit" id="searchsubmit" value="' . esc_attr__( 'Search' ) .'" />
-	</form>';
-	return $form;
-}
-
-/************* DISABLE PINGBACK *****************/
-add_filter( 'xmlrpc_methods', 'remove_xmlrpc_pingback_ping' );
-function remove_xmlrpc_pingback_ping( $methods ) {
-   unset( $methods['pingback.ping'] );
-   return $methods;
-} ;
-
-/************* CUSTOM GALLERY SIZE *****************/
-remove_shortcode('gallery');
-add_shortcode('gallery', 'custom_size_gallery');
- 
-function custom_size_gallery($attr) {
-     $attr['size'] = 'medium';
-     return gallery_shortcode($attr);
-}
-
-/************* OUTPUT HTML5 TAGS *****************/
-function prefix_gallery_atts( $atts ) {
-    $atts['itemtag']    = 'figure';
-    $atts['icontag']    = 'div';
-    $atts['captiontag'] = 'figcaption';
- 
-    return $atts;
-}
-add_filter( 'shortcode_atts_gallery', 'prefix_gallery_atts' );
-
 
 ?>

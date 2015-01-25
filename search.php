@@ -2,7 +2,7 @@
 
 	<div class="content">
 
-		<div class="main clearfix" role="main">
+		<main class="main clearfix" role="main">
 
 			<h1 class="archive-title"><span><?php _e( 'Search Results for:', 'lillehummernl' ); ?></span> <?php echo esc_attr(get_search_query()); ?></h1>
 
@@ -24,7 +24,7 @@
 
 			<?php if ( function_exists( 'bones_page_navi' ) ) : bones_page_navi(); ?>
 
-		</div>
+		</main>
 
 		<?php get_sidebar(); ?>
 

@@ -9,8 +9,6 @@ function bones_head_cleanup() {
 	remove_action( 'wp_head', 'rsd_link' );
 	// windows live writer
 	remove_action( 'wp_head', 'wlwmanifest_link' );
-	// index link
-	remove_action( 'wp_head', 'index_rel_link' );
 	// previous link
 	remove_action( 'wp_head', 'parent_post_rel_link', 10, 0 );
 	// start link
@@ -141,39 +139,6 @@ function bones_page_navi() {
 RANDOM CLEANUP ITEMS
 *********************/
 
-// Add and remove body_class() classes
-function bones_body_class($classes) {
-  // Add post/page slug
-  if (is_single() || is_page() && !is_front_page()) {
-    $classes[] = basename(get_permalink());
-  }
-
-  // Remove unnecessary classes
-  $home_id_class = 'page-id-' . get_option('page_on_front');
-  $remove_classes = array(
-    'page-template-default',
-    $home_id_class
-  );
-  $classes = array_diff($classes, $remove_classes);
-
-  return $classes;
-}
-add_filter('body_class', 'bones_body_class');
-
-// Wrap embedded media as suggested by Readability
-function bones_embed_wrap($cache, $url, $attr = '', $post_ID = '') {
-  return '<div class="entry-content-asset">' . $cache . '</div>';
-}
-add_filter('embed_oembed_html', 'bones_embed_wrap', 10, 4);
-
-// Tell WordPress to use searchform.php from the templates/ directory
-function bones_get_search_form($form) {
-  $form = '';
-  locate_template('/searchform.php', true, false);
-  return $form;
-}
-add_filter('get_search_form', 'bones_get_search_form');
-
 // remove the p from around imgs (http://css-tricks.com/snippets/wordpress/remove-paragraph-tags-from-around-images/)
 function bones_filter_ptags_on_images($content){
 	return preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content);
@@ -185,36 +150,5 @@ function bones_excerpt_more($more) {
 	// edit here if you like
 	return '...  <a class="excerpt-read-more" href="'. get_permalink($post->ID) . '" title="'. __( 'Read', 'lillehummernl' ) . get_the_title($post->ID).'">'. __( 'Read more &raquo;', 'lillehummernl' ) .'</a>';
 }
-
-// Clean up output of stylesheet <link> tags
-function bones_clean_style_tag($input) {
-  preg_match_all("!<link rel='stylesheet'\s?(id='[^']+')?\s+href='(.*)' type='text/css' media='(.*)' />!", $input, $matches);
-  // Only display media if it is meaningful
-  $media = $matches[3][0] !== '' && $matches[3][0] !== 'all' ? ' media="' . $matches[3][0] . '"' : '';
-  return '<link rel="stylesheet" href="' . $matches[2][0] . '"' . $media . '>' . "\n";
-}
-add_filter('style_loader_tag', 'bones_clean_style_tag');
-
-// Clean up language_attributes() used in <html> tag
-function bones_language_attributes() {
-  $attributes = array();
-  $output = '';
-
-  if (is_rtl()) {
-    $attributes[] = 'dir="rtl"';
-  }
-
-  $lang = get_bloginfo('language');
-
-  if ($lang) {
-    $attributes[] = "lang=\"$lang\"";
-  }
-
-  $output = implode(' ', $attributes);
-  $output = apply_filters('roots_language_attributes', $output);
-
-  return $output;
-}
-add_filter('language_attributes', 'bones_language_attributes');
 
 ?>

@@ -20,7 +20,7 @@ function custom_post_example() {
 			'add_new' => __( 'Add New', 'lillehummernl' ), /* The add new menu item */
 			'add_new_item' => __( 'Add New Custom Type', 'lillehummernl' ), /* Add New Display Title */
 			'edit' => __( 'Edit', 'lillehummernl' ), /* Edit Dialog */
-			'edit_item' => __( 'Edit Post Types', 'lillehummernl' ), /* Edit Display Title */
+			'edit_item' => __( 'Edit Post Type', 'lillehummernl' ), /* Edit Display Title */
 			'new_item' => __( 'New Post Type', 'lillehummernl' ), /* New Display Title */
 			'view_item' => __( 'View Post Type', 'lillehummernl' ), /* View Display Title */
 			'search_items' => __( 'Search Post Type', 'lillehummernl' ), /* Search Custom Type Title */ 
@@ -35,7 +35,7 @@ function custom_post_example() {
 			'show_ui' => true,
 			'query_var' => true,
 			'menu_position' => 8, /* this is what order you want it to appear in on the left hand side menu */ 
-			'menu_icon' => get_stylesheet_directory_uri() . '/library/images/custom-post-icon.png', /* the icon for the custom post type menu */
+			'menu_icon' => '', /* the icon for the custom post type menu */
 			'rewrite'	=> array( 'slug' => 'custom_type', 'with_front' => false ), /* you can specify its url slug */
 			'has_archive' => 'custom_type', /* you can rename the slug here */
 			'capability_type' => 'post',

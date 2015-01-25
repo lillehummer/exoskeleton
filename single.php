@@ -2,7 +2,7 @@
 
 	<div class="content">
 
-		<div class="main clearfix" role="main">
+		<main class="main clearfix" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
 			<?php while (have_posts()) : the_post(); ?>
 
@@ -10,7 +10,7 @@
 
 			<?php endwhile; ?>
 
-		</div>
+		</main>
 
 		<?php get_sidebar(); ?>
 
