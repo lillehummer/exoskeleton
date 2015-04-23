@@ -1,0 +1,9 @@
+{
+  "name": "lillehummernl",
+  "version": "0.1",
+  "dependencies": {
+    "jquery": "~2",
+    "bourbon": "*",
+    "neat": "*"
+  }
+}

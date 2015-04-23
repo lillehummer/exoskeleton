@@ -123,7 +123,7 @@ function bones_scripts_and_styles() {
 		wp_enqueue_script( 'html5shiv', '//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js', array(), '', false );
 
 		// local scripts
-		wp_enqueue_script( 'scripts', get_stylesheet_directory_uri() . '/js/scripts.min.js', array(), '', false );
+		wp_enqueue_script( 'app', get_stylesheet_directory_uri() . '/js/app.min.js', array(), '', false );
 
 		// register main stylesheet
 		wp_enqueue_style( 'style', get_stylesheet_directory_uri() . '/css/style.css', array(), '', 'all' );

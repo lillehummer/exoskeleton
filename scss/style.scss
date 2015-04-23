@@ -2,9 +2,8 @@
 @import "utils/vars";
 
 // Imports
-@import "bourbon";
-@import "neat";
-@import "jeet";
+@import "../bower/bourbon/app/assets/stylesheets/bourbon";
+@import "../bower/neat/app/assets/stylesheets/neat";
 
 //Breakpoints
 $medium: new-breakpoint(max-width 1200px);
