@@ -31,7 +31,7 @@ gulp.task('sass', function() {
 
 // Concatenate & Minify JS
 gulp.task('scripts', function() {
-    var jsFiles = ['./js/src/*.js'];
+    var jsFiles = ['./js/src/**/*.js', './js/src/*.js'];
     gulp.src(mainBowerFiles().concat(jsFiles))
         .pipe(filter('*.js'))
         .pipe(concat('app.min.js'))
@@ -41,15 +41,15 @@ gulp.task('scripts', function() {
 
 // Default Task
 gulp.task('default', function(){
-    gulp.run('lint', 'sass', 'scripts');
+    gulp.run('sass', 'scripts');
 
     // Watch For Changes To Our JS
     gulp.watch('./js/*.js', function(){
-        gulp.run('lint', 'scripts');
+        gulp.run('scripts');
     });
 
     // Watch For Changes To Our SCSS
-    gulp.watch('./scss/*.scss', function(){
+    gulp.watch(['./scss/*.scss', './scss/**/*.scsss'], function(){
         gulp.run('sass');
     });
 });
