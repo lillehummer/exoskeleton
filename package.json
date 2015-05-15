@@ -11,14 +11,21 @@
   ],
   "dependencies": {
     "gulp": "*",
-    "gulp-jshint": "*",
+    "gulp-util": "*",
     "gulp-sass": "*",
     "gulp-concat": "*",
     "gulp-uglify": "*",
     "gulp-rename": "*",
-    "gulp-autoprefixer": "*",
     "gulp-minify-css": "*",
     "gulp-filter": "*",
-    "main-bower-files": "*"
+    "main-bower-files": "*",
+    "browser-sync": "*",
+    "gulp-imagemin": "*",
+    "imagemin-pngquant": "*",
+    "gulp-postcss": "*",
+    "autoprefixer-core": "*",
+    "css-mqpacker": "*",
+    "csswring": "*",
+    "gulp-plumber": "*"
   }
 }
