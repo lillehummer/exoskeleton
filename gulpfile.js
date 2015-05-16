@@ -2,7 +2,6 @@
 var gulp = require('gulp'); 
 
 // Include Our Plugins
-var jshint = require('gulp-jshint');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
@@ -56,7 +55,7 @@ gulp.task('sass', function () {
         .pipe(plumber())
         .pipe(sass({ style: 'expanded' }))
         .pipe(postcss(processors))
-        .pipe(gulp.dest('./dest'))
+        .pipe(gulp.dest('./css'))
         .pipe(browserSync.reload({stream:true}));
 });
 

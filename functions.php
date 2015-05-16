@@ -119,6 +119,7 @@ function bones_scripts_and_styles() {
 	if (!is_admin()) {
 
 		// remote libraries
+		wp_deregister_script('jquery');
 		wp_enqueue_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', array(), '', false );
 		wp_enqueue_script( 'html5shiv', '//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js', array(), '', false );
 
