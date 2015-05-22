@@ -26,6 +26,7 @@
     "autoprefixer-core": "*",
     "css-mqpacker": "*",
     "csswring": "*",
-    "gulp-plumber": "*"
+    "gulp-plumber": "*",
+    "gulp-sourcemaps": "*"
   }
 }

@@ -53,8 +53,10 @@ gulp.task('sass', function () {
     ];
     return gulp.src('./scss/*.scss')
         .pipe(plumber())
+        .pipe(sourcemaps.init())
         .pipe(sass({ style: 'expanded' }))
         .pipe(postcss(processors))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest('./css'))
         .pipe(browserSync.reload({stream:true}));
 });
