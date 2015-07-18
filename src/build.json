@@ -1,0 +1,6 @@
+{
+  "jsFiles": [
+      "./src/js/scripts.js"
+  ],
+  "proxy": "lillehummer.local/"
+}
