@@ -1,13 +1,13 @@
-// Variables
+/* Variables */
 $white: #ffffff;
 $black: #080808;
 
-// Fonts
+/* Fonts */
 $nav-text: "Helvetica Neue", "HelveticaNeue", sans-serif;
 $heading-text: "Helvetica Neue", "HelveticaNeue", sans-serif;
 $body-text: "Helvetica Neue", "HelveticaNeue", sans-serif;
 
-// Media Queries
+/* Media Queries */
 @custom-media medium (max-width: 1200px);
 @custom-media small (max-width: 500px);
 @custom-media tiny (max-width: 340px);

@@ -1,22 +1,10 @@
-// Variables
+/* Variables */
 @import "utils/_vars.css";
-@import "utils/functions";
-@import "utils/mixins";
+@import "utils/_functions.css";
+@import "utils/_mixins.css";
 
-// Imports
-@import "../../bower/normalize.css/normalize.css";
 
-@import "base/typography";
-@import "base/wp-default";
-
-@import "layout/header";
-@import "layout/footer";
-
-@import "pages/home";
-
-@import "components/carousel";
-
-//Sitewide CSS
+/* Sitewide CSS */
 * {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
@@ -34,9 +22,7 @@ body {
 	min-height: 100%;
 	width: 100%;
 	line-height: 1.2;
-	font-family: $body-text;
 	font-weight: 400;
-	color: $black;
 }
 
 .clearfix {
