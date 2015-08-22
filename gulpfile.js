@@ -90,7 +90,7 @@ var options = require('./src/build.json');
             pixrem
         ];
 
-        return gulp.src('src/css/*.scss')
+        return gulp.src(options.cssFiles)
             .pipe(plumber(function(error) {
                 gulpUtil.log(gulpUtil.colors.red(error));
                 this.emit('end');
@@ -129,11 +129,11 @@ var options = require('./src/build.json');
 
     gulp.task('rev', function(callback) {
 
-        var options = {
+        var revOptions = {
             dontRenameFile: ['functions.php']
         };
 
-        var revAll = new RevAll(options);
+        var revAll = new RevAll(revOptions);
 
         return gulp.src(['src/rev/**'])
                 .pipe(plumber())

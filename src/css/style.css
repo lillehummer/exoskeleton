@@ -1,20 +1,11 @@
 // Variables
-@import "utils/vars";
-
-// Imports
-@import "../../bower/bourbon/app/assets/stylesheets/bourbon";
-@import "../../bower/neat/app/assets/stylesheets/neat";
-
-//Breakpoints
-$medium: new-breakpoint(max-width 1200px);
-$small: new-breakpoint(max-width 500px);
-$tiny: new-breakpoint(max-width 340px);
-
-// Imports
+@import "utils/_vars.css";
 @import "utils/functions";
 @import "utils/mixins";
 
-@import "base/normalize";
+// Imports
+@import "../../bower/normalize.css/normalize.css";
+
 @import "base/typography";
 @import "base/wp-default";
 
@@ -49,5 +40,9 @@ body {
 }
 
 .clearfix {
-	@include clearfix;
+	&::after {
+		clear: both;
+		content: "";
+		display: table;
+	}
 }
