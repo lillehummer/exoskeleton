@@ -91,7 +91,10 @@ var options = require('./src/build.json');
         ];
 
         return gulp.src('src/css/*.scss')
-            .pipe(plumber())
+            .pipe(plumber(function(error) {
+                gulpUtil.log(gulpUtil.colors.red(error));
+                this.emit('end');
+            }))
             .pipe(sourcemaps.init())
             .pipe(sass({ style: 'compressed' }))
             .pipe(postcss(processors))
