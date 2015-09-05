@@ -2,7 +2,7 @@
   "name": "lillehummernl",
   "version": "0.1",
   "dependencies": {
-    "jquery": "~2",
+   	"normalize.css": "*",
     "bourbon": "*",
     "neat": "*"
   }
