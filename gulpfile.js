@@ -1,5 +1,5 @@
 // Include gulp
-var gulp = require('gulp'); 
+var gulp = require('gulp');
 
 // Include Our Plugins
 var sass = require('gulp-sass');
@@ -69,7 +69,10 @@ var options = require('./src/build.json');
     gulp.task('images', function () {
 
         return gulp.src('src/img/*')
-            .pipe(plumber())
+            .pipe(plumber(function(error) {
+                gulpUtil.log(gulpUtil.colors.red(error));
+                this.emit('end');
+            }))
             .pipe(imagemin({
                 optimizationLevel: 3,
                 interlaced: true,

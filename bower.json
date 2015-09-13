@@ -4,6 +4,7 @@
   "dependencies": {
    	"normalize.css": "*",
     "bourbon": "*",
-    "neat": "*"
+    "neat": "*",
+    "enquire": "*"
   }
 }
