@@ -23,11 +23,6 @@ var sourcemaps = require('gulp-sourcemaps');
 var RevAll = require('gulp-rev-all');
 var revDel = require('rev-del');
 var runSequence = require('run-sequence');
-var cssnext = require('cssnext');
-var precss = require('precss');
-var svgfallback = require('postcss-svg-fallback');
-var doiuse = require('doiuse');
-var at2x = require('postcss-at2x');
 var options = require('./src/build.json');
 
 //
@@ -91,15 +86,13 @@ var options = require('./src/build.json');
     gulp.task('css', function(callback) {
 
         var processors = [
-            precss,
-            cssnext,
             autoprefixer({browsers: ['last 2 version', 'ie 9']}),
             mqpacker,
-            pixrem,
-            csswring
+            csswring,
+            pixrem
         ];
 
-        return gulp.src(options.cssFiles)
+        return gulp.src('src/css/*.scss')
             .pipe(plumber(function(error) {
                 gulpUtil.log(gulpUtil.colors.red(error));
                 this.emit('end');

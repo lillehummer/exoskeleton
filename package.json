@@ -31,12 +31,6 @@
     "gulp-sourcemaps": "*",
     "gulp-rev-all": "*",
     "rev-del": "*",
-    "run-sequence": "*",
-    "cssnext": "*",
-    "precss": "*",
-    "stylelint": "*",
-    "postcss-svg-fallback": "*",
-    "doiuse": "*",
-    "postcss-at2x": "*"
+    "run-sequence": "*"
   }
 }

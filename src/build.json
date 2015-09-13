@@ -1,9 +1,4 @@
 {
-	"cssFiles": [
-		"src/css/style.css",
-		"src/css/login.css",
-		"src/css/editor-style.css"
-	],
 	"jsFiles": [
 		"./src/js/scripts.js"
 	],
