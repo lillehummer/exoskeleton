@@ -4,6 +4,7 @@
 // Imports
 @import "../../bower/bourbon/app/assets/stylesheets/bourbon";
 @import "../../bower/neat/app/assets/stylesheets/neat";
+@import "../../bower/normalize.css/normalize.css";
 
 //Breakpoints
 $medium: new-breakpoint(max-width 1200px);

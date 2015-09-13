@@ -50,22 +50,24 @@ add_action( 'after_setup_theme', 'bones_ahoy' );
 
 /************* AFTER SWITCH THEME ******************/
 // Flush rewrite rules for custom post types
-add_action( 'after_switch_theme', 'bones_set_image_dimensions' );
+add_action( 'after_switch_theme', 'bones_setup_theme' );
 
 // Flush your rewrite rules
 function bones_set_image_dimensions() {
+  update_option('image_default_link_type','none');
+
 	$catalog = array(
 		'width' 	=> '100',
 		'height'	=> '100',
 		'crop'		=> 1
 	);
- 
+
 	$single = array(
 		'width' 	=> '100',
 		'height'	=> '100',
 		'crop'		=> 1
 	);
- 
+
 	$thumbnail = array(
 		'width' 	=> '100',
 		'height'	=> '100',
@@ -145,14 +147,14 @@ function bones_scripts_and_styles() {
 
 /************* THEME CUSTOMIZE *********************/
 
-/* 
+/*
   A good tutorial for creating your own Sections, Controls and Settings:
   http://code.tutsplus.com/series/a-guide-to-the-wordpress-theme-customizer--wp-33722
-  
+
   Good articles on modifying the default options:
   http://natko.com/changing-default-wordpress-theme-customization-api-sections/
   http://code.tutsplus.com/tutorials/digging-into-the-theme-customizer-components--wp-27162
-  
+
   To do:
   - Create a js for the postmessage transport method
   - Create some sanitize functions to sanitize inputs
@@ -162,7 +164,7 @@ function bones_scripts_and_styles() {
 function bones_theme_customizer($wp_customize) {
   // $wp_customize calls go here.
   //
-  // Uncomment the below lines to remove the default customize sections 
+  // Uncomment the below lines to remove the default customize sections
 
   // $wp_customize->remove_section('title_tagline');
   // $wp_customize->remove_section('colors');
@@ -172,7 +174,7 @@ function bones_theme_customizer($wp_customize) {
 
   // Uncomment the below lines to remove the default controls
   // $wp_customize->remove_control('blogdescription');
-  
+
   // Uncomment the following to change the default section titles
   // $wp_customize->get_section('colors')->title = __( 'Theme Colors' );
   // $wp_customize->get_section('background_image')->title = __( 'Images' );
