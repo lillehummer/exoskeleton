@@ -4,7 +4,7 @@
 // Imports
 @import "../../bower/bourbon/app/assets/stylesheets/bourbon";
 @import "../../bower/neat/app/assets/stylesheets/neat";
-@import "../../bower/normalize.css/normalize.css";
+@import "../../bower/normalize.css/normalize";
 
 //Breakpoints
 $medium: new-breakpoint(max-width 1200px);
@@ -47,6 +47,12 @@ body {
 	font-family: $body-text;
 	font-weight: 400;
 	color: $black;
+
+	@include media($small) {
+		hyphens: auto;
+  	word-break: break-word;
+  	overflow-wrap: break-word;
+	}
 }
 
 input[type=text], button, select, textarea{
