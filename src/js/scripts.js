@@ -1,5 +1,21 @@
-// @codekit-prepend "vendors/jquery.ba-throttle-debounce.js"
+var HomeSlider = (function () {
+    var s;
 
-jQuery(document).ready(function($) {	
- 
+    return {
+        settings: {
+        },
+
+        init: function() {
+            s = this.settings;
+            this.runSlider();
+        },
+
+        runSlider: function() {
+        }
+
+    };
+})();
+
+jQuery(document).ready(function($) {
+
 });
