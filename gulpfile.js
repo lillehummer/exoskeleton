@@ -33,6 +33,7 @@ var options = require('./src/build.json');
     gulp.task('default', ['browser-sync', 'css', 'js'], function(){
 
         gulp.watch('src/js/*.js', ['js']).on('change', browserSync.reload);
+        gulp.watch('src/rev/functions.php', ['rev']);
         gulp.watch(['src/css/*.scss', 'src/css/**/*.scss'], ['css']);
 
     });
