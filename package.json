@@ -22,6 +22,7 @@
     "gulp-imagemin": "*",
     "imagemin-pngquant": "*",
     "gulp-postcss": "*",
+    "gulp-changed": "*",
     "autoprefixer": "*",
     "gulp-sass": "*",
     "css-mqpacker": "*",

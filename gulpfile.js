@@ -15,6 +15,7 @@ var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
+var changed = require('gulp-changed');
 var mqpacker = require('css-mqpacker');
 var csswring = require('csswring');
 var pixrem = require('pixrem');
@@ -69,6 +70,7 @@ var options = require('./src/build.json');
                 gulpUtil.log(gulpUtil.colors.red(error));
                 this.emit('end');
             }))
+            .pipe(changed('img'))
             .pipe(imagemin({
                 optimizationLevel: 3,
                 interlaced: true,
