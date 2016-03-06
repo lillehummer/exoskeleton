@@ -49,9 +49,9 @@ body {
 	color: $black;
 
 	@include media($small) {
-		hyphens: auto;
-  	word-break: break-word;
-  	overflow-wrap: break-word;
+    hyphens: auto;
+    word-break: break-word;
+    overflow-wrap: break-word;
 	}
 }
 
@@ -59,6 +59,7 @@ input[type=text], button, select, textarea{
     -webkit-appearance: none;
     -moz-appearance: none;
     border-radius: 0px;
+    outline: none;
 }
 
 .clearfix {

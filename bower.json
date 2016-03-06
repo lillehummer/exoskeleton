@@ -5,6 +5,8 @@
    	"normalize.css": "*",
     "bourbon": "*",
     "neat": "*",
-    "enquire": "*"
+    "enquire": "*",
+    "backbone": "*",
+    "underscore": "*"
   }
 }
