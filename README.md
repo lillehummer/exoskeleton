@@ -1,5 +1,6 @@
 # Exoskeleton
-## WordPress boilerplate theme by Lille Hummer heavily based on the amazing Bones framework.
+
+WordPress framework by Lille Hummer heavily based on the amazing Bones framework.
 
 ============
 
