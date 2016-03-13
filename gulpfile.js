@@ -119,7 +119,6 @@ var options = require('./src/build.json');
         const jsFilter = filter('**/*.js', {restore: true});
 
         return gulp.src(mainBowerFiles().concat(options.jsFiles))
-            .pipe(debug({title: 'JS:'}))
             .pipe(plumber())
             .pipe(jsFilter)
             .pipe(sourcemaps.init())
