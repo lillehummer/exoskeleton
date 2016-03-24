@@ -10,9 +10,9 @@
 
 				<header class="article-header">
 					<h1 class="h2"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
-					
+
 					<p class="byline entry-meta vcard">
-	                    <?php printf( __( 'Posted %1$s by %2$s', 'bonestheme' ),
+	                    <?php printf( __( 'Posted %1$s by %2$s', 'lillehummernl' ),
 							/* the time the post was published */
 							'<time class="updated entry-time" datetime="' . get_the_time('Y-m-d') . '" itemprop="datePublished">' . get_the_time(get_option('date_format')) . '</time>',
 							/* the author of the post */

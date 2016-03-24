@@ -7,7 +7,7 @@
                   <h1 class="entry-title single-title" itemprop="headline"><?php the_title(); ?></h1>
 
                   <p class="byline entry-meta vcard">
-                    <?php printf( __( 'Posted %1$s by %2$s', 'bonestheme' ),
+                    <?php printf( __( 'Posted %1$s by %2$s', 'lillehummernl' ),
                        /* the time the post was published */
                        '<time class="updated entry-time" datetime="' . get_the_time('Y-m-d') . '" itemprop="datePublished">' . get_the_time(get_option('date_format')) . '</time>',
                        /* the author of the post */
@@ -35,7 +35,7 @@
                      *
                     */
                     wp_link_pages( array(
-                      'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'bonestheme' ) . '</span>',
+                      'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'lillehummernl' ) . '</span>',
                       'after'       => '</div>',
                       'link_before' => '<span>',
                       'link_after'  => '</span>',
@@ -44,7 +44,7 @@
                 </section> <?php // end article section ?>
 
                 <footer class="article-footer entry-footer">
-                  <?php the_tags( '<p class="tags"><span class="tags-title">' . __( 'Tags:', 'bonestheme' ) . '</span> ', ', ', '</p>' ); ?>
+                  <?php the_tags( '<p class="tags"><span class="tags-title">' . __( 'Tags:', 'lillehummernl' ) . '</span> ', ', ', '</p>' ); ?>
 
                 </footer> <?php // end article footer ?>
 
