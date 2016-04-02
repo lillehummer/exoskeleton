@@ -81,4 +81,10 @@ function bones_custom_admin_footer() {
 // adding it to the admin area
 add_filter( 'admin_footer_text', 'bones_custom_admin_footer' );
 
+// Remove comments.
+add_action( 'admin_menu', 'bones_remove_menu_pages' );
+function bones_remove_menu_pages() {
+    remove_menu_page('edit-comments.php');
+}
+
 ?>

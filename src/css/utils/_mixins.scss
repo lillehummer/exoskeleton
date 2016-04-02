@@ -3,14 +3,10 @@
   &:nth-child(#{$nth}+1) { clear: none }
 }
 
-@mixin vertical-align {
-    position: relative;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+@mixin spread-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 @mixin absolute-center {
@@ -36,13 +32,27 @@
     width: 1px;
 }
 
-@mixin link-states {
-    &:hover,
-    &:focus,
-    &:active,
-    &:visited {
-      @content;
-    }
+@mixin media-object(
+  $stretch: '.content'
+) {
+  display: flex;
+  align-items: flex-start;
+
+  & > #{$stretch} {
+    flex: 1;
+  }
+}
+
+@mixin sticky-footer(
+  $stretch: '.content'
+) {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+
+  & > #{$stretch} {
+    flex: 1;
+  }
 }
 
 @mixin ratio-box (

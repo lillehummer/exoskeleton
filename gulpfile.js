@@ -24,7 +24,19 @@ var sourcemaps = require('gulp-sourcemaps');
 var RevAll = require('gulp-rev-all');
 var revDel = require('rev-del');
 var runSequence = require('run-sequence');
+var notify = require('gulp-notify');
 var options = require('./src/build.json');
+
+var onError = function(err) {
+    notify.onError({
+                title: "Error",
+                message: err.message,
+                sound: false
+            })(err);
+
+    gulpUtil.log(gulpUtil.colors.red(err));
+    this.emit('end');
+};
 
 //
 // DEFAULT
@@ -36,6 +48,7 @@ var options = require('./src/build.json');
         gulp.watch('src/js/*.js', ['js']).on('change', browserSync.reload);
         gulp.watch('src/rev/functions.php', ['rev']);
         gulp.watch(['src/css/*.scss', 'src/css/**/*.scss'], ['css']);
+        gulp.watch(['src/img/*'], ['images']);
 
     });
 
@@ -65,11 +78,14 @@ var options = require('./src/build.json');
 
     gulp.task('images', function () {
 
+        var notification = {
+            title: 'Task',
+            message: 'images finished',
+            onLast: true
+        };
+
         return gulp.src('src/img/*')
-            .pipe(plumber(function(error) {
-                gulpUtil.log(gulpUtil.colors.red(error));
-                this.emit('end');
-            }))
+            .pipe(plumber({errorHandler: onError}))
             .pipe(changed('img'))
             .pipe(imagemin({
                 optimizationLevel: 3,
@@ -78,7 +94,8 @@ var options = require('./src/build.json');
                 svgoPlugins: [{removeViewBox: false}],
                 use: [pngquant()]
             }))
-            .pipe(gulp.dest('img'));
+            .pipe(gulp.dest('img'))
+            .pipe(notify(notification));
 
     });
 
@@ -88,6 +105,12 @@ var options = require('./src/build.json');
 
     gulp.task('css', function(callback) {
 
+        var notification = {
+            title: 'Task',
+            message: 'css finished',
+            onLast: true
+        };
+
         var processors = [
             autoprefixer({browsers: ['last 2 version', 'ie 9']}),
             mqpacker,
@@ -96,17 +119,15 @@ var options = require('./src/build.json');
         ];
 
         return gulp.src('src/css/*.scss')
-            .pipe(plumber(function(error) {
-                gulpUtil.log(gulpUtil.colors.red(error));
-                this.emit('end');
-            }))
+            .pipe(plumber({errorHandler: onError}))
             .pipe(sourcemaps.init())
             .pipe(sass({ style: 'compressed' }))
             .pipe(postcss(processors))
             .pipe(gulp.dest('src/rev/css'))
             .pipe(sourcemaps.write())
             .pipe(gulp.dest('css'))
-            .pipe(browserSync.reload({stream:true}));
+            .pipe(browserSync.reload({stream:true}))
+            .pipe(notify(notification));
 
     });
 
@@ -116,17 +137,24 @@ var options = require('./src/build.json');
 
     gulp.task('js', function(callback) {
 
-        const jsFilter = filter('**/*.js', {restore: true});
+        var notification = {
+            title: 'Task',
+            message: 'js finished',
+            onLast: true
+        };
+
+        var jsFilter = filter('**/*.js', {restore: true});
 
         return gulp.src(mainBowerFiles().concat(options.jsFiles))
-            .pipe(plumber())
+            .pipe(plumber({errorHandler: onError}))
             .pipe(jsFilter)
             .pipe(sourcemaps.init())
             .pipe(concat('app.js'))
             .pipe(sourcemaps.write())
             .pipe(gulp.dest('js'))
             .pipe(uglify())
-            .pipe(gulp.dest('src/rev/js'));
+            .pipe(gulp.dest('src/rev/js'))
+            .pipe(notify(notification));
 
     });
 
@@ -136,6 +164,12 @@ var options = require('./src/build.json');
 
     gulp.task('rev', function(callback) {
 
+        var notification = {
+            title: 'Task',
+            message: 'rev finished',
+            onLast: true
+        };
+
         var revOptions = {
             dontRenameFile: ['functions.php']
         };
@@ -143,12 +177,13 @@ var options = require('./src/build.json');
         var revAll = new RevAll(revOptions);
 
         return gulp.src(['src/rev/**'])
-                .pipe(plumber())
+                .pipe(plumber({errorHandler: onError}))
                 .pipe(revAll.revision())
                 .pipe(gulp.dest('./'))
                 .pipe(revAll.manifestFile())
                 .pipe(revDel('src/rev-manifest.json'))
-                .pipe(gulp.dest('src'));
+                .pipe(gulp.dest('src'))
+                .pipe(notify(notification));
 
     });
 

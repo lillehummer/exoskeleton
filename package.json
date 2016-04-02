@@ -1,7 +1,8 @@
 {
   "name": "lillehummernl",
   "description": "WordPress theme created by Lille Hummer, based on Bones.",
-  "version": "0.1.0",
+  "version": "0.2.0",
+  "private": true,
   "maintainers": [
     {
       "name": "Charles Beaumont",
@@ -12,6 +13,7 @@
   "dependencies": {
     "gulp": "*",
     "gulp-util": "*",
+    "gulp-notify": "*",
     "gulp-concat": "*",
     "gulp-uglify": "*",
     "gulp-rename": "*",
