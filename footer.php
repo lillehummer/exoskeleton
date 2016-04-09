@@ -2,19 +2,19 @@
 
 		<div class="footer-inner clearfix">
 
-			<nav role="navigation">
+			<nav role="navigation" class="footer-links">
 				<?php
 				wp_nav_menu(array(
-					'container' => '',                              // remove nav container
-					'container_class' => 'footer-links cf',         // class of container (should you choose to use it)
-					'menu' => __( 'Footer Links', 'lillehummernl' ),   // nav name
-					'menu_class' => 'nav footer-nav cf',            // adding custom nav class
-					'theme_location' => 'footer-links',             // where it's located in the theme
-					'before' => '',                                 // before the menu
-        			'after' => '',                                  // after the menu
-        			'link_before' => '',                            // before each link
-        			'link_after' => '',                             // after each link
-        			'depth' => 0                                   // limit the depth of the nav
+					'container' => '',
+					'container_class' => '',
+					'menu' => __( 'Footer Links', 'lillehummernl' ),
+					'menu_class' => '',
+					'theme_location' => 'footer-links',
+					'before' => '',
+					'after' => '',
+					'link_before' => '',
+					'link_after' => '',
+					'depth' => 0
 				));
 				?>
 			</nav>

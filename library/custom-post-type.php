@@ -8,75 +8,65 @@ function bones_flush_rewrite_rules() {
 	flush_rewrite_rules();
 }
 
-// let's create the function for the custom type
-function bones_custom_post_example() {
-	// creating (registering) the custom type
-	register_post_type( 'custom_type', /* (http://codex.wordpress.org/Function_Reference/register_post_type) */
-		// let's now add all the options for this post type
+
+function bones_custom_post_types() {
+
+	register_post_type( 'custom_type',
 		array( 'labels' => array(
-			'name' => __( 'Custom Types', 'lillehummernl' ), /* This is the Title of the Group */
-			'singular_name' => __( 'Custom Post', 'lillehummernl' ), /* This is the individual type */
-			'all_items' => __( 'All Custom Posts', 'lillehummernl' ), /* the all items menu item */
-			'add_new' => __( 'Add New', 'lillehummernl' ), /* The add new menu item */
-			'add_new_item' => __( 'Add New Custom Type', 'lillehummernl' ), /* Add New Display Title */
-			'edit' => __( 'Edit', 'lillehummernl' ), /* Edit Dialog */
-			'edit_item' => __( 'Edit Post Type', 'lillehummernl' ), /* Edit Display Title */
-			'new_item' => __( 'New Post Type', 'lillehummernl' ), /* New Display Title */
-			'view_item' => __( 'View Post Type', 'lillehummernl' ), /* View Display Title */
-			'search_items' => __( 'Search Post Type', 'lillehummernl' ), /* Search Custom Type Title */
-			'not_found' =>  __( 'Nothing found in the Database.', 'lillehummernl' ), /* This displays if there are no entries yet */
-			'not_found_in_trash' => __( 'Nothing found in Trash', 'lillehummernl' ), /* This displays if there is nothing in the trash */
+			'name' => __( 'Custom Types', 'lillehummernl' ),
+			'singular_name' => __( 'Custom Post', 'lillehummernl' ),
+			'all_items' => __( 'All Custom Posts', 'lillehummernl' ),
+			'add_new' => __( 'Add New', 'lillehummernl' ),
+			'add_new_item' => __( 'Add New Custom Type', 'lillehummernl' ),
+			'edit' => __( 'Edit', 'lillehummernl' ),
+			'edit_item' => __( 'Edit Post Type', 'lillehummernl' ),
+			'new_item' => __( 'New Post Type', 'lillehummernl' ),
+			'view_item' => __( 'View Post Type', 'lillehummernl' ),
+			'search_items' => __( 'Search Post Type', 'lillehummernl' ),
+			'not_found' =>  __( 'Nothing found in the Database.', 'lillehummernl' ),
+			'not_found_in_trash' => __( 'Nothing found in Trash', 'lillehummernl' ),
 			'parent_item_colon' => ''
-			), /* end of arrays */
-			'description' => __( 'This is the example custom post type', 'lillehummernl' ), /* Custom Type Description */
+			),
+			'description' => __( 'This is the example custom post type', 'lillehummernl' ),
 			'public' => true,
 			'publicly_queryable' => true,
 			'exclude_from_search' => false,
 			'show_ui' => true,
 			'query_var' => true,
-			'menu_position' => 8, /* this is what order you want it to appear in on the left hand side menu */
-			'menu_icon' => '', /* the icon for the custom post type menu */
-			'rewrite'	=> array( 'slug' => 'custom_type', 'with_front' => false ), /* you can specify its url slug */
-			'has_archive' => 'custom_type', /* you can rename the slug here */
+			'menu_position' => 8,
+			'menu_icon' => '',
+			'rewrite'	=> array( 'slug' => 'custom_type', 'with_front' => false ),
+			'has_archive' => 'custom_type',
 			'capability_type' => 'post',
 			'hierarchical' => false,
 			'show_in_rest' => false,
 			'rest_base' => 'custom_type',
-			/* the next one is important, it tells what's enabled in the post editor */
 			'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions', 'sticky')
-		) /* end of options */
-	); /* end of register post type */
+		)
+	);
 
-	/* this adds your post categories to your custom post type */
 	register_taxonomy_for_object_type( 'category', 'custom_type' );
-	/* this adds your post tags to your custom post type */
 	register_taxonomy_for_object_type( 'post_tag', 'custom_type' );
 
 }
 
 	// adding the function to the Wordpress init
-	add_action( 'init', 'bones_custom_post_example');
+	add_action( 'init', 'bones_custom_post_types');
 
-	/*
-	for more information on taxonomies, go here:
-	http://codex.wordpress.org/Function_Reference/register_taxonomy
-	*/
-
-	// now let's add custom categories (these act like categories)
 	register_taxonomy( 'custom_cat',
-		array('custom_type'), /* if you change the name of register_post_type( 'custom_type', then you have to change this */
-		array('hierarchical' => true,     /* if this is true, it acts like categories */
+		array('custom_type'),
+		array('hierarchical' => true,
 			'labels' => array(
-				'name' => __( 'Custom Categories', 'lillehummernl' ), /* name of the custom taxonomy */
-				'singular_name' => __( 'Custom Category', 'lillehummernl' ), /* single taxonomy name */
-				'search_items' =>  __( 'Search Custom Categories', 'lillehummernl' ), /* search title for taxomony */
-				'all_items' => __( 'All Custom Categories', 'lillehummernl' ), /* all title for taxonomies */
-				'parent_item' => __( 'Parent Custom Category', 'lillehummernl' ), /* parent title for taxonomy */
-				'parent_item_colon' => __( 'Parent Custom Category:', 'lillehummernl' ), /* parent taxonomy title */
-				'edit_item' => __( 'Edit Custom Category', 'lillehummernl' ), /* edit custom taxonomy title */
-				'update_item' => __( 'Update Custom Category', 'lillehummernl' ), /* update title for taxonomy */
-				'add_new_item' => __( 'Add New Custom Category', 'lillehummernl' ), /* add new title for taxonomy */
-				'new_item_name' => __( 'New Custom Category Name', 'lillehummernl' ) /* name title for taxonomy */
+				'name' => __( 'Custom Categories', 'lillehummernl' ),
+				'singular_name' => __( 'Custom Category', 'lillehummernl' ),
+				'search_items' =>  __( 'Search Custom Categories', 'lillehummernl' ),
+				'all_items' => __( 'All Custom Categories', 'lillehummernl' ),
+				'parent_item' => __( 'Parent Custom Category', 'lillehummernl' ),
+				'parent_item_colon' => __( 'Parent Custom Category:', 'lillehummernl' ),
+				'edit_item' => __( 'Edit Custom Category', 'lillehummernl' ),
+				'update_item' => __( 'Update Custom Category', 'lillehummernl' ),
+				'add_new_item' => __( 'Add New Custom Category', 'lillehummernl' ),
+				'new_item_name' => __( 'New Custom Category Name', 'lillehummernl' )
 			),
 			'show_admin_column' => true,
 			'show_ui' => true,
@@ -85,21 +75,20 @@ function bones_custom_post_example() {
 		)
 	);
 
-	// now let's add custom tags (these act like categories)
 	register_taxonomy( 'custom_tag',
-		array('custom_type'), /* if you change the name of register_post_type( 'custom_type', then you have to change this */
-		array('hierarchical' => false,    /* if this is false, it acts like tags */
+		array('custom_type'),
+		array('hierarchical' => false,
 			'labels' => array(
-				'name' => __( 'Custom Tags', 'lillehummernl' ), /* name of the custom taxonomy */
-				'singular_name' => __( 'Custom Tag', 'lillehummernl' ), /* single taxonomy name */
-				'search_items' =>  __( 'Search Custom Tags', 'lillehummernl' ), /* search title for taxomony */
-				'all_items' => __( 'All Custom Tags', 'lillehummernl' ), /* all title for taxonomies */
-				'parent_item' => __( 'Parent Custom Tag', 'lillehummernl' ), /* parent title for taxonomy */
-				'parent_item_colon' => __( 'Parent Custom Tag:', 'lillehummernl' ), /* parent taxonomy title */
-				'edit_item' => __( 'Edit Custom Tag', 'lillehummernl' ), /* edit custom taxonomy title */
-				'update_item' => __( 'Update Custom Tag', 'lillehummernl' ), /* update title for taxonomy */
-				'add_new_item' => __( 'Add New Custom Tag', 'lillehummernl' ), /* add new title for taxonomy */
-				'new_item_name' => __( 'New Custom Tag Name', 'lillehummernl' ) /* name title for taxonomy */
+				'name' => __( 'Custom Tags', 'lillehummernl' ),
+				'singular_name' => __( 'Custom Tag', 'lillehummernl' ),
+				'search_items' =>  __( 'Search Custom Tags', 'lillehummernl' ),
+				'all_items' => __( 'All Custom Tags', 'lillehummernl' ),
+				'parent_item' => __( 'Parent Custom Tag', 'lillehummernl' ),
+				'parent_item_colon' => __( 'Parent Custom Tag:', 'lillehummernl' ),
+				'edit_item' => __( 'Edit Custom Tag', 'lillehummernl' ),
+				'update_item' => __( 'Update Custom Tag', 'lillehummernl' ),
+				'add_new_item' => __( 'Add New Custom Tag', 'lillehummernl' ),
+				'new_item_name' => __( 'New Custom Tag Name', 'lillehummernl' )
 			),
 			'show_admin_column' => true,
 			'show_ui' => true,

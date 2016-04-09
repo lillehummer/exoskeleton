@@ -1,25 +1,15 @@
 <?php
 
 function bones_head_cleanup() {
-	// category feeds
 	remove_action( 'wp_head', 'feed_links_extra', 3 );
-	// post and comment feeds
 	remove_action( 'wp_head', 'feed_links', 2 );
-	// EditURI link
 	remove_action( 'wp_head', 'rsd_link' );
-	// windows live writer
 	remove_action( 'wp_head', 'wlwmanifest_link' );
-	// previous link
 	remove_action( 'wp_head', 'parent_post_rel_link', 10, 0 );
-	// start link
 	remove_action( 'wp_head', 'start_post_rel_link', 10, 0 );
-	// links for adjacent posts
 	remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
-	// WP version
 	remove_action( 'wp_head', 'wp_generator' );
-	// remove WP version from css
 	add_filter( 'style_loader_src', 'bones_remove_wp_ver_css_js', 9999 );
-	// remove Wp version from scripts
 	add_filter( 'script_loader_src', 'bones_remove_wp_ver_css_js', 9999 );
 
 }
@@ -59,27 +49,7 @@ THEME SUPPORT
 *********************/
 function bones_theme_support() {
 
-	// wp thumbnails (sizes handled in functions.php)
-	add_theme_support( 'post-thumbnails' );
-
-	// default thumb size
-	set_post_thumbnail_size(125, 125, true);
-
-	// wp custom background (thx to @bransonwerner for update)
-	add_theme_support( 'custom-background',
-	    array(
-	    'default-image' => '',    // background image default
-	    'default-color' => '',    // background color default (dont add the #)
-	    'wp-head-callback' => '_custom_background_cb',
-	    'admin-head-callback' => '',
-	    'admin-preview-callback' => ''
-	    )
-	);
-
-	// rss thingy
 	add_theme_support('automatic-feed-links');
-
-	// to add header image support go here: http://themble.com/support/adding-header-background-image-support/
 
 	// adding post format support
 	add_theme_support( 'post-formats',
@@ -98,8 +68,6 @@ function bones_theme_support() {
 
 	// wp menus
 	add_theme_support( 'menus' );
-
-	// registering wp3+ menus
 	register_nav_menus(
 		array(
 			'main-nav' => __( 'The Main Menu', 'lillehummernl' ),   // main nav in header
@@ -117,9 +85,9 @@ function bones_page_navi() {
 	$bignum = 999999999;
 	if ( $wp_query->max_num_pages <= 1 )
 		return;
-	
+
 	echo '<nav class="pagination">';
-	
+
 		echo paginate_links( array(
 			'base' 			=> str_replace( $bignum, '%#%', esc_url( get_pagenum_link($bignum) ) ),
 			'format' 		=> '',
@@ -131,7 +99,7 @@ function bones_page_navi() {
 			'end_size'		=> 3,
 			'mid_size'		=> 3
 		) );
-	
+
 	echo '</nav>';
 }
 

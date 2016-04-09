@@ -2,46 +2,31 @@
 
 require_once( 'library/bones.php' );
 require_once( 'library/admin.php' );
-require_once( 'library/activation.php' );
 
 /************* AFTER THEME SETUP ******************/
 function bones_ahoy() {
 
-	//Allow editor style.
   add_editor_style( get_stylesheet_directory_uri() . '/library/css/editor-style.css' );
 
-	// let's get language support going, if you need it
 	load_theme_textdomain( 'lillehummernl', get_template_directory() . '/languages' );
 
-	// USE THIS TEMPLATE TO CREATE CUSTOM POST TYPES EASILY
-  	require_once( 'library/custom-post-type.php' );
+  require_once( 'library/custom-post-type.php' );
 
 	// launching operation cleanup
 	add_action( 'init', 'bones_head_cleanup' );
-	// A better title
-	//add_filter( 'wp_title', 'rw_title', 10, 3 );
-	// remove WP version from RSS
 	add_filter( 'the_generator', 'bones_rss_version' );
-	// remove pesky injected css for recent comments widget
 	add_filter( 'wp_head', 'bones_remove_wp_widget_recent_comments_style', 1 );
-	// clean up comment styles in the head
 	add_action( 'wp_head', 'bones_remove_recent_comments_style', 1 );
-	// clean up gallery output in wp
 	add_filter( 'gallery_style', 'bones_gallery_style' );
 
 	// enqueue base scripts and styles
 	add_action( 'wp_enqueue_scripts', 'bones_scripts_and_styles', 999 );
-	// ie conditional wrapper
 
 	// launching this stuff after theme setup
 	bones_theme_support();
-
-	// adding sidebars to Wordpress (these are created in functions.php)
 	add_action( 'widgets_init', 'bones_register_sidebars' );
 
-	// cleaning up random code around images
 	add_filter( 'the_content', 'bones_filter_ptags_on_images' );
-	// cleaning up excerpt
 	add_filter( 'excerpt_more', 'bones_excerpt_more' );
 
 }
@@ -49,11 +34,9 @@ function bones_ahoy() {
 add_action( 'after_setup_theme', 'bones_ahoy' );
 
 /************* AFTER SWITCH THEME ******************/
-// Flush rewrite rules for custom post types
 add_action( 'after_switch_theme', 'bones_setup_theme' );
 
-// Flush your rewrite rules
-function bones_set_image_dimensions() {
+function bones_setup_theme() {
   update_option('image_default_link_type','none');
 
 	$catalog = array(
@@ -90,14 +73,6 @@ function bones_set_image_dimensions() {
 }
 
 /************* IMAGE/EMBED SIZE OPTIONS *************/
-
-// Limit size of embeds.
-if (!isset($content_width)) {
-	$content_width = 640;
-}
-
-// default thumb size
-set_post_thumbnail_size(100, 100, true);
 
 // Thumbnail sizes
 //add_image_size( 'custom-size', 100, 100, true );
@@ -142,43 +117,6 @@ function bones_scripts_and_styles() {
 
 	}
 }
-
-/************* THEME CUSTOMIZE *********************/
-
-/*
-  A good tutorial for creating your own Sections, Controls and Settings:
-  http://code.tutsplus.com/series/a-guide-to-the-wordpress-theme-customizer--wp-33722
-
-  Good articles on modifying the default options:
-  http://natko.com/changing-default-wordpress-theme-customization-api-sections/
-  http://code.tutsplus.com/tutorials/digging-into-the-theme-customizer-components--wp-27162
-
-  To do:
-  - Create a js for the postmessage transport method
-  - Create some sanitize functions to sanitize inputs
-  - Create some boilerplate Sections, Controls and Settings
-*/
-
-function bones_theme_customizer($wp_customize) {
-  // $wp_customize calls go here.
-  //
-  // Uncomment the below lines to remove the default customize sections
-
-  // $wp_customize->remove_section('title_tagline');
-  // $wp_customize->remove_section('colors');
-  // $wp_customize->remove_section('background_image');
-  // $wp_customize->remove_section('static_front_page');
-  // $wp_customize->remove_section('nav');
-
-  // Uncomment the below lines to remove the default controls
-  // $wp_customize->remove_control('blogdescription');
-
-  // Uncomment the following to change the default section titles
-  // $wp_customize->get_section('colors')->title = __( 'Theme Colors' );
-  // $wp_customize->get_section('background_image')->title = __( 'Images' );
-}
-
-add_action( 'customize_register', 'bones_theme_customizer' );
 
 /************* ACTIVE SIDEBARS ********************/
 
