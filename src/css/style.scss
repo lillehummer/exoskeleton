@@ -21,6 +21,9 @@ $tiny: new-breakpoint(max-width 340px);
 @import "layout/header";
 @import "layout/footer";
 
+@import "pages/page";
+@import "pages/archive";
+@import "pages/single";
 @import "pages/home";
 
 @import "components/carousel";
@@ -43,7 +46,7 @@ html {
 body {
 	min-height: 100%;
 	width: 100%;
-	line-height: 1.2;
+	line-height: 1.6;
 	font-family: $body-text;
 	font-weight: 400;
 	color: $black;
