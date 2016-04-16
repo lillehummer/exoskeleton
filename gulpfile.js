@@ -5,7 +5,6 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
-var minifycss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var filter = require('gulp-filter');
 var mainBowerFiles = require('main-bower-files');
@@ -17,8 +16,6 @@ var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var changed = require('gulp-changed');
 var mqpacker = require('css-mqpacker');
-var csswring = require('csswring');
-var pixrem = require('pixrem');
 var plumber = require('gulp-plumber');
 var sourcemaps = require('gulp-sourcemaps');
 var RevAll = require('gulp-rev-all');
@@ -113,15 +110,13 @@ var onError = function(err) {
 
         var processors = [
             autoprefixer({browsers: ['last 2 version', 'ie 9']}),
-            mqpacker,
-            csswring,
-            pixrem
+            mqpacker
         ];
 
         return gulp.src('src/css/*.scss')
             .pipe(plumber({errorHandler: onError}))
             .pipe(sourcemaps.init())
-            .pipe(sass({ style: 'compressed' }))
+            .pipe(sass({ outputStyle: 'compressed' }))
             .pipe(postcss(processors))
             .pipe(gulp.dest('src/rev/css'))
             .pipe(sourcemaps.write())

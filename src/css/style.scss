@@ -6,10 +6,7 @@
 @import "../../bower/neat/app/assets/stylesheets/neat";
 @import "../../bower/normalize.css/normalize";
 
-//Breakpoints
-$medium: new-breakpoint(max-width 1200px);
-$small: new-breakpoint(max-width 500px);
-$tiny: new-breakpoint(max-width 340px);
+
 
 // Imports
 @import "utils/functions";

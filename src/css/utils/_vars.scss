@@ -7,5 +7,12 @@ $nav-text: "Helvetica Neue", "HelveticaNeue", sans-serif;
 $heading-text: "Helvetica Neue", "HelveticaNeue", sans-serif;
 $body-text: "Helvetica Neue", "HelveticaNeue", sans-serif;
 
+//Breakpoints
+$medium: new-breakpoint(max-width 1000px);
+$small: new-breakpoint(max-width 500px);
+
+@include media($medium) { /* medium breakpoint */ }
+@include media($small) { /* medium breakpoint */ }
+
 /* Grid */
 $max-width: 1180px !default;

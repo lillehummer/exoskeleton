@@ -1,3 +1,36 @@
+@mixin grid($align: stretch, $justify: left) {
+    @if $align == 'top'         { $align: flex-start; }
+    @if $align == 'middle'      { $align: center; }
+    @if $align == 'bottom'      { $align: flex-end; }
+    @if $align == 'stretch'     { $align: stretch; }
+    @if $align == 'baseline'    { $align: baseline; }
+
+    @if $justify == 'left'      { $justify: flex-start; }
+    @if $justify == 'center'    { $justify: center; }
+    @if $justify == 'right'     { $justify: flex-end; }
+    @if $justify == 'between'   { $justify: space-between; }
+    @if $justify == 'around'    { $justify: space-around; }
+
+    align-items: $align;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: $justify;
+}
+
+@mixin cell($x: fill, $n: 12) {
+    @if $x == 'fill' {
+        flex-grow: 1;
+        min-width: 0;
+        width: 0;
+    } @else {
+        flex-grow: 0;
+        width: calc(100% * (#{$x} / #{$n}));
+    }
+
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
 @mixin omega-reset($nth) {
   &:nth-child(#{$nth}) { margin-right: flex-gutter(); }
   &:nth-child(#{$nth}+1) { clear: none }
