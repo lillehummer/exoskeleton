@@ -1,18 +1,25 @@
-/* Variables */
+// Variables
 $white: #ffffff;
 $black: #080808;
 
-/* Fonts */
+// Fonts
 $nav-text: "Helvetica Neue", "HelveticaNeue", sans-serif;
 $heading-text: "Helvetica Neue", "HelveticaNeue", sans-serif;
 $body-text: "Helvetica Neue", "HelveticaNeue", sans-serif;
+
+// Grid
+$max-width: 1180px !default;
 
 //Breakpoints
 $medium: new-breakpoint(max-width 1000px);
 $small: new-breakpoint(max-width 500px);
 
-@include media($medium) { /* medium breakpoint */ }
-@include media($small) { /* medium breakpoint */ }
+body {
+    @include media($medium) {
+        /* Medium */
+    }
 
-/* Grid */
-$max-width: 1180px !default;
+    @include media($small) {
+        /* Small */
+    }
+}
