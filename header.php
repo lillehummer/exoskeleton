@@ -47,7 +47,6 @@
 				wp_nav_menu(array(
 					'container' => false,
 					'container_class' => '',
-					'menu' => __( 'The Main Menu', 'lillehummernl' ),
 					'menu_class' => '',
 					'theme_location' => 'main-nav',
 					'before' => '',

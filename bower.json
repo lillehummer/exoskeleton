@@ -8,5 +8,10 @@
     "enquire": "*",
     "backbone": "*",
     "underscore": "*"
+  },
+  "overrides": {
+      "jquery": {
+        "ignore": true
+      }
   }
 }

@@ -7,7 +7,6 @@
 				wp_nav_menu(array(
 					'container' => '',
 					'container_class' => '',
-					'menu' => __( 'Footer Links', 'lillehummernl' ),
 					'menu_class' => '',
 					'theme_location' => 'footer-links',
 					'before' => '',

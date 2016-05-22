@@ -1,71 +1,68 @@
 // Imports
-@import "../../bower/bourbon/app/assets/stylesheets/bourbon";
-@import "../../bower/neat/app/assets/stylesheets/neat";
-@import "../../bower/normalize.css/normalize";
+@import '../../bower/bourbon/app/assets/stylesheets/bourbon';
+@import '../../bower/neat/app/assets/stylesheets/neat';
+@import '../../bower/normalize.css/normalize';
 
 // Variables
 @import "utils/vars";
 
 // Imports
-@import "utils/functions";
-@import "utils/mixins";
+@import 'utils/functions';
+@import 'utils/mixins';
 
-@import "base/typography";
-@import "base/wp-default";
+@import 'base/typography';
+@import 'base/wp-default';
 
-@import "layout/header";
-@import "layout/footer";
+@import 'layout/header';
+@import 'layout/footer';
 
-@import "pages/page";
-@import "pages/archive";
-@import "pages/single";
-@import "pages/home";
+@import 'pages/page';
+@import 'pages/archive';
+@import 'pages/single';
+@import 'pages/home';
 
-@import "components/carousel";
+@import 'components/button';
 
 //Sitewide CSS
 * {
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
-	overflow-y: scroll;
-	width: 100%;
-	height: 100%;
-	font-size: 10px;
-	-webkit-text-size-adjust: 100%;
+  font-size: 10px;
+  overflow-y: scroll;
+  width: 100%;
+  height: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-	min-height: 100%;
-	width: 100%;
-	line-height: 1.6;
-	font-family: $body-text;
-	font-weight: 400;
-	color: $black;
+  font-family: $body-text;
   font-size: 1.6rem;
-
-	@include media($small) {
-    hyphens: auto;
-    word-break: break-word;
-    overflow-wrap: break-word;
-	}
+  font-weight: normal;
+  line-height: 1.6;
+  width: 100%;
+  min-height: 100%;
+  color: $black;
 }
 
 img {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
-input[type=text], button, select, textarea{
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    border-radius: 0px;
-    outline: none;
+input[type=text],
+button,
+select,
+textarea {
+  border-radius: 0;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
 .clearfix {
-	@include clearfix;
+  @include clearfix;
 }

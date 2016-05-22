@@ -39,12 +39,11 @@ var onError = function(err) {
 // DEFAULT
 //
 
-    // Default Task
     gulp.task('default', ['browser-sync', 'css', 'js'], function(){
 
-        gulp.watch('src/js/*.js', ['js']).on('change', browserSync.reload);
+        gulp.watch('src/js/*.js', ['watch-js']).on('change', browserSync.reload);
         gulp.watch('src/rev/functions.php', ['rev']);
-        gulp.watch(['src/css/*.scss', 'src/css/**/*.scss'], ['css']);
+        gulp.watch(['src/css/*.scss', 'src/css/**/*.scss'], ['watch-css']);
         gulp.watch(['src/img/*'], ['images']);
 
     });
@@ -126,6 +125,12 @@ var onError = function(err) {
 
     });
 
+    gulp.task('watch-css', function(callback) {
+
+        runSequence('css', 'rev', callback);
+
+    });
+
 //
 // BUILD JAVASCRIPT
 //
@@ -150,6 +155,12 @@ var onError = function(err) {
             .pipe(uglify())
             .pipe(gulp.dest('src/rev/js'))
             .pipe(notify(notification));
+
+    });
+
+    gulp.task('watch-js', function(callback) {
+
+        runSequence('js', 'rev', callback);
 
     });
 
