@@ -95,10 +95,6 @@ function bones_scripts_and_styles() {
 	global $wp_styles;
 	if (!is_admin()) {
 
-		// remote libraries
-		wp_deregister_script('jquery');
-		wp_enqueue_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js', array(), '', false );
-
 		$environment = getenv("APPLICATION_ENV");
 		if ($environment == "development") {
 		    // local scripts
