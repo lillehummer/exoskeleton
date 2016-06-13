@@ -95,8 +95,7 @@ function bones_scripts_and_styles() {
 	global $wp_styles;
 	if (!is_admin()) {
 
-		$environment = getenv("APPLICATION_ENV");
-		if ($environment == "development") {
+		if ( ENVIRONMENT == "development") {
 		    // local scripts
 			wp_enqueue_script( 'app', get_stylesheet_directory_uri() . '/js' . '/app.js', array(), '', true );
 			// register main stylesheet

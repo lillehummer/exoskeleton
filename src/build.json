@@ -3,5 +3,5 @@
     "./src/js/modules/*.js",
 		"./src/js/scripts.js"
 	],
-	"proxy": "lillehummer.local/"
+	"proxy": "lillehummernl.local/"
 }
