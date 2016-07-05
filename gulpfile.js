@@ -127,7 +127,7 @@ var onError = function(err) {
 
     gulp.task('watch-css', function(callback) {
 
-        runSequence('css', 'rev', callback);
+        runSequence('css', callback);
 
     });
 
@@ -160,7 +160,7 @@ var onError = function(err) {
 
     gulp.task('watch-js', function(callback) {
 
-        runSequence('js', 'rev', callback);
+        runSequence('js', callback);
 
     });
 
