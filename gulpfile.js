@@ -1,7 +1,7 @@
-// Include gulp
+// Include Gulp
 var gulp = require('gulp');
 
-// Include Our Plugins
+// Include plugins
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
@@ -22,8 +22,12 @@ var RevAll = require('gulp-rev-all');
 var revDel = require('rev-del');
 var runSequence = require('run-sequence');
 var notify = require('gulp-notify');
+var exec = require('child_process').exec;
+
+// Include config
 var options = require('./src/build.json');
 
+// Error handler
 var onError = function(err) {
     notify.onError({
                 title: "Error",
@@ -201,4 +205,32 @@ var onError = function(err) {
 
         runSequence(['images', 'css', 'js'], 'rev', callback);
 
+    });
+
+//
+// SHELL COMMANDS
+//
+
+    gulp.task('push', function (cb) {
+      exec('wordmove push -e staging -t', function (err, stdout, stderr) {
+        console.log(stdout);
+        console.log(stderr);
+        cb(err);
+      });
+    });
+
+    gulp.task('pull', function (cb) {
+      exec('wordmove pull -e staging -du', function (err, stdout, stderr) {
+        console.log(stdout);
+        console.log(stderr);
+        cb(err);
+      });
+    });
+
+    gulp.task('bower', function (cb) {
+      exec('bower update', function (err, stdout, stderr) {
+        console.log(stdout);
+        console.log(stderr);
+        cb(err);
+      });
     });

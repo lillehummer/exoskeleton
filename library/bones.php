@@ -61,6 +61,8 @@ function bones_theme_support() {
 
 	add_theme_support('automatic-feed-links');
 
+	add_theme_support('post-thumbnails');
+
 	// adding post format support
 	add_theme_support( 'post-formats',
 		array(
@@ -127,6 +129,27 @@ function bones_excerpt_more($more) {
 	global $post;
 	// edit here if you like
 	return '...  <a class="excerpt-read-more" href="'. get_permalink($post->ID) . '" title="'. __( 'Read', 'lillehummernl' ) . get_the_title($post->ID).'">'. __( 'Read more &raquo;', 'lillehummernl' ) .'</a>';
+}
+
+// Gravity Forms to footer
+add_filter( ‘gform_init_scripts_footer’, ‘__return_true’ );
+
+add_filter( ‘gform_cdata_open’, ‘bones_wrap_gform_cdata_open’, 1 );
+function bones_wrap_gform_cdata_open( $content = ” ) {
+	if ( ( defined(‘DOING_AJAX’) && DOING_AJAX ) || isset( $_POST[‘gform_ajax’] ) ) {
+		return $content;
+	}
+	$content = ‘document.addEventListener( “DOMContentLoaded”, function() { ‘;
+	return $content;
+}
+
+add_filter( ‘gform_cdata_close’, ‘bones_wrap_gform_cdata_close’, 99 );
+function bones_wrap_gform_cdata_close( $content = ” ) {
+	if ( ( defined(‘DOING_AJAX’) && DOING_AJAX ) || isset( $_POST[‘gform_ajax’] ) ) {
+		return $content;
+	}
+	$content = ‘ }, false );’;
+	return $content;
 }
 
 ?>
