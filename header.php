@@ -14,7 +14,7 @@
 
 	<meta name="HandheldFriendly" content="True">
 	<meta name="MobileOptimized" content="320">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
 
 	<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/img/apple-touch-icon.png">
 	<link rel="icon" href="<?php echo get_template_directory_uri(); ?>/img/favicon.png">
