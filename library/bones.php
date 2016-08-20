@@ -132,24 +132,22 @@ function bones_excerpt_more($more) {
 }
 
 // Gravity Forms to footer
-add_filter( ‘gform_init_scripts_footer’, ‘__return_true’ );
+add_filter( 'gform_init_scripts_footer', '__return_true' );
 
-add_filter( ‘gform_cdata_open’, ‘bones_wrap_gform_cdata_open’, 1 );
-function bones_wrap_gform_cdata_open( $content = ” ) {
-	if ( ( defined(‘DOING_AJAX’) && DOING_AJAX ) || isset( $_POST[‘gform_ajax’] ) ) {
+add_filter( 'gform_cdata_open', 'bones_wrap_gform_cdata_open', 1 );
+function bones_wrap_gform_cdata_open( $content = '' ) {
+	if ( ( defined('DOING_AJAX') && DOING_AJAX ) || isset( $_POST['gform_ajax'] ) ) {
 		return $content;
 	}
-	$content = ‘document.addEventListener( “DOMContentLoaded”, function() { ‘;
+	$content = 'document.addEventListener( "DOMContentLoaded", function() { ';
 	return $content;
 }
 
-add_filter( ‘gform_cdata_close’, ‘bones_wrap_gform_cdata_close’, 99 );
+add_filter( 'gform_cdata_close', 'bones_wrap_gform_cdata_close', 99 );
 function bones_wrap_gform_cdata_close( $content = ” ) {
-	if ( ( defined(‘DOING_AJAX’) && DOING_AJAX ) || isset( $_POST[‘gform_ajax’] ) ) {
+	if ( ( defined('DOING_AJAX') && DOING_AJAX ) || isset( $_POST['gform_ajax'] ) ) {
 		return $content;
 	}
-	$content = ‘ }, false );’;
+	$content = ' }, false );';
 	return $content;
 }
-
-?>
