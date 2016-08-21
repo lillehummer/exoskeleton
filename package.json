@@ -25,6 +25,8 @@
     "gulp-postcss": "*",
     "gulp-changed": "*",
     "autoprefixer": "*",
+    "doiuse": "*",
+    "stylelint": "*",
     "gulp-sass": "*",
     "css-mqpacker": "*",
     "gulp-plumber": "*",

@@ -234,3 +234,36 @@ var onError = function(err) {
         cb(err);
       });
     });
+
+//
+// DO I USE
+//
+
+    gulp.task('doiuse', function(callback) {
+
+        var notification = {
+            title: 'Task',
+            message: 'doiuse finished',
+            onLast: true
+        };
+
+        var processors = [
+            doiuse({
+                browsers: [
+                  'ie >= 11',
+                  '> 3% in NL'
+                ],
+                ignore: [],
+                ignoreFiles: ['**/normalize.css'],
+                onFeatureUsage: function (usageInfo) {
+                  console.log(usageInfo.message)
+                }
+            })
+        ];
+
+        return gulp.src('src/css/*.scss')
+            .pipe(sass({ outputStyle: 'compressed' }))
+            .pipe(postcss(processors))
+            .pipe(notify(notification));
+
+    });
