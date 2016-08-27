@@ -45,7 +45,7 @@ var onError = function(err) {
 
     gulp.task('default', ['browser-sync', 'css', 'js'], function(){
 
-        gulp.watch('src/js/*.js', ['watch-js']).on('change', browserSync.reload);
+        gulp.watch(['src/js/*.js', 'src/js/**/*.js'], ['watch-js']).on('change', browserSync.reload);
         gulp.watch('src/rev/functions.php', ['rev']);
         gulp.watch(['src/css/*.scss', 'src/css/**/*.scss'], ['watch-css']);
         gulp.watch(['src/img/*'], ['images']);
@@ -124,7 +124,7 @@ var onError = function(err) {
             .pipe(gulp.dest('src/rev/css'))
             .pipe(sourcemaps.write())
             .pipe(gulp.dest('css'))
-            .pipe(browserSync.reload({stream:true}))
+            .pipe(browserSync.stream())
             .pipe(notify(notification));
 
     });
