@@ -4,7 +4,7 @@
 
 		<main class="main clearfix" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
-			<?php while (have_posts()) : the_post(); ?>
+			<?php while ( have_posts() ) : the_post(); ?>
 
 				<?php get_template_part( 'post-formats/format', get_post_format() ); ?>
 

@@ -10,7 +10,7 @@ Template Name: Home
 
 		<div class="main clearfix" role="main">
 
-			<?php while (have_posts()) : the_post(); ?>
+			<?php while ( have_posts() ) : the_post(); ?>
 
 			<article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
 
@@ -23,7 +23,6 @@ Template Name: Home
 				</section>
 
 				<footer class="article-footer">
-					<p class="clearfix"><?php the_tags( '<span class="tags">' . __( 'Tags:', 'lillehummernl' ) . '</span> ', ', ', '' ); ?></p>
 				</footer>
 
 			</article>

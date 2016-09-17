@@ -10,8 +10,5 @@
     "underscore": "*"
   },
   "overrides": {
-      "jquery": {
-        "ignore": true
-      }
   }
 }

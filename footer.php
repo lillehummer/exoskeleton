@@ -13,12 +13,12 @@
 					'after' => '',
 					'link_before' => '',
 					'link_after' => '',
-					'depth' => 0
+					'depth' => 0,
 				));
 				?>
 			</nav>
 
-			<p class="source-org copyright">&copy; <?php echo date('Y'); ?> <?php bloginfo( 'name' ); ?>.</p>
+			<p class="source-org copyright">&copy; <?php echo date( 'Y' ); ?> <?php bloginfo( 'name' ); ?>.</p>
 
 		</div>
 

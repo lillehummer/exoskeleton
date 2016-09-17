@@ -4,11 +4,11 @@
 
 		<main class="main clearfix" role="main">
 
-			<h1 class="archive-title"><span><?php _e( 'Search Results for:', 'lillehummernl' ); ?></span> <?php echo esc_attr(get_search_query()); ?></h1>
+			<h1 class="archive-title"><span><?php _e( 'Search Results for:', 'lillehummernl' ); ?></span> <?php echo esc_attr( get_search_query() ); ?></h1>
 
-			<?php while (have_posts()) : the_post(); ?>
+			<?php while ( have_posts() ) : the_post(); ?>
 
-			<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article">
+			<article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?> role="article">
 
 				<header class="article-header">
 					<h3 class="search-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
@@ -22,7 +22,9 @@
 
 			<?php endwhile; ?>
 
-			<?php if ( function_exists( 'bones_page_navi' ) ) : bones_page_navi(); ?>
+			<?php if ( function_exists( 'hummer_page_navi' ) ) {
+				hummer_page_navi();
+			} ?>
 
 		</main>
 

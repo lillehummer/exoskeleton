@@ -1,15 +1,15 @@
 <?php
 
 // Flush rewrite rules for custom post types
-add_action( 'after_switch_theme', 'bones_flush_rewrite_rules' );
+add_action( 'after_switch_theme', 'hummer_flush_rewrite_rules' );
 
 // Flush your rewrite rules
-function bones_flush_rewrite_rules() {
+function hummer_flush_rewrite_rules() {
 	flush_rewrite_rules();
 }
 
 
-function bones_custom_post_types() {
+function hummer_custom_post_types() {
 
 	register_post_type( 'custom_type',
 		array( 'labels' => array(
@@ -51,7 +51,7 @@ function bones_custom_post_types() {
 }
 
 	// adding the function to the Wordpress init
-	add_action( 'init', 'bones_custom_post_types');
+	add_action( 'init', 'hummer_custom_post_types');
 
 	register_taxonomy( 'custom_cat',
 		array('custom_type'),

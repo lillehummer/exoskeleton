@@ -1,125 +1,138 @@
 <?php
+/**
+ * Lille Hummer File Doc Comment
+ *
+ * @category functions
+ * @package lillehummernl
+ * @author Lille Hummer
+ */
 
-require_once( 'library/bones.php' );
+?>
+
+<?php
+require_once( 'library/hummer.php' );
 require_once( 'library/admin.php' );
 
-/************* AFTER THEME SETUP ******************/
-function bones_ahoy() {
+/**
+ * Setup theme.
+ */
+function hummer_ahoy() {
 
-  add_editor_style( get_stylesheet_directory_uri() . '/library/css/editor-style.css' );
+	add_editor_style( get_stylesheet_directory_uri() . '/library/css/editor-style.css' );
 
 	load_theme_textdomain( 'lillehummernl', get_template_directory() . '/languages' );
 
-  require_once( 'library/custom-post-type.php' );
+	require_once( 'library/custom-post-type.php' );
 
-	// launching operation cleanup
-	add_action( 'init', 'bones_head_cleanup' );
-	add_filter( 'the_generator', 'bones_rss_version' );
-	add_filter( 'wp_head', 'bones_remove_wp_widget_recent_comments_style', 1 );
-	add_action( 'wp_head', 'bones_remove_recent_comments_style', 1 );
-	add_filter( 'gallery_style', 'bones_gallery_style' );
+	// Launching operation cleanup.
+	add_filter( 'gallery_style', 'hummer_gallery_style' );
+	add_filter( 'the_content', 'hummer_filter_ptags_on_images' );
+	add_filter( 'excerpt_more', 'hummer_excerpt_more' );
 
-	// enqueue base scripts and styles
-	add_action( 'wp_enqueue_scripts', 'bones_scripts_and_styles', 999 );
+	// Cleanup Gravity Forms.
+	add_filter( 'gform_init_scripts_footer', '__return_true' );
+	add_filter( 'gform_cdata_open', 'hummer_wrap_gform_cdata_open', 1 );
+	add_filter( 'gform_cdata_close', 'hummer_wrap_gform_cdata_close', 99 );
 
-	// launching this stuff after theme setup
-	bones_theme_support();
-	add_action( 'widgets_init', 'bones_register_sidebars' );
+	// Enqueue base scripts and styles.
+	add_action( 'wp_enqueue_scripts', 'hummer_scripts_and_styles', 999 );
 
-	add_filter( 'the_content', 'bones_filter_ptags_on_images' );
-	add_filter( 'excerpt_more', 'bones_excerpt_more' );
+	// Launching this stuff after theme setup.
+	hummer_theme_support();
+
+	add_action( 'widgets_init', 'hummer_register_sidebars' );
 
 }
 
-add_action( 'after_setup_theme', 'bones_ahoy' );
+add_action( 'after_setup_theme', 'hummer_ahoy' );
 
-/************* AFTER SWITCH THEME ******************/
-add_action( 'after_switch_theme', 'bones_setup_theme' );
-
-function bones_setup_theme() {
-  update_option('image_default_link_type','none');
+/**
+ * Theme setup.
+ */
+function hummer_setup_theme() {
+	update_option( 'image_default_link_type','none' );
 
 	$catalog = array(
 		'width' 	=> '100',
 		'height'	=> '100',
-		'crop'		=> 1
+		'crop'		=> 1,
 	);
 
 	$single = array(
 		'width' 	=> '100',
 		'height'	=> '100',
-		'crop'		=> 1
+		'crop'		=> 1,
 	);
 
 	$thumbnail = array(
 		'width' 	=> '100',
 		'height'	=> '100',
-		'crop'		=> 1
+		'crop'		=> 1,
 	);
 
 	update_option( 'shop_catalog_image_size', $catalog );
 	update_option( 'shop_single_image_size', $single );
 	update_option( 'shop_thumbnail_image_size', $thumbnail );
 
-	update_option('thumbnail_size_w', 100);
-	update_option('thumbnail_size_h', 100);
-	update_option("thumbnail_crop", 1);
-	update_option('medium_size_w', 100);
-	update_option('medium_size_h', 100);
-	update_option("medium_crop", 1);
-	update_option('large_size_w', 100);
-	update_option('large_size_h', 100);
-	update_option("large_crop", 1);
+	update_option( 'thumbnail_size_w', 100 );
+	update_option( 'thumbnail_size_h', 100 );
+	update_option( 'thumbnail_crop', 1 );
+	update_option( 'medium_size_w', 100 );
+	update_option( 'medium_size_h', 100 );
+	update_option( 'medium_crop', 1 );
+	update_option( 'large_size_w', 100 );
+	update_option( 'large_size_h', 100 );
+	update_option( 'large_crop', 1 );
 }
+add_action( 'after_switch_theme', 'hummer_setup_theme' );
 
-/************* IMAGE/EMBED SIZE OPTIONS *************/
+/**
+ * Add image sizes.
+ */
+// add_image_size( 'custom-size', 100, 100, true );
 
-// Thumbnail sizes
-//add_image_size( 'custom-size', 100, 100, true );
-
-add_filter( 'image_size_names_choose', 'bones_custom_image_sizes' );
-
-function bones_custom_image_sizes( $sizes ) {
-    return array_merge( $sizes, array(
-        //'bones-thumb-600' => __('600px by 150px', 'lillehummernl'),
-        //'bones-thumb-300' => __('300px by 100px', 'lillehummernl')
-    ));
+/**
+ * Register custom image sizes.
+ *
+ * @param array $sizes standard image sizes.
+ */
+function hummer_custom_image_sizes( array $sizes ) {
+	return array_merge( $sizes, array(
+		// 'custom-size' => __('Custom Size', 'lillehummernl')
+	));
 }
+add_filter( 'image_size_names_choose', 'hummer_custom_image_sizes' );
 
 
-/*********************
-SCRIPTS & ENQUEUEING
-*********************/
-
-function bones_scripts_and_styles() {
+/**
+ * Register scripts.
+ */
+function hummer_scripts_and_styles() {
 	global $wp_styles;
-	if (!is_admin()) {
+	if ( ! is_admin() ) {
 
-		wp_enqueue_script( 'jquery' );
+		wp_dequeue_script( 'jquery' );
+		wp_deregister_script( 'jquery' );
 
 		if ( wp_script_is( 'wp-api', 'registered' ) ) {
-    	wp_deregister_script('wp-api');
-    	wp_enqueue_script( 'wp-api', plugins_url( 'rest-api/wp-api.min.js'), array(), '', true );
-    }
-
-		if ( ENVIRONMENT == "development") {
-		  // local scripts
-			wp_enqueue_script( 'app', get_stylesheet_directory_uri() . '/js' . '/app.js', array(), '', true );
-			// register main stylesheet
-			wp_enqueue_style( 'style', get_stylesheet_directory_uri() . '/css' . '/style.css', array(), '', 'all' );
-		} else {
-			// local scripts
-			wp_enqueue_script( 'app', get_stylesheet_directory_uri() . '/js/app.js', array(), '', true );
-			// register main stylesheet
-			wp_enqueue_style( 'style', get_stylesheet_directory_uri() . '/css/style.css', array(), '', 'all' );
+			wp_deregister_script( 'wp-api' );
+			wp_enqueue_script( 'wp-api', plugins_url( 'rest-api/wp-api.min.js' ), array(), '', true );
 		}
 
+		if ( ENVIRONMENT === 'development' ) {
+			wp_enqueue_script( 'app', get_stylesheet_directory_uri() . '/js' . '/app.js', array(), '', true );
+			wp_enqueue_style( 'style', get_stylesheet_directory_uri() . '/css' . '/style.css', array(), '', 'all' );
+		} else {
+			wp_enqueue_script( 'app', get_stylesheet_directory_uri() . '/js/app.js', array(), '', true );
+			wp_enqueue_style( 'style', get_stylesheet_directory_uri() . '/css/style.css', array(), '', 'all' );
+		}
 	}
 }
 
-/************* ACTIVE SIDEBARS ********************/
-
-function bones_register_sidebars() {
+/**
+ * Register sidebars.
+ */
+function hummer_register_sidebars() {
 	register_sidebar(array(
 		'id' => 'sidebar',
 		'name' => __( 'Sidebar', 'lillehummernl' ),
