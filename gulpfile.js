@@ -5,7 +5,7 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
-var rename = require('gulp-rename');
+var babel = require('gulp-babel');
 var filter = require('gulp-filter');
 var mainBowerFiles = require('main-bower-files');
 var browserSync = require('browser-sync');
@@ -18,9 +18,8 @@ var changed = require('gulp-changed');
 var mqpacker = require('css-mqpacker');
 var plumber = require('gulp-plumber');
 var sourcemaps = require('gulp-sourcemaps');
-var RevAll = require('gulp-rev-all');
+var revAll = require('gulp-rev-all');
 var revDel = require('rev-del');
-var runSequence = require('run-sequence');
 var notify = require('gulp-notify');
 var exec = require('child_process').exec;
 
@@ -43,11 +42,11 @@ var onError = function(err) {
 // DEFAULT
 //
 
-    gulp.task('default', ['browser-sync', 'css', 'js'], function(){
+    gulp.task('default', ['css', 'js', 'rev', 'browser-sync'], function(){
 
-        gulp.watch(['src/js/*.js', 'src/js/**/*.js'], ['watch-js']).on('change', browserSync.reload);
+        gulp.watch(['src/js/*.js', 'src/js/**/*.js'], ['js']).on('change', browserSync.reload);
         gulp.watch('src/rev/functions.php', ['rev']);
-        gulp.watch(['src/css/*.scss', 'src/css/**/*.scss'], ['watch-css']);
+        gulp.watch(['src/css/*.scss', 'src/css/**/*.scss'], ['css']);
         gulp.watch(['src/img/*'], ['images']);
 
     });
@@ -129,12 +128,6 @@ var onError = function(err) {
 
     });
 
-    gulp.task('watch-css', function(callback) {
-
-        runSequence('css', callback);
-
-    });
-
 //
 // BUILD JAVASCRIPT
 //
@@ -153,18 +146,15 @@ var onError = function(err) {
             .pipe(plumber({errorHandler: onError}))
             .pipe(jsFilter)
             .pipe(sourcemaps.init())
+            .pipe(babel({
+                presets: ['es2015']
+            }))
             .pipe(concat('app.js'))
             .pipe(sourcemaps.write())
             .pipe(gulp.dest('js'))
             .pipe(uglify())
             .pipe(gulp.dest('src/rev/js'))
             .pipe(notify(notification));
-
-    });
-
-    gulp.task('watch-js', function(callback) {
-
-        runSequence('js', callback);
 
     });
 
@@ -184,26 +174,14 @@ var onError = function(err) {
             dontRenameFile: ['functions.php']
         };
 
-        var revAll = new RevAll(revOptions);
-
         return gulp.src(['src/rev/**'])
                 .pipe(plumber({errorHandler: onError}))
-                .pipe(revAll.revision())
+                .pipe(revAll.revision(revOptions))
                 .pipe(gulp.dest('./'))
                 .pipe(revAll.manifestFile())
                 .pipe(revDel('src/rev-manifest.json'))
                 .pipe(gulp.dest('src'))
                 .pipe(notify(notification));
-
-    });
-
-//
-// BUILD
-//
-
-    gulp.task('build', function(callback) {
-
-        runSequence(['images', 'css', 'js'], 'rev', callback);
 
     });
 

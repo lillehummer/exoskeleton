@@ -3,23 +3,17 @@
 <html <?php language_attributes(); ?>>
 
 <head>
-	<meta charset="utf-8">
-
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title><?php wp_title( '' ); ?></title>
 
 	<meta name="HandheldFriendly" content="True">
-	<meta name="MobileOptimized" content="320">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+	<meta name="MobileOptimized" content="375">
 
 	<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/img/apple-touch-icon.png">
-	<link rel="icon" href="<?php echo get_template_directory_uri(); ?>/img/favicon.png">
-
-	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri(); ?>/img/win8-tile-icon.png">
-
-	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+	<link rel="icon" href="<?php echo get_template_directory_uri(); ?>/img/favicon.png" sizes="32x32" type="image/png">
 
 	<?php wp_head(); ?>
 

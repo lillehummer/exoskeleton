@@ -1,6 +1,6 @@
 {
   "name": "lillehummernl",
-  "description": "WordPress theme created by Lille Hummer, based on Bones.",
+  "description": "WordPress theme created by Lille Hummer.",
   "version": "0.2.0",
   "private": true,
   "maintainers": [
@@ -16,7 +16,6 @@
     "gulp-notify": "*",
     "gulp-concat": "*",
     "gulp-uglify": "*",
-    "gulp-rename": "*",
     "gulp-filter": "*",
     "main-bower-files": "*",
     "browser-sync": "*",
@@ -32,7 +31,7 @@
     "gulp-plumber": "*",
     "gulp-sourcemaps": "*",
     "gulp-rev-all": "*",
-    "rev-del": "*",
-    "run-sequence": "*"
+    "gulp-babel": "*",
+    "rev-del": "*"
   }
 }

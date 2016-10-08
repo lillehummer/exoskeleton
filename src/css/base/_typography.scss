@@ -1,24 +1,55 @@
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5 {
+    line-height: 1.2;
+    margin: 1rem 0;
+    font-family: $heading-text;
+}
 
-h1, .h1 {
+h1,
+.h1 {
 
 }
 
-h2, .h2 {
+h2,
+.h2 {
 
 }
 
-h3, .h3 {
+h3,
+.h3 {
 
 }
 
-h4, .h4 {
+h4,
+.h4 {
 
 }
 
-h5, .h5 {
+h5,
+.h5 {
 
 }
 
-a[href]:not([class]) {
+p {
+    margin: 1rem 0;
+}
+
+a,
+a:hover,
+a:active,
+a:focus,
+a:visited {
+
+}
+
+a:hover {
 
 }

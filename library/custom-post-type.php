@@ -1,98 +1,114 @@
 <?php
 
-// Flush rewrite rules for custom post types
-add_action( 'after_switch_theme', 'hummer_flush_rewrite_rules' );
-
-// Flush your rewrite rules
-function hummer_flush_rewrite_rules() {
+/**
+ * Flush rewrite rules.
+ */
+function bones_flush_rewrite_rules() {
 	flush_rewrite_rules();
 }
+add_action( 'after_switch_theme', 'bones_flush_rewrite_rules' );
 
+/**
+ * Declare custom post types
+ */
+function bones_custom_post_types() {
 
-function hummer_custom_post_types() {
-
-	register_post_type( 'custom_type',
-		array( 'labels' => array(
-			'name' => __( 'Custom Types', 'lillehummernl' ),
-			'singular_name' => __( 'Custom Post', 'lillehummernl' ),
-			'all_items' => __( 'All Custom Posts', 'lillehummernl' ),
-			'add_new' => __( 'Add New', 'lillehummernl' ),
-			'add_new_item' => __( 'Add New Custom Type', 'lillehummernl' ),
-			'edit' => __( 'Edit', 'lillehummernl' ),
-			'edit_item' => __( 'Edit Post Type', 'lillehummernl' ),
-			'new_item' => __( 'New Post Type', 'lillehummernl' ),
-			'view_item' => __( 'View Post Type', 'lillehummernl' ),
-			'search_items' => __( 'Search Post Type', 'lillehummernl' ),
-			'not_found' =>  __( 'Nothing found in the Database.', 'lillehummernl' ),
-			'not_found_in_trash' => __( 'Nothing found in Trash', 'lillehummernl' ),
-			'parent_item_colon' => ''
-			),
-			'description' => __( 'This is the example custom post type', 'lillehummernl' ),
-			'public' => true,
-			'publicly_queryable' => true,
-			'exclude_from_search' => false,
-			'show_ui' => true,
-			'query_var' => true,
-			'menu_position' => 8,
-			'menu_icon' => '',
-			'rewrite'	=> array( 'slug' => 'custom_type', 'with_front' => false ),
-			'has_archive' => 'custom_type',
-			'capability_type' => 'post',
-			'hierarchical' => false,
-			'show_in_rest' => false,
-			'rest_base' => 'custom_type',
-			'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions', 'sticky')
-		)
+	$labels = array(
+		'name'                  => _x( 'Post Types', 'Post Type General Name', 'lillehummernl' ),
+		'singular_name'         => _x( 'Post Type', 'Post Type Singular Name', 'lillehummernl' ),
+		'menu_name'             => __( 'Post Types', 'lillehummernl' ),
+		'name_admin_bar'        => __( 'Post Type', 'lillehummernl' ),
+		'archives'              => __( 'Item Archives', 'lillehummernl' ),
+		'parent_item_colon'     => __( 'Parent Item:', 'lillehummernl' ),
+		'all_items'             => __( 'All Items', 'lillehummernl' ),
+		'add_new_item'          => __( 'Add New Item', 'lillehummernl' ),
+		'add_new'               => __( 'Add New', 'lillehummernl' ),
+		'new_item'              => __( 'New Item', 'lillehummernl' ),
+		'edit_item'             => __( 'Edit Item', 'lillehummernl' ),
+		'update_item'           => __( 'Update Item', 'lillehummernl' ),
+		'view_item'             => __( 'View Item', 'lillehummernl' ),
+		'search_items'          => __( 'Search Item', 'lillehummernl' ),
+		'not_found'             => __( 'Not found', 'lillehummernl' ),
+		'not_found_in_trash'    => __( 'Not found in Trash', 'lillehummernl' ),
+		'featured_image'        => __( 'Featured Image', 'lillehummernl' ),
+		'set_featured_image'    => __( 'Set featured image', 'lillehummernl' ),
+		'remove_featured_image' => __( 'Remove featured image', 'lillehummernl' ),
+		'use_featured_image'    => __( 'Use as featured image', 'lillehummernl' ),
+		'insert_into_item'      => __( 'Insert into item', 'lillehummernl' ),
+		'uploaded_to_this_item' => __( 'Uploaded to this item', 'lillehummernl' ),
+		'items_list'            => __( 'Items list', 'lillehummernl' ),
+		'items_list_navigation' => __( 'Items list navigation', 'lillehummernl' ),
+		'filter_items_list'     => __( 'Filter items list', 'lillehummernl' ),
 	);
-
-	register_taxonomy_for_object_type( 'category', 'custom_type' );
-	register_taxonomy_for_object_type( 'post_tag', 'custom_type' );
+	$args = array(
+		'label'                 => __( 'Post Type', 'lillehummernl' ),
+		'description'           => __( 'Post Type Description', 'lillehummernl' ),
+		'labels'                => $labels,
+		'supports'              => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions', 'sticky' ),
+		// 'taxonomies'            => array( 'category', 'post_tag' ),
+		'hierarchical'          => false,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 5,
+		'show_in_admin_bar'     => true,
+		'show_in_nav_menus'     => true,
+		'can_export'            => true,
+		'has_archive'           => true,
+		'exclude_from_search'   => false,
+		'publicly_queryable'    => true,
+		'capability_type'       => 'post',
+		'show_in_rest' 					=> false,
+		'rest_base' 						=> 'post_type',
+		'rewrite'								=> array( 'slug' => 'custom_type', 'with_front' => false ),
+		'has_archive' 					=> 'custom_type',
+		'menu_icon' 						=> '',
+	);
+	register_post_type( 'post_type', $args );
 
 }
+add_action( 'init', 'bones_custom_post_types' );
 
-	// adding the function to the Wordpress init
-	add_action( 'init', 'hummer_custom_post_types');
+/**
+ * Declare custom taxonomies.
+ */
+function bones_custom_taxonomies() {
 
-	register_taxonomy( 'custom_cat',
-		array('custom_type'),
-		array('hierarchical' => true,
-			'labels' => array(
-				'name' => __( 'Custom Categories', 'lillehummernl' ),
-				'singular_name' => __( 'Custom Category', 'lillehummernl' ),
-				'search_items' =>  __( 'Search Custom Categories', 'lillehummernl' ),
-				'all_items' => __( 'All Custom Categories', 'lillehummernl' ),
-				'parent_item' => __( 'Parent Custom Category', 'lillehummernl' ),
-				'parent_item_colon' => __( 'Parent Custom Category:', 'lillehummernl' ),
-				'edit_item' => __( 'Edit Custom Category', 'lillehummernl' ),
-				'update_item' => __( 'Update Custom Category', 'lillehummernl' ),
-				'add_new_item' => __( 'Add New Custom Category', 'lillehummernl' ),
-				'new_item_name' => __( 'New Custom Category Name', 'lillehummernl' )
-			),
-			'show_admin_column' => true,
-			'show_ui' => true,
-			'query_var' => true,
-			'rewrite' => array( 'slug' => 'custom-slug' ),
-		)
+	$labels = array(
+		'name'                       	=> _x( 'Taxonomies', 'Taxonomy General Name', 'lillehummernl' ),
+		'singular_name'              	=> _x( 'Taxonomy', 'Taxonomy Singular Name', 'lillehummernl' ),
+		'menu_name'                  	=> __( 'Taxonomy', 'lillehummernl' ),
+		'all_items'                  	=> __( 'All Items', 'lillehummernl' ),
+		'parent_item'                	=> __( 'Parent Item', 'lillehummernl' ),
+		'parent_item_colon'          	=> __( 'Parent Item:', 'lillehummernl' ),
+		'new_item_name'              	=> __( 'New Item Name', 'lillehummernl' ),
+		'add_new_item'               	=> __( 'Add New Item', 'lillehummernl' ),
+		'edit_item'                  	=> __( 'Edit Item', 'lillehummernl' ),
+		'update_item'                	=> __( 'Update Item', 'lillehummernl' ),
+		'view_item'                  	=> __( 'View Item', 'lillehummernl' ),
+		'separate_items_with_commas' 	=> __( 'Separate items with commas', 'lillehummernl' ),
+		'add_or_remove_items'        	=> __( 'Add or remove items', 'lillehummernl' ),
+		'choose_from_most_used'      	=> __( 'Choose from the most used', 'lillehummernl' ),
+		'popular_items'              	=> __( 'Popular Items', 'lillehummernl' ),
+		'search_items'              	=> __( 'Search Items', 'lillehummernl' ),
+		'not_found'                 	=> __( 'Not Found', 'lillehummernl' ),
+		'no_terms'                  	=> __( 'No items', 'lillehummernl' ),
+		'items_list'                	=> __( 'Items list', 'lillehummernl' ),
+		'items_list_navigation'     	=> __( 'Items list navigation', 'lillehummernl' ),
 	);
-
-	register_taxonomy( 'custom_tag',
-		array('custom_type'),
-		array('hierarchical' => false,
-			'labels' => array(
-				'name' => __( 'Custom Tags', 'lillehummernl' ),
-				'singular_name' => __( 'Custom Tag', 'lillehummernl' ),
-				'search_items' =>  __( 'Search Custom Tags', 'lillehummernl' ),
-				'all_items' => __( 'All Custom Tags', 'lillehummernl' ),
-				'parent_item' => __( 'Parent Custom Tag', 'lillehummernl' ),
-				'parent_item_colon' => __( 'Parent Custom Tag:', 'lillehummernl' ),
-				'edit_item' => __( 'Edit Custom Tag', 'lillehummernl' ),
-				'update_item' => __( 'Update Custom Tag', 'lillehummernl' ),
-				'add_new_item' => __( 'Add New Custom Tag', 'lillehummernl' ),
-				'new_item_name' => __( 'New Custom Tag Name', 'lillehummernl' )
-			),
-			'show_admin_column' => true,
-			'show_ui' => true,
-			'query_var' => true,
-		)
+	$args = array(
+		'labels'                    	=> $labels,
+		'hierarchical'              	=> false,
+		'public'                    	=> true,
+		'show_ui'                   	=> true,
+		'show_admin_column'         	=> true,
+		'show_in_nav_menus'         	=> true,
+		'show_tagcloud'             	=> true,
+		'rewrite' 										=> array( 'slug' => 'custom-slug' ),
 	);
+	register_taxonomy( 'taxonomy', array( 'post' ), $args );
+
+}
+add_action( 'init', 'bones_custom_taxonomies', 0 );
+
 ?>

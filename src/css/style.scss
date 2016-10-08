@@ -25,44 +25,44 @@
 
 //Sitewide CSS
 * {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html {
-  font-size: 10px;
-  overflow-y: scroll;
-  width: 100%;
-  height: 100%;
-  -webkit-text-size-adjust: 100%;
+    font-size: 10px;
+    overflow-y: scroll;
+    width: 100%;
+    height: 100%;
+    -webkit-text-size-adjust: 100%;
 }
 
 body {
-  font-family: $body-text;
-  font-size: 1.6rem;
-  font-weight: normal;
-  line-height: 1.6;
-  width: 100%;
-  min-height: 100%;
-  color: $black;
+    font-family: $body-text;
+    font-size: 1.6rem;
+    font-weight: normal;
+    line-height: 1.6;
+    width: 100%;
+    min-height: 100%;
+    color: $black;
 }
 
 img {
-  max-width: 100%;
-  height: auto;
+    max-width: 100%;
+    height: auto;
 }
 
 input[type=text],
 button,
 select,
 textarea {
-  border-radius: 0;
-  outline: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
+    border-radius: 0;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
 
 .clearfix {
-  @include clearfix;
+    @include clearfix;
 }
