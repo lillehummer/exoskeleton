@@ -1,31 +1,27 @@
 <?php
 /**
- * Home template.
+ * Single custom post template.
  *
  * @link https://lillehummer.nl
  *
  * @package lillehummernl
  */
 
-/*
-Template Name: Home
-*/
-
 get_header(); ?>
 
 <div class="content">
 
-	<div class="main clearfix" role="main">
+	<main class="main clearfix" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
 		<?php while ( have_posts() ) : the_post(); ?>
 
-		<article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
+		<article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?> role="article">
 
 			<header class="article-header">
-				<h1 class="page-title"><?php the_title(); ?></h1>
+				<h1 class="single-title custom-post-type-title"><?php the_title(); ?></h1>
 			</header>
 
-			<section class="entry-content clearfix" itemprop="articleBody">
+			<section class="entry-content clearfix">
 				<?php the_content(); ?>
 			</section>
 
@@ -36,7 +32,7 @@ get_header(); ?>
 
 		<?php endwhile; ?>
 
-	</div>
+	</main>
 
 	<?php get_sidebar(); ?>
 

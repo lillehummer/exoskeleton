@@ -1,3 +1,14 @@
+<?php
+/**
+ * Page blocks template.
+ *
+ * @link https://lillehummer.nl
+ *
+ * @package lillehummernl
+ */
+
+?>
+
 <div class="blocks">
 
 	<?php if ( have_rows( 'blocks' ) ) : ?>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Lille Hummer File Doc Comment
+ * Exoskeleton theme functions.
  *
  * @category functions
  * @package lillehummernl

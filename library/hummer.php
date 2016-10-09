@@ -1,15 +1,11 @@
 <?php
 /**
- * Lille Hummer File Doc Comment
+ * Exoskeleton utility functions.
  *
  * @category function library
  * @package lillehummernl
  * @author Lille Hummer
  */
-
-?>
-
-<?php
 
 /**
  * Remove inline gallery styles.
@@ -33,6 +29,8 @@ function hummer_theme_support() {
 	add_theme_support( 'automatic-feed-links' );
 	add_theme_support( 'post-thumbnails' );
 
+	add_theme_support( 'title-tag' );
+
 	add_theme_support( 'post-formats',
 		array(
 			'aside',
@@ -54,33 +52,14 @@ function hummer_theme_support() {
 			'footer-links' => __( 'Footer Links', 'lillehummernl' ),
 		)
 	);
-}
 
-/**
- * Custom page navigation.
- */
-function hummer_page_navi() {
-	global $wp_query;
-	$bignum = 999999999;
-	if ( $wp_query->max_num_pages <= 1 ) {
-		return;
-	}
-
-	echo '<nav class="pagination">';
-
-	echo paginate_links( array(
-		'base' 			=> str_replace( $bignum, '%#%', esc_url( get_pagenum_link( $bignum ) ) ),
-		'format' 		=> '',
-		'current' 		=> max( 1, get_query_var( 'paged' ) ),
-		'total' 		=> $wp_query->max_num_pages,
-		'prev_text' 	=> '&larr;',
-		'next_text' 	=> '&rarr;',
-		'type'			=> 'list',
-		'end_size'		=> 3,
-		'mid_size'		=> 3,
+	add_theme_support( 'html5', array(
+		'search-form',
+		'comment-form',
+		'comment-list',
+		'gallery',
+		'caption',
 	) );
-
-	echo '</nav>';
 }
 
 /**
@@ -88,7 +67,7 @@ function hummer_page_navi() {
  *
  * @param string $content post content.
  */
-function hummer_filter_ptags_on_images( string $content ) {
+function hummer_filter_ptags_on_images( $content ) {
 	return preg_replace( '/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content );
 }
 
@@ -97,7 +76,7 @@ function hummer_filter_ptags_on_images( string $content ) {
  *
  * @param string $more excerpt text.
  */
-function hummer_excerpt_more( string $more ) {
+function hummer_excerpt_more( $more ) {
 	global $post;
 	return '...  <a href="'. get_permalink( $post->ID ) . '" title="' . get_the_title( $post->ID ).'">'. __( 'Read more', 'lillehummernl' ) .'</a>';
 }
@@ -107,7 +86,7 @@ function hummer_excerpt_more( string $more ) {
  *
  * @param string $content opening tag content.
  */
-function hummer_wrap_gform_cdata_open( string $content = '' ) {
+function hummer_wrap_gform_cdata_open( $content = '' ) {
 	if ( ( defined( 'DOING_AJAX' ) && DOING_AJAX ) || isset( $_POST['gform_ajax'] ) ) {
 		return $content;
 	}
@@ -120,7 +99,7 @@ function hummer_wrap_gform_cdata_open( string $content = '' ) {
  *
  * @param string $content closing tag content.
  */
-function hummer_wrap_gform_cdata_close( string $content = '' ) {
+function hummer_wrap_gform_cdata_close( $content = '' ) {
 	if ( ( defined( 'DOING_AJAX' ) && DOING_AJAX ) || isset( $_POST['gform_ajax'] ) ) {
 		return $content;
 	}

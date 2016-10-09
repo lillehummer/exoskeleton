@@ -1,19 +1,28 @@
-<?php get_header(); ?>
+<?php
+/**
+ * Single post template.
+ *
+ * @link https://lillehummer.nl
+ *
+ * @package lillehummernl
+ */
 
-	<div class="content">
+get_header(); ?>
 
-		<main class="main clearfix" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+<div class="content">
 
-			<?php while ( have_posts() ) : the_post(); ?>
+	<main class="main clearfix" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
-				<?php get_template_part( 'post-formats/format', get_post_format() ); ?>
+		<?php while ( have_posts() ) : the_post(); ?>
 
-			<?php endwhile; ?>
+			<?php get_template_part( 'post-formats/format', get_post_format() ); ?>
 
-		</main>
+		<?php endwhile; ?>
 
-		<?php get_sidebar(); ?>
+	</main>
 
-	</div>
+	<?php get_sidebar(); ?>
 
-<?php get_footer(); ?>
+</div>
+
+<?php get_footer();

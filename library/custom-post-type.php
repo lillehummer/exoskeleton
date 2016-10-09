@@ -1,4 +1,11 @@
 <?php
+/**
+ * Custom post type definitions.
+ *
+ * @link https://lillehummer.nl
+ *
+ * @package lillehummernl
+ */
 
 /**
  * Flush rewrite rules.
@@ -58,11 +65,11 @@ function bones_custom_post_types() {
 		'exclude_from_search'   => false,
 		'publicly_queryable'    => true,
 		'capability_type'       => 'post',
-		'show_in_rest' 					=> false,
-		'rest_base' 						=> 'post_type',
-		'rewrite'								=> array( 'slug' => 'custom_type', 'with_front' => false ),
-		'has_archive' 					=> 'custom_type',
-		'menu_icon' 						=> '',
+		'show_in_rest' 			=> false,
+		'rest_base' 			=> 'post_type',
+		'rewrite'				=> array( 'slug' => 'post_type', 'with_front' => false ),
+		'has_archive' 			=> 'custom_type',
+		'menu_icon' 			=> '',
 	);
 	register_post_type( 'post_type', $args );
 
@@ -104,11 +111,9 @@ function bones_custom_taxonomies() {
 		'show_admin_column'         	=> true,
 		'show_in_nav_menus'         	=> true,
 		'show_tagcloud'             	=> true,
-		'rewrite' 										=> array( 'slug' => 'custom-slug' ),
+		'rewrite' 						=> array( 'slug' => 'custom-slug' ),
 	);
 	register_taxonomy( 'taxonomy', array( 'post' ), $args );
 
 }
 add_action( 'init', 'bones_custom_taxonomies', 0 );
-
-?>

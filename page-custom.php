@@ -1,38 +1,45 @@
 <?php
+/**
+ * Custom page template.
+ *
+ * @link https://lillehummer.nl
+ *
+ * @package lillehummernl
+ */
+
 /*
 Template Name: Custom Page
 */
-?>
 
-<?php get_header(); ?>
+get_header(); ?>
 
-	<div class="content">
+<div class="content">
 
-		<main class="main clearfix" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+	<main class="main clearfix" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
-			<?php while ( have_posts() ) : the_post(); ?>
+		<?php while ( have_posts() ) : the_post(); ?>
 
-			<article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
+		<article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
 
-				<header class="article-header">
-					<h1 class="page-title"><?php the_title(); ?></h1>
-				</header>
+			<header class="article-header">
+				<h1 class="page-title"><?php the_title(); ?></h1>
+			</header>
 
-				<section class="entry-content clearfix" itemprop="articleBody">
-					<?php the_content(); ?>
-				</section>
+			<section class="entry-content clearfix" itemprop="articleBody">
+				<?php the_content(); ?>
+			</section>
 
-				<footer class="article-footer">
-				</footer>
+			<footer class="article-footer">
+			</footer>
 
-			</article>
+		</article>
 
-			<?php endwhile; ?>
+		<?php endwhile; ?>
 
-		</main>
+	</main>
 
-		<?php get_sidebar(); ?>
+	<?php get_sidebar(); ?>
 
-	</div>
+</div>
 
-<?php get_footer(); ?>
+<?php get_footer();

@@ -1,35 +1,42 @@
-<?php get_header(); ?>
+<?php
+/**
+ * Search template.
+ *
+ * @link https://lillehummer.nl
+ *
+ * @package lillehummernl
+ */
 
-	<div class="content">
+get_header(); ?>
 
-		<main class="main clearfix" role="main">
+<div class="content">
 
-			<h1 class="archive-title"><span><?php _e( 'Search Results for:', 'lillehummernl' ); ?></span> <?php echo esc_attr( get_search_query() ); ?></h1>
+	<main class="main clearfix" role="main">
 
-			<?php while ( have_posts() ) : the_post(); ?>
+		<h1 class="archive-title"><span><?php esc_html_e( 'Search Results for:', 'lillehummernl' ); ?></span> <?php echo esc_attr( get_search_query() ); ?></h1>
 
-			<article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?> role="article">
+		<?php while ( have_posts() ) : the_post(); ?>
 
-				<header class="article-header">
-					<h3 class="search-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
-				</header>
+		<article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?> role="article">
 
-				<section class="entry-content">
-					<?php the_excerpt( '<span class="read-more">' . __( 'Read more &raquo;', 'lillehummernl' ) . '</span>' ); ?>
-				</section>
+			<header class="article-header">
+				<h3 class="search-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
+			</header>
 
-			</article>
+			<section class="entry-content">
+				<?php the_excerpt( '<span class="read-more">' . __( 'Read more &raquo;', 'lillehummernl' ) . '</span>' ); ?>
+			</section>
 
-			<?php endwhile; ?>
+		</article>
 
-			<?php if ( function_exists( 'hummer_page_navi' ) ) {
-				hummer_page_navi();
-			} ?>
+		<?php endwhile; ?>
 
-		</main>
+		<?php the_posts_pagination(); ?>
 
-		<?php get_sidebar(); ?>
+	</main>
 
-	</div>
+	<?php get_sidebar(); ?>
 
-<?php get_footer(); ?>
+</div>
+
+<?php get_footer();

@@ -7,9 +7,6 @@
  * @author Lille Hummer
  */
 
-?>
-
-<?php
 /**
  * Disable default dashboard widgets.
  */
@@ -26,9 +23,6 @@ function hummer_disable_default_dashboard_widgets() {
 	unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_primary'] );
 	unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary'] );
 
-	// Remove plugin dashboard boxes.
-	// unset( $wp_meta_boxes['dashboard']['normal']['core']['yoast_db_widget'] );
-	// unset( $wp_meta_boxes['dashboard']['normal']['core']['rg_forms_dashboard'] );
 }
 add_action( 'admin_menu', 'hummer_disable_default_dashboard_widgets' );
 
@@ -108,5 +102,3 @@ function hummer_remove_menu_pages() {
 	remove_menu_page( 'edit-comments.php' );
 }
 add_action( 'admin_menu', 'hummer_remove_menu_pages' );
-
-?>

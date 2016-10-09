@@ -1,32 +1,41 @@
-<?php get_header(); ?>
+<?php
+/**
+ * Page template.
+ *
+ * @link https://lillehummer.nl
+ *
+ * @package lillehummernl
+ */
 
-	<div class="content">
+get_header(); ?>
 
-		<main class="main clearfix" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+<div class="content">
 
-			<?php while ( have_posts() ) : the_post(); ?>
+	<main class="main clearfix" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
-			<article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
+		<?php while ( have_posts() ) : the_post(); ?>
 
-				<header class="article-header">
-					<h1 class="page-title"><?php the_title(); ?></h1>
-				</header>
+		<article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
 
-				<section class="entry-content clearfix" itemprop="articleBody">
-					<?php the_content(); ?>
-				</section>
+			<header class="article-header">
+				<h1 class="page-title"><?php the_title(); ?></h1>
+			</header>
 
-				<footer class="article-footer">
-				</footer>
+			<section class="entry-content clearfix" itemprop="articleBody">
+				<?php the_content(); ?>
+			</section>
 
-			</article>
+			<footer class="article-footer">
+			</footer>
 
-			<?php endwhile; ?>
+		</article>
 
-		</main>
+		<?php endwhile; ?>
 
-		<?php get_sidebar(); ?>
+	</main>
 
-	</div>
+	<?php get_sidebar(); ?>
 
-<?php get_footer(); ?>
+</div>
+
+<?php get_footer();

@@ -1,45 +1,50 @@
-<?php get_header(); ?>
+<?php
+/**
+ * Custom post type archive template.
+ *
+ * @link https://lillehummer.nl
+ *
+ * @package lillehummernl
+ */
 
-	<div class="content">
+get_header(); ?>
 
-		<main class="main clearfix" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+<div class="content">
 
-			<h1 class="archive-title"><?php post_type_archive_title(); ?></h1>
+	<main class="main clearfix" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
-				<?php while ( have_posts() ) : the_post(); ?>
+		<h1 class="archive-title"><?php post_type_archive_title(); ?></h1>
 
-				<article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?> role="article">
+		<?php while ( have_posts() ) : the_post(); ?>
 
-					<header class="article-header">
-						<h3 class="entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
+		<article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?> role="article">
 
-						<p class="byline entry-meta vcard">
-						<?php printf( __( 'Posted %1$s by %2$s', 'lillehummernl' ),
-							/* the time the post was published */
-							'<time class="updated entry-time" datetime="' . get_the_time( 'Y-m-d' ) . '" itemprop="datePublished">' . get_the_time( get_option( 'date_format' ) ) . '</time>',
-							/* the author of the post */
-							'<span class="by">by</span> <span class="entry-author author" itemprop="author" itemscope itemptype="http://schema.org/Person">' . get_the_author_link( get_the_author_meta( 'ID' ) ) . '</span>'
-						); ?>
-						</p>
+			<header class="article-header">
+				<h3 class="entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
 
-					</header>
+				<p class="byline entry-meta vcard">
+				<?php printf( esc_html__( 'Posted %1$s by %2$s', 'lillehummernl' ),
+					'<time class="updated entry-time" datetime="' . get_the_time( 'Y-m-d' ) . '" itemprop="datePublished">' . get_the_time( get_option( 'date_format' ) ) . '</time>',
+					'<span class="by">by</span> <span class="entry-author author" itemprop="author" itemscope itemptype="http://schema.org/Person">' . get_the_author_link( get_the_author_meta( 'ID' ) ) . '</span>'
+				); ?>
+				</p>
 
-					<section class="entry-content clearfix">
-						<?php the_excerpt(); ?>
-					</section>
+			</header>
 
-				</article>
+			<section class="entry-content clearfix">
+				<?php the_excerpt(); ?>
+			</section>
 
-				<?php endwhile; ?>
+		</article>
 
-				<?php if ( function_exists( 'hummer_page_navi' ) ) {
-					 hummer_page_navi();
-				} ?>
+		<?php endwhile; ?>
 
-		</main>
+		<?php the_posts_pagination(); ?>
 
-		<?php get_sidebar(); ?>
+	</main>
 
-	</div>
+	<?php get_sidebar(); ?>
 
-<?php get_footer(); ?>
+</div>
+
+<?php get_footer();

@@ -1,27 +1,36 @@
-<?php get_header(); ?>
+<?php
+/**
+ * 404 template.
+ *
+ * @link https://lillehummer.nl
+ *
+ * @package lillehummernl
+ */
 
-	<div class="content">
+get_header(); ?>
 
-		<div class="main clearfix" role="main">
+<div class="content">
 
-			<article id="post-not-found" class="hentry clearfix">
+	<div class="main clearfix" role="main">
 
-				<header class="article-header">
-					<h1><?php _e( 'Epic 404 - Article Not Found', 'lillehummernl' ); ?></h1>
-				</header>
+		<article id="post-not-found" class="hentry clearfix">
 
-				<section class="entry-content">
-					<p><?php _e( 'The article you were looking for was not found, but maybe try looking again!', 'lillehummernl' ); ?></p>
-				</section>
+			<header class="article-header">
+				<h1><?php esc_html_e( 'Epic 404 - Article Not Found', 'lillehummernl' ); ?></h1>
+			</header>
 
-				<section class="search">
-					<p><?php get_search_form(); ?></p>
-				</section>
+			<section class="entry-content">
+				<p><?php esc_html_e( 'The article you were looking for was not found, but maybe try looking again!', 'lillehummernl' ); ?></p>
+			</section>
 
-			</article>
+			<section class="search">
+				<p><?php get_search_form(); ?></p>
+			</section>
 
-		</div>
+		</article>
 
 	</div>
 
-<?php get_footer(); ?>
+</div>
+
+<?php get_footer();

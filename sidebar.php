@@ -1,9 +1,21 @@
-		<div id="sidebar" class="sidebar clearfix" role="complementary">
+<?php
+/**
+ * Sidebar template.
+ *
+ * @link https://lillehummer.nl
+ *
+ * @package lillehummernl
+ */
 
-			<?php if ( is_active_sidebar( 'sidebar' ) ) : ?>
+if ( ! is_active_sidebar( 'sidebar' ) ) {
+	return;
+}
+?>
 
-				<?php dynamic_sidebar( 'sidebar' ); ?>
+<div class="sidebar clearfix" role="complementary">
 
-			<?php endif; ?>
+	<?php if ( is_active_sidebar( 'sidebar' ) ) :
+		dynamic_sidebar( 'sidebar' );
+	endif; ?>
 
-		</div>
+</div>
