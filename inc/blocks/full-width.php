@@ -9,9 +9,9 @@
 
 ?>
 
-<div class="block block-full-width">
+<div class="block block--full-width">
 
-	<div class="block-inner">
+	<div class="block__inner">
 
 		<?php the_sub_field( 'full_width' ); ?>
 

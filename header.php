@@ -31,7 +31,7 @@
 
 	<header class="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
 
-		<div class="header-inner clearfix">
+		<div class="header__inner clearfix">
 
 			<p class="logo" itemscope itemtype="http://schema.org/Organization">
 				<a href="<?php echo esc_url( home_url() ); ?>" rel="nofollow">

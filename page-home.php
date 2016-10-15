@@ -15,28 +15,28 @@ get_header(); ?>
 
 <div class="content">
 
-	<div class="main clearfix" role="main">
+	<main class="main clearfix" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/WebPage">
 
 		<?php while ( have_posts() ) : the_post(); ?>
 
-		<article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
+		<article <?php post_class( 'article clearfix' ); ?>>
 
-			<header class="article-header">
-				<h1 class="page-title"><?php the_title(); ?></h1>
+			<header class="article__header">
+				<h1 itemprop="headline"><?php the_title(); ?></h1>
 			</header>
 
-			<section class="entry-content clearfix" itemprop="articleBody">
+			<section class="article__content clearfix" itemprop="articleBody">
 				<?php the_content(); ?>
 			</section>
 
-			<footer class="article-footer">
+			<footer class="article__footer">
 			</footer>
 
 		</article>
 
 		<?php endwhile; ?>
 
-	</div>
+	</main>
 
 	<?php get_sidebar(); ?>
 

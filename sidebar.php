@@ -12,7 +12,7 @@ if ( ! is_active_sidebar( 'sidebar' ) ) {
 }
 ?>
 
-<div class="sidebar clearfix" role="complementary">
+<div class="sidebar clearfix" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
 
 	<?php if ( is_active_sidebar( 'sidebar' ) ) :
 		dynamic_sidebar( 'sidebar' );

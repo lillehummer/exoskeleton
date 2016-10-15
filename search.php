@@ -17,14 +17,14 @@ get_header(); ?>
 
 		<?php while ( have_posts() ) : the_post(); ?>
 
-		<article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?> role="article">
+		<article <?php post_class( 'article-entry clearfix' ); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
 
-			<header class="article-header">
-				<h3 class="search-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
+			<header class="article-entry__header">
+				<h3><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
 			</header>
 
-			<section class="entry-content">
-				<?php the_excerpt( '<span class="read-more">' . __( 'Read more &raquo;', 'lillehummernl' ) . '</span>' ); ?>
+			<section class="article-entry__content">
+				<?php the_excerpt(); ?>
 			</section>
 
 		</article>
