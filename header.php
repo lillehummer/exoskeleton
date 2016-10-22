@@ -34,7 +34,7 @@
 		<div class="header__inner clearfix">
 
 			<p class="logo" itemscope itemtype="http://schema.org/Organization">
-				<a href="<?php echo esc_url( home_url() ); ?>" rel="nofollow">
+				<a href="<?php echo esc_url( home_url() ); ?>" rel="home">
 					<img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/logo.png" width="" height="">
 				</a>
 			</p>
