@@ -27,6 +27,16 @@ function hummer_disable_default_dashboard_widgets() {
 add_action( 'admin_menu', 'hummer_disable_default_dashboard_widgets' );
 
 /**
+ * Hide update notice from regular users.
+ */
+function hummer_hide_update_notice() {
+	if ( ! current_user_can( 'update_core' ) ) {
+		remove_action( 'admin_notices', 'update_nag', 3 );
+	}
+}
+add_action( 'admin_head', 'hummer_hide_update_notice', 1 );
+
+/**
  * Lille Hummer dashboard feed.
  */
 function hummer_rss_dashboard_widget() {
@@ -94,11 +104,3 @@ function hummer_custom_admin_footer() {
 	_e( '<span id="footer-thankyou">Developed by <a href="http://lillehummer.nl" target="_blank">Lille Hummer</a></span>.', 'lillehummernl' );
 }
 add_filter( 'admin_footer_text', 'hummer_custom_admin_footer' );
-
-/**
- * Remove comments from dashboard.
- */
-function hummer_remove_menu_pages() {
-	remove_menu_page( 'edit-comments.php' );
-}
-add_action( 'admin_menu', 'hummer_remove_menu_pages' );
