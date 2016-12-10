@@ -43,7 +43,7 @@ function hummer_rss_dashboard_widget() {
 		foreach ( $items as $item ) {
 	?>
 	<h4 style="margin-bottom: 0;">
-		<a href="<?php echo $item->get_permalink(); ?>" title="<?php echo mysql2date( __( 'j F Y @ g:i a', 'lillehummernl' ), $item->get_date( 'Y-m-d H:i:s' ) ); ?>" target="_blank">
+		<a href="<?php echo $item->get_permalink(); ?>" title="<?php echo mysql2date( 'j F Y @ g:i a', $item->get_date( 'Y-m-d H:i:s' ) ); ?>" target="_blank">
 			<?php echo $item->get_title(); ?>
 		</a>
 	</h4>
@@ -59,7 +59,7 @@ function hummer_rss_dashboard_widget() {
  * Add custom dashboard widgets.
  */
 function hummer_custom_dashboard_widgets() {
-	wp_add_dashboard_widget( 'hummer_rss_dashboard_widget', __( 'News from Lille Hummer', 'lillehummernl' ), 'hummer_rss_dashboard_widget' );
+	wp_add_dashboard_widget( 'hummer_rss_dashboard_widget', 'News from Lille Hummer', 'hummer_rss_dashboard_widget' );
 }
 add_action( 'wp_dashboard_setup', 'hummer_custom_dashboard_widgets' );
 
@@ -91,7 +91,7 @@ add_filter( 'login_headertitle', 'hummer_login_title' );
  * Change admin footer.
  */
 function hummer_custom_admin_footer() {
-	_e( '<span id="footer-thankyou">Developed by <a href="http://lillehummer.nl" target="_blank">Lille Hummer</a></span>.', 'lillehummernl' );
+	_e( '<span id="footer-thankyou">Developed by <a href="http://lillehummer.nl" target="_blank">Lille Hummer</a></span>.';
 }
 add_filter( 'admin_footer_text', 'hummer_custom_admin_footer' );
 

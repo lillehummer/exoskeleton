@@ -48,8 +48,8 @@ function hummer_theme_support() {
 	add_theme_support( 'menus' );
 	register_nav_menus(
 		array(
-			'main-nav' => __( 'The Main Menu', 'lillehummernl' ),
-			'footer-links' => __( 'Footer Links', 'lillehummernl' ),
+			'main-nav' => 'The Main Menu',
+			'footer-links' => 'Footer Links',
 		)
 	);
 
@@ -78,7 +78,7 @@ function hummer_filter_ptags_on_images( $content ) {
  */
 function hummer_excerpt_more( $more ) {
 	global $post;
-	return '...  <a href="'. get_permalink( $post->ID ) . '" title="' . get_the_title( $post->ID ).'">'. __( 'Read more', 'lillehummernl' ) .'</a>';
+	return '...  <a href="'. get_permalink( $post->ID ) . '" title="' . get_the_title( $post->ID ).'">Read more</a>';
 }
 
 /**

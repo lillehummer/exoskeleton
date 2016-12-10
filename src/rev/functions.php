@@ -98,7 +98,7 @@ add_action( 'after_switch_theme', 'hummer_setup_theme' );
  */
 function hummer_custom_image_sizes( array $sizes ) {
 	return array_merge( $sizes, array(
-		// 'custom-size' => __('Custom Size', 'lillehummernl')
+		// 'custom-size' => Custom Size'
 	));
 }
 add_filter( 'image_size_names_choose', 'hummer_custom_image_sizes' );
@@ -135,8 +135,8 @@ function hummer_scripts_and_styles() {
 function hummer_register_sidebars() {
 	register_sidebar(array(
 		'id' => 'sidebar',
-		'name' => __( 'Sidebar', 'lillehummernl' ),
-		'description' => __( 'The primary sidebar.', 'lillehummernl' ),
+		'name' => 'Sidebar',
+		'description' => 'The primary sidebar.',
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget' => '</div>',
 		'before_title' => '<h4 class="widgettitle">',

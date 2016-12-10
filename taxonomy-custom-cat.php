@@ -22,7 +22,7 @@ get_header(); ?>
 				<header class="article-entry__header">
 					<h3><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
 					<p class="entry-meta"><?php
-						printf(__('Posted <time class="updated" datetime="%1$s" itemprop="datePublished">%2$s</time> by <span class="author">%3$s</span> <span class="amp">&</span> filed under %4$s.', 'lillehummernl'), get_the_time('Y-m-j'), get_the_time( __( 'F jS, Y', 'lillehummernl' ) ), hummer_get_the_author_posts_link(), get_the_term_list( get_the_ID(), 'custom_cat', "", ", ", "" ));
+						printf( __( 'Posted <time class="updated" datetime="%1$s" itemprop="datePublished">%2$s</time> by <span class="author">%3$s</span> <span class="amp">&</span> filed under %4$s.', 'lillehummernl' ), get_the_time( 'Y-m-j' ), get_the_time( __( 'F jS, Y', 'lillehummernl' ) ), hummer_get_the_author_posts_link(), get_the_term_list( get_the_ID(), 'custom_cat', "", ", ", "" ) );
 					?></p>
 				</header>
 
