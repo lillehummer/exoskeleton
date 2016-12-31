@@ -31,7 +31,9 @@
     "gulp-plumber": "*",
     "gulp-sourcemaps": "*",
     "gulp-rev-all": "*",
-    "gulp-babel": "*",
-    "rev-del": "*"
+    "rev-del": "*",
+    "gulp-buble": "*",
+    "eslint": "*",
+    "eslint-plugin-standard": "*"
   }
 }

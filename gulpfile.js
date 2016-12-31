@@ -22,6 +22,7 @@ var revAll = require('gulp-rev-all');
 var revDel = require('rev-del');
 var notify = require('gulp-notify');
 var exec = require('child_process').exec;
+var buble = require('gulp-buble');
 
 // Include config
 var options = require('./src/build.json');
@@ -111,7 +112,7 @@ var onError = function(err) {
         };
 
         var processors = [
-            autoprefixer({browsers: ['last 2 version', 'ie 9']}),
+            autoprefixer({browsers: ['last 2 version', 'ie 10']}),
             mqpacker
         ];
 
@@ -146,9 +147,7 @@ var onError = function(err) {
             .pipe(plumber({errorHandler: onError}))
             .pipe(jsFilter)
             .pipe(sourcemaps.init())
-            .pipe(babel({
-                presets: ['es2015']
-            }))
+            .pipe(buble())
             .pipe(concat('app.js'))
             .pipe(sourcemaps.write())
             .pipe(gulp.dest('js'))
