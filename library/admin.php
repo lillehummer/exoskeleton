@@ -101,6 +101,6 @@ add_filter( 'login_headertitle', 'hummer_login_title' );
  * Change admin footer.
  */
 function hummer_custom_admin_footer() {
-	_e( '<span id="footer-thankyou">Developed by <a href="http://lillehummer.nl" target="_blank">Lille Hummer</a></span>.';
+	return '<span id="footer-thankyou">Developed by <a href="http://lillehummer.nl" target="_blank">Lille Hummer</a></span>.';
 }
 add_filter( 'admin_footer_text', 'hummer_custom_admin_footer' );

@@ -5,7 +5,6 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
-var babel = require('gulp-babel');
 var filter = require('gulp-filter');
 var mainBowerFiles = require('main-bower-files');
 var browserSync = require('browser-sync');
@@ -22,7 +21,8 @@ var revAll = require('gulp-rev-all');
 var revDel = require('rev-del');
 var notify = require('gulp-notify');
 var exec = require('child_process').exec;
-var buble = require('gulp-buble');
+var webpack = require('webpack');
+var webpackStream = require('webpack-stream');
 
 // Include config
 var options = require('./src/build.json');
@@ -143,12 +143,11 @@ var onError = function(err) {
 
         var jsFilter = filter('**/*.js', {restore: true});
 
-        return gulp.src(mainBowerFiles().concat(options.jsFiles))
+        return gulp.src('src/js/app.js')
             .pipe(plumber({errorHandler: onError}))
             .pipe(jsFilter)
             .pipe(sourcemaps.init())
-            .pipe(buble())
-            .pipe(concat('app.js'))
+            .pipe(webpackStream(require('./webpack.config.js'), webpack ))
             .pipe(sourcemaps.write())
             .pipe(gulp.dest('js'))
             .pipe(uglify())

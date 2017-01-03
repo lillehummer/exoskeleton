@@ -29,11 +29,6 @@ function hummer_ahoy() {
 	add_filter( 'the_content', 'hummer_filter_ptags_on_images' );
 	add_filter( 'excerpt_more', 'hummer_excerpt_more' );
 
-	// Cleanup Gravity Forms.
-	add_filter( 'gform_init_scripts_footer', '__return_true' );
-	add_filter( 'gform_cdata_open', 'hummer_wrap_gform_cdata_open', 1 );
-	add_filter( 'gform_cdata_close', 'hummer_wrap_gform_cdata_close', 99 );
-
 	// Enqueue base scripts and styles.
 	add_action( 'wp_enqueue_scripts', 'hummer_scripts_and_styles', 999 );
 

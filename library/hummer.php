@@ -97,32 +97,6 @@ function hummer_excerpt_more( $more ) {
 }
 
 /**
- * Defer loading Gravity Forms scripts.
- *
- * @param string $content opening tag content.
- */
-function hummer_wrap_gform_cdata_open( $content = '' ) {
-	if ( ( defined( 'DOING_AJAX' ) && DOING_AJAX ) || isset( $_POST['gform_ajax'] ) ) {
-		return $content;
-	}
-	$content = 'document.addEventListener( "DOMContentLoaded", function() { ';
-	return $content;
-}
-
-/**
- * Defer loading Gravity Forms scripts.
- *
- * @param string $content closing tag content.
- */
-function hummer_wrap_gform_cdata_close( $content = '' ) {
-	if ( ( defined( 'DOING_AJAX' ) && DOING_AJAX ) || isset( $_POST['gform_ajax'] ) ) {
-		return $content;
-	}
-	$content = ' }, false );';
-	return $content;
-}
-
-/**
  * Disable emojicons in TinyMCE.
  * @param  [type] $plugins [description]
  * @return [type]          [description]
