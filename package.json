@@ -1,5 +1,5 @@
 {
-  "name": "bluespoon-restaurantnl",
+  "name": "lillehummernl",
   "description": "WordPress theme created by Lille Hummer.",
   "version": "0.2.0",
   "private": true,
@@ -32,21 +32,18 @@
     "gulp-sourcemaps": "*",
     "gulp-rev-all": "*",
     "rev-del": "*",
-    "gulp-buble": "*",
     "eslint": "*",
     "eslint-plugin-standard": "*",
-    "webpack": "2.1.0-beta.28",
+    "webpack": "^2.1.0-beta.26",
     "webpack-stream": "*",
-    "babel-core": "^6.9.0",
-    "babel-loader": "^6.2.4",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-plugin-transform-runtime": "^6.9.0",
-    "babel-preset-es2015": "^6.13.2",
-    "babel-runtime": "^6.9.0",
+    "buble": "^0.14.2",
+    "buble-loader": "^0.3.2",
     "vue-loader": "*",
     "css-loader": "*",
     "vue-template-compiler": "*",
     "vue": "*",
-    "jquery": "*"
+    "jquery": "*",
+    "modernizr": "*",
+    "axios": "*"
   }
 }

@@ -141,11 +141,8 @@ var onError = function(err) {
             onLast: true
         };
 
-        var jsFilter = filter('**/*.js', {restore: true});
-
         return gulp.src('src/js/app.js')
             .pipe(plumber({errorHandler: onError}))
-            .pipe(jsFilter)
             .pipe(sourcemaps.init())
             .pipe(webpackStream(require('./webpack.config.js'), webpack ))
             .pipe(sourcemaps.write())
