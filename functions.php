@@ -114,13 +114,11 @@ function hummer_scripts_and_styles() {
 			wp_enqueue_script( 'wp-api', plugins_url( 'rest-api/wp-api.min.js' ), array(), '', true );
 		}
 
-		if ( ENVIRONMENT === 'development' ) {
-			wp_enqueue_script( 'app', get_stylesheet_directory_uri() . '/js' . '/app.js', array(), '', true );
-			wp_enqueue_style( 'style', get_stylesheet_directory_uri() . '/css' . '/style.css', array(), '', 'all' );
-		} else {
-			wp_enqueue_script( 'app', get_stylesheet_directory_uri() . '/js/app.js', array(), '', true );
-			wp_enqueue_style( 'style', get_stylesheet_directory_uri() . '/css/style.css', array(), '', 'all' );
-		}
+		$manifest = file_get_contents( get_stylesheet_directory() . '/mix-manifest.json');
+		$manifest = json_decode($manifest, true);
+
+		wp_enqueue_script( 'app', get_stylesheet_directory_uri() . '/' . $manifest['js/app.js'], array(), '', true );
+		wp_enqueue_style( 'style', get_stylesheet_directory_uri() . '/' . $manifest['js/style.css'], array(), '', 'all' );
 	}
 }
 
@@ -138,5 +136,3 @@ function hummer_register_sidebars() {
 		'after_title' => '</h4>',
 	));
 }
-
-?>

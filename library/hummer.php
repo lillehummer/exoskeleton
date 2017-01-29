@@ -166,3 +166,16 @@ function hummer_add_page_excerpt() {
 	add_post_type_support( 'page', array( 'excerpt' ) );
 }
 add_action( 'init', 'hummer_add_page_excerpt' );
+
+/**
+ * [hummer_remove_ver_css_js description]
+ * @param  [type] $src [description]
+ * @return [type]      [description]
+ */
+function hummer_remove_ver_css_js( $src ) {
+	if ( strpos( $src, 'ver=' ) )
+		$src = remove_query_arg( 'ver', $src );
+	return $src;
+}
+add_filter( 'style_loader_src', 'hummer_remove_ver_css_js', 9999 );
+add_filter( 'script_loader_src', 'hummer_remove_ver_css_js', 9999 );

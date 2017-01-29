@@ -1,7 +1,7 @@
 {
-  "name": "lillehummernl",
+  "name": "debuurtcampingnl-gids",
   "description": "WordPress theme created by Lille Hummer.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "maintainers": [
     {
@@ -11,20 +11,23 @@
     }
   ],
   "dependencies": {
+    "laravel-mix": "*",
+    "browser-sync": "*",
+    "browser-sync-webpack-plugin": "*",
+    "webpack-dev-server": "*",
     "autoprefixer": "*",
     "doiuse": "*",
     "css-mqpacker": "*",
     "stylelint": "*",
-    "laravel-mix": "*",
     "vue": "*",
     "jquery": "*",
     "modernizr": "*",
     "axios": "*"
   },
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack --progress --hide-modules",
-    "watch": "cross-env NODE_ENV=development webpack --watch --progress --hide-modules",
-    "hmr": "cross-env NODE_ENV=development webpack-dev-server --inline --hot",
-    "production": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    "dev": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "hot": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "production": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   }
 }

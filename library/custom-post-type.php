@@ -10,21 +10,21 @@
 /**
  * Flush rewrite rules.
  */
-function bones_flush_rewrite_rules() {
+function hummer_flush_rewrite_rules() {
 	flush_rewrite_rules();
 }
-add_action( 'after_switch_theme', 'bones_flush_rewrite_rules' );
+add_action( 'after_switch_theme', 'hummer_flush_rewrite_rules' );
 
 /**
  * Declare custom post types
  */
-function bones_custom_post_types() {
+function hummer_custom_post_types() {
 
 	$labels = array(
-		'name'                  => 'Post Types',
-		'singular_name'         => 'Post Type',
-		'menu_name'             => 'Post Types',
-		'name_admin_bar'        => 'Post Type',
+		'name'                  => 'Custom Post Types',
+		'singular_name'         => 'Custom Post Type',
+		'menu_name'             => 'Custom Post Types',
+		'name_admin_bar'        => 'Custom Post Type',
 		'archives'              => 'Item Archives',
 		'parent_item_colon'     => 'Parent Item:',
 		'all_items'             => 'All Items',
@@ -48,8 +48,8 @@ function bones_custom_post_types() {
 		'filter_items_list'     => 'Filter items list',
 	);
 	$args = array(
-		'label'                 => 'Post Type',
-		'description'           => 'Post Type Description',
+		'label'                 => 'Custom Post Type',
+		'description'           => 'Custom Post Type Description',
 		'labels'                => $labels,
 		'supports'              => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions', 'sticky' ),
 		// 'taxonomies'            => array( 'category', 'post_tag' ),
@@ -66,20 +66,20 @@ function bones_custom_post_types() {
 		'publicly_queryable'    => true,
 		'capability_type'       => 'post',
 		'show_in_rest' 			=> false,
-		'rest_base' 			=> 'post_type',
-		'rewrite'				=> array( 'slug' => 'post_type', 'with_front' => false ),
-		'has_archive' 			=> 'post_type',
+		'rest_base' 			=> 'custom_post_type',
+		'rewrite'				=> array( 'slug' => 'custom_post_type', 'with_front' => false ),
+		'has_archive' 			=> 'custom_post_type',
 		'menu_icon' 			=> '',
 	);
-	register_post_type( 'post_type', $args );
+	register_post_type( 'custom_post_type', $args );
 
 }
-add_action( 'init', 'bones_custom_post_types' );
+add_action( 'init', 'hummer_custom_post_types' );
 
 /**
  * Declare custom taxonomies.
  */
-function bones_custom_taxonomies() {
+function hummer_custom_taxonomies() {
 
 	$labels = array(
 		'name'                       	=> 'Taxonomies',
@@ -116,4 +116,4 @@ function bones_custom_taxonomies() {
 	register_taxonomy( 'taxonomy', array( 'post' ), $args );
 
 }
-add_action( 'init', 'bones_custom_taxonomies', 0 );
+add_action( 'init', 'hummer_custom_taxonomies', 0 );

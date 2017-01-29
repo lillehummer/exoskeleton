@@ -1,7 +1,0 @@
-{
-	"jsFiles": [
-    "./src/js/modules/*.js",
-		"./src/js/scripts.js"
-	],
-	"proxy": "lillehummernl.dev"
-}
