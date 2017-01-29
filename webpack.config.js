@@ -23,5 +23,9 @@ module.exports =  {
   },
   resolve: {
     modules: ['node_modules']
+  },
+  performance: {
+    maxAssetSize: 2500000,
+    maxEntrypointSize: 2500000
   }
 };

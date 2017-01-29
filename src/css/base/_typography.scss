@@ -1,3 +1,9 @@
+%heading-text {
+	font-family: $heading-text;
+	line-height: 1.2;
+	font-weight: normal;
+}
+
 h1,
 .h1,
 h2,
@@ -8,9 +14,7 @@ h4,
 .h4,
 h5,
 .h5 {
-    line-height: 1.2;
-    margin: 1rem 0;
-    font-family: $heading-text;
+    @extend %heading-text;
 }
 
 h1,
