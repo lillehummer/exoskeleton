@@ -5,8 +5,8 @@ mix.webpackConfig({
 		plugins: [
 			new BrowserSyncPlugin({
 				open: 'external',
-				host: 'debuurtcampingnl-gids.dev',
-				proxy: 'debuurtcampingnl-gids.dev',
+				host: 'lillehummernl.dev',
+				proxy: 'lillehummernl.dev',
 				files: ['*.php']
 			})
 		]

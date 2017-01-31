@@ -1,5 +1,5 @@
 {
-  "name": "debuurtcampingnl-gids",
+  "name": "lillehummernl",
   "description": "WordPress theme created by Lille Hummer.",
   "version": "0.3.0",
   "private": true,
@@ -11,6 +11,13 @@
     }
   ],
   "dependencies": {
+    "gulp": "*",
+    "gulp-util": "*",
+    "gulp-notify": "*",
+    "gulp-imagemin": "*",
+    "imagemin-pngquant": "*",
+    "gulp-changed": "*",
+    "gulp-plumber": "*",
     "laravel-mix": "*",
     "browser-sync": "*",
     "browser-sync-webpack-plugin": "*",
