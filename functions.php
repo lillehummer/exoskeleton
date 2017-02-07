@@ -7,9 +7,6 @@
  * @author Lille Hummer
  */
 
-?>
-
-<?php
 require_once( 'library/hummer.php' );
 require_once( 'library/admin.php' );
 
@@ -108,11 +105,6 @@ function hummer_scripts_and_styles() {
 
 		wp_dequeue_script( 'jquery' );
 		wp_deregister_script( 'jquery' );
-
-		if ( wp_script_is( 'wp-api', 'registered' ) ) {
-			wp_deregister_script( 'wp-api' );
-			wp_enqueue_script( 'wp-api', plugins_url( 'rest-api/wp-api.min.js' ), array(), '', true );
-		}
 
 		$manifest = file_get_contents( get_stylesheet_directory() . '/mix-manifest.json');
 		$manifest = json_decode($manifest, true);

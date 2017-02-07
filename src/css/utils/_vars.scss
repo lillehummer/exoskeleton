@@ -12,18 +12,20 @@ $outer-padding: 1.6rem;
 $max-width: 1180px !default;
 
 //Breakpoints
-$breakpoints: (small: 600px, medium: 900px, large: 1200px);
+$small: new-breakpoint(max-width 600px);
+$medium: new-breakpoint(max-width 900px);
+$large: new-breakpoint(max-width 1200px);
 
 body {
-	@include media('<large') {
+	@include media($small) {
         /* Medium */
     }
 
-    @include media('<medium') {
+    @include media($medium) {
         /* Medium */
     }
 
-    @include media('<small') {
+    @include media($large) {
         /* Small */
     }
 }
