@@ -110,7 +110,7 @@ function hummer_scripts_and_styles() {
 		$manifest = json_decode($manifest, true);
 
 		wp_enqueue_script( 'app', get_stylesheet_directory_uri() . '/' . $manifest['js/app.js'], array(), '', true );
-		wp_enqueue_style( 'style', get_stylesheet_directory_uri() . '/' . $manifest['js/style.css'], array(), '', 'all' );
+		wp_enqueue_style( 'style', get_stylesheet_directory_uri() . '/' . $manifest['css/style.css'], array(), '', 'all' );
 	}
 }
 
