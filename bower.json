@@ -5,9 +5,7 @@
    	"normalize.css": "*",
     "bourbon": "*",
     "neat": "*",
-    "include-media": "*",
     "enquire": "*",
-    "backbone": "*",
     "underscore": "*"
   },
   "overrides": {

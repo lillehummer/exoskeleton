@@ -7,6 +7,8 @@
  * @package lillehummernl
  */
 
+header("Link: </wp-content/themes/lillehummernl/css/style.css>; rel=preload; as=style", false);
+header("Link: </wp-content/themes/lillehummernl/js/app.js>; rel=preload; as=script", false);
 ?><!doctype html>
 
 <html <?php language_attributes(); ?>>

@@ -8,15 +8,6 @@
  */
 
 /**
- * Remove inline gallery styles.
- *
- * @param string $css gallery content.
- */
-function hummer_gallery_style( string $css ) {
-	return preg_replace( "!<style type='text/css'>(.*?)</style>!s", '', $css );
-}
-
-/**
  * Theme support.
  */
 function hummer_theme_support() {
@@ -67,15 +58,6 @@ function hummer_theme_support() {
 }
 
 /**
- * Remove paragraph around images.
- *
- * @param string $content post content.
- */
-function hummer_filter_ptags_on_images( $content ) {
-	return preg_replace( '/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content );
-}
-
-/**
  * Modify excerpt length.
  *
  * @param  [type] $length Length.
@@ -97,66 +79,6 @@ function hummer_excerpt_more( $more ) {
 }
 
 /**
- * Disable emojicons in TinyMCE.
- * @param  [type] $plugins [description]
- * @return [type]          [description]
- */
-function hummer_disable_emojicons_tinymce( $plugins ) {
-	if ( is_array( $plugins ) ) {
-		return array_diff( $plugins, array( 'wpemoji' ) );
-	} else {
-		return array();
-	}
-}
-
-/**
- * Disable emojicons.
- *
- * @return [type] [description]
- */
-function hummer_disable_wp_emojicons() {
-	remove_action( 'admin_print_styles', 'print_emoji_styles' );
-	remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-	remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
-	remove_action( 'wp_print_styles', 'print_emoji_styles' );
-	remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
-	remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
-	remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
-	add_filter( 'tiny_mce_plugins', 'hummer_disable_emojicons_tinymce' );
-}
-add_action( 'init', 'hummer_disable_wp_emojicons' );
-
-/**
- * Remove comments from dashboard.
- */
-function hummer_remove_menu_pages() {
-	remove_menu_page( 'edit-comments.php' );
-}
-add_action( 'admin_menu', 'hummer_remove_menu_pages' );
-
-/**
- * Remove comments from posts and pages.
- *
- * @return [type] [description]
- */
-function hummer_remove_comment_support() {
-	remove_post_type_support( 'post', 'comments' );
-	remove_post_type_support( 'page', 'comments' );
-}
-add_action( 'init', 'hummer_remove_comment_support', 100 );
-
-/**
- * Remove comments from admin bar.
- *
- * @return [type] [description]
- */
-function hummer_admin_bar_render() {
-	global $wp_admin_bar;
-	$wp_admin_bar->remove_menu( 'comments' );
-}
-add_action( 'wp_before_admin_bar_render', 'hummer_admin_bar_render' );
-
-/**
  * Add excerpts to pages.
  *
  *
@@ -166,16 +88,3 @@ function hummer_add_page_excerpt() {
 	add_post_type_support( 'page', array( 'excerpt' ) );
 }
 add_action( 'init', 'hummer_add_page_excerpt' );
-
-/**
- * [hummer_remove_ver_css_js description]
- * @param  [type] $src [description]
- * @return [type]      [description]
- */
-function hummer_remove_ver_css_js( $src ) {
-	if ( strpos( $src, 'ver=' ) )
-		$src = remove_query_arg( 'ver', $src );
-	return $src;
-}
-add_filter( 'style_loader_src', 'hummer_remove_ver_css_js', 9999 );
-add_filter( 'script_loader_src', 'hummer_remove_ver_css_js', 9999 );

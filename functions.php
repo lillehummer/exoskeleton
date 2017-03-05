@@ -8,6 +8,7 @@
  */
 
 require_once( 'library/hummer.php' );
+require_once( 'library/clean.php' );
 require_once( 'library/admin.php' );
 
 /**

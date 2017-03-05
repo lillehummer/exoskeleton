@@ -8,24 +8,43 @@ $heading-text: "Helvetica Neue", "HelveticaNeue", sans-serif;
 $body-text: "Helvetica Neue", "HelveticaNeue", sans-serif;
 
 // Grid
-$outer-padding: 1.6rem;
-$max-width: 1180px !default;
+$outer-padding: 2rem;
+$max-width: 1100px !default;
+
+$neat-grid: (
+  columns: 12,
+  gutter: 20px,
+);
 
 //Breakpoints
-$small: new-breakpoint(max-width 600px);
-$medium: new-breakpoint(max-width 900px);
-$large: new-breakpoint(max-width 1200px);
+$small: (
+  columns: 12,
+  gutter: 50px,
+  media: 600px,
+);
+
+$medium: (
+  columns: 12,
+  gutter: 50px,
+  media: 900px,
+);
+
+$large: (
+  columns: 12,
+  gutter: 50px,
+  media: 1200px,
+);
 
 body {
-	@include media($small) {
-        /* Medium */
-    }
-
-    @include media($medium) {
-        /* Medium */
-    }
-
-    @include media($large) {
+    @include grid-media($small) {
         /* Small */
+    }
+
+    @include grid-media($medium) {
+        /* Medium */
+    }
+
+    @include grid-media($large) {
+        /* Large */
     }
 }
