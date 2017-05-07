@@ -69,6 +69,15 @@ var config =  {
       port: 3000,
       proxy: process.env.PROXY,
       notify: false,
+      cors: true,
+      snippetOptions: {
+        rule: {
+          match: /<\/head>/i,
+          fn: function (snippet, match) {
+            return snippet + match;
+          }
+        }
+      },
       files: ['./css/style.css', './*.php', './**/*.php', './**/**/*.php']
     })
   ],

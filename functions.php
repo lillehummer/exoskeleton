@@ -107,11 +107,11 @@ function hummer_scripts_and_styles() {
 		wp_dequeue_script( 'jquery' );
 		wp_deregister_script( 'jquery' );
 
-		$manifest = file_get_contents( get_stylesheet_directory() . '/mix-manifest.json');
+		$manifest = file_get_contents( get_stylesheet_directory() . '/manifest.json');
 		$manifest = json_decode($manifest, true);
 
-		wp_enqueue_script( 'app', get_stylesheet_directory_uri() . '/' . $manifest['js/app.js'], array(), '', true );
-		wp_enqueue_style( 'style', get_stylesheet_directory_uri() . '/' . $manifest['css/style.css'], array(), '', 'all' );
+		wp_enqueue_script( 'app', get_stylesheet_directory_uri() . '/' . $manifest['app.js'], array(), '', true );
+		wp_enqueue_style( 'style', get_stylesheet_directory_uri() . '/' . $manifest['app.css'], array(), '', 'all' );
 	}
 }
 
