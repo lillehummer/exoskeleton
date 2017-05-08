@@ -19,6 +19,8 @@
     "gulp-plumber": "*",
     "eslint": "*",
     "eslint-plugin-standard": "*",
+    "browser-sync": "*",
+    "node-sass": "*",
     "dotenv": "*",
     "cross-env": "*",
     "webpack": "^2.0.0",
