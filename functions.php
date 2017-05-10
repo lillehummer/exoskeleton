@@ -35,6 +35,8 @@ function hummer_ahoy() {
 
 	add_action( 'widgets_init', 'hummer_register_sidebars' );
 
+	add_filter('acf/settings/remove_wp_meta_box', '__return_true');
+
 }
 
 add_action( 'after_setup_theme', 'hummer_ahoy' );
