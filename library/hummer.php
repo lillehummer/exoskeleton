@@ -1,6 +1,6 @@
 <?php
 /**
- * Exoskeleton utility functions.
+ * Sabi utility functions.
  *
  * @category function library
  * @package lillehummernl

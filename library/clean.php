@@ -1,6 +1,6 @@
 <?php
 /**
- * Exoskeleton cleanup functions.
+ * Sabi cleanup functions.
  *
  * @category function library
  * @package lillehummernl

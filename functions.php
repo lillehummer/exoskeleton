@@ -1,6 +1,6 @@
 <?php
 /**
- * Exoskeleton theme functions.
+ * Sabi theme functions.
  *
  * @category functions
  * @package lillehummernl
