@@ -4,6 +4,7 @@ var gulp = require('gulp');
 // Include plugins
 var gulpUtil = require('gulp-util');
 var imagemin = require('gulp-imagemin');
+var changed = require('gulp-changed');
 var pngquant = require('imagemin-pngquant');
 var plumber = require('gulp-plumber');
 var notify = require('gulp-notify');

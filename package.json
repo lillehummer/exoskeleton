@@ -15,6 +15,7 @@
     "gulp-util": "*",
     "gulp-notify": "*",
     "gulp-imagemin": "*",
+    "gulp-changed": "*",
     "imagemin-pngquant": "*",
     "gulp-plumber": "*",
     "eslint": "*",
