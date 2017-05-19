@@ -4,9 +4,15 @@
 // - Hot module reloading
 // - Friendly errors
 // - Performance
-// - Image optimisation
+// - Image optimisation, progressive JPG, SVGO
 // - Prod/Dev plugins
 // - More PostCSS
+// - Lazy loading chunks
+// - Extract plugin and Loader Options plugin
+// - Sourcemaps
+// - Base64 encode small images/icons
+// - Remove old files with hash
+// - Use Webpack Blocks
 
 var webpack = require('webpack');
 var path = require('path');
