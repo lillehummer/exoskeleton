@@ -1,18 +1,11 @@
 // TODO:
-// - Vendor bundling
-// - OSX notifications
 // - Hot module reloading
-// - Friendly errors
 // - Performance
 // - Image optimisation, progressive JPG, SVGO
 // - Prod/Dev plugins
 // - More PostCSS
-// - Lazy loading chunks
-// - Extract plugin and Loader Options plugin
-// - Sourcemaps
 // - Base64 encode small images/icons
-// - Remove old files with hash
-// - Use Webpack Blocks
+// - https://github.com/th0r/webpack-bundle-analyzer
 
 var webpack = require('webpack');
 var path = require('path');
@@ -23,13 +16,16 @@ var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 var ManifestPlugin = require('webpack-manifest-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
+var WebpackNotifierPlugin = require('webpack-notifier');
 
 var env = process.env.NODE_ENV || 'development';
 var isProd = (env === 'production');
 
 var config =  {
   entry: {
-    app: ['./src/js/app.js', './src/css/style.scss']
+    app: ['./src/js/app.js', './src/css/style.scss'],
+    vendor: ['jquery']
   },
   output: {
     filename: isProd ? './js/[name].[hash].js' : './js/[name].js'
@@ -68,6 +64,8 @@ var config =  {
     ]
   },
   plugins: [
+    new WebpackNotifierPlugin({alwaysNotify: true}),
+    new CleanWebpackPlugin(['css', 'js']),
     new ManifestPlugin(),
     new ExtractTextPlugin( isProd ? './css/style.[hash].css' : './css/style.css' ),
     new BrowserSyncPlugin({

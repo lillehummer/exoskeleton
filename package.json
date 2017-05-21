@@ -37,6 +37,8 @@
     "browser-sync-webpack-plugin": "*",
     "webpack-manifest-plugin": "*",
     "uglifyjs-webpack-plugin": "*",
+    "clean-webpack-plugin": "*",
+    "webpack-notifier": "*",
     "vue-template-compiler": "*",
     "stylelint": "*",
     "vue": "*",
