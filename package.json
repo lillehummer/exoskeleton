@@ -10,6 +10,12 @@
       "web": "http://lillehummer.nl"
     }
   ],
+  "ava": {
+    "require": [
+      "babel-register",
+      "./test/helpers/setup-browser-env.js"
+    ]
+  },
   "dependencies": {
     "gulp": "*",
     "gulp-util": "*",
@@ -45,6 +51,12 @@
     "jquery": "*",
     "modernizr": "*",
     "axios": "*"
+  },
+  "devDependencies": {
+    "ava": "*",
+    "babel-register": "*",
+    "browser-env": "*",
+    "babel-preset-es2015": "*"
   },
   "scripts": {
     "webpack": "cross-env NODE_ENV=development webpack --progress --hide-modules",
