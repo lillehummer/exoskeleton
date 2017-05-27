@@ -13,26 +13,26 @@ $max-width: 1100px !default;
 
 $neat-grid: (
   columns: 12,
-  gutter: 20px,
+  gutter: 40px,
 );
 
 //Breakpoints
 $small: (
   columns: 12,
-  gutter: 50px,
-  media: 600px,
+  gutter: 40px,
+  media: '(max-width: 600px)'
 );
 
 $medium: (
   columns: 12,
-  gutter: 50px,
-  media: 900px,
+  gutter: 40px,
+  media: '(max-width: 900px)'
 );
 
 $large: (
   columns: 12,
-  gutter: 50px,
-  media: 1200px,
+  gutter: 40px,
+  media: '(max-width: 1200px)'
 );
 
 body {
