@@ -24,8 +24,6 @@
     "gulp-changed": "*",
     "imagemin-pngquant": "*",
     "gulp-plumber": "*",
-    "eslint": "*",
-    "eslint-plugin-standard": "*",
     "browser-sync": "*",
     "node-sass": "*",
     "dotenv": "*",
@@ -50,7 +48,10 @@
     "vue": "*",
     "jquery": "*",
     "modernizr": "*",
-    "axios": "*"
+    "axios": "*",
+    "normalize.css": "*",
+    "bourbon": "*",
+    "bourbon-neat": "*"
   },
   "devDependencies": {
     "ava": "*",

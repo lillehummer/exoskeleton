@@ -7,25 +7,24 @@
 // - Base64 encode small images/icons
 // - https://github.com/th0r/webpack-bundle-analyzer
 
-var webpack = require('webpack');
-var path = require('path');
+let webpack = require('webpack');
 
-require('dotenv').config({path: __dirname + '/../../../.env'})
+require('dotenv').config({ path: __dirname + '/../../../.env' } );
 
-var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-var ManifestPlugin = require('webpack-manifest-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-var CleanWebpackPlugin = require('clean-webpack-plugin');
-var WebpackNotifierPlugin = require('webpack-notifier');
+let UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+let ManifestPlugin = require('webpack-manifest-plugin');
+let ExtractTextPlugin = require('extract-text-webpack-plugin');
+let BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+let CleanWebpackPlugin = require('clean-webpack-plugin');
+let WebpackNotifierPlugin = require('webpack-notifier');
 
-var env = process.env.NODE_ENV || 'development';
-var isProd = (env === 'production');
+let env = process.env.NODE_ENV || 'development';
+let isProd = (env === 'production');
 
-var config =  {
+let config = {
   entry: {
     app: ['./src/js/app.js', './src/css/style.scss'],
-    vendor: ['jquery']
+    vendor: ['jquery', 'vue', 'vuex', 'vue-router', 'vuex-router-sync', 'gsap', 'lodash']
   },
   output: {
     filename: isProd ? './js/[name].[hash].js' : './js/[name].js'
@@ -37,7 +36,7 @@ var config =  {
         exclude: [/(node_modules|bower)/],
         use: [{
           loader: 'buble-loader',
-          options: { objectAssign: 'Object.assign' },
+          options: { objectAssign: 'Object.assign' }
         }]
       },
       {
@@ -45,29 +44,31 @@ var config =  {
         loader: 'vue-loader'
       },
       {
-          test: /\.(scss)$/,
-          use: ExtractTextPlugin.extract([
+        test: /\.(scss)$/,
+        use: ExtractTextPlugin.extract([
             {
-              loader: 'css-loader',
-              options: {
-                url: false,
-                minimize: isProd ? true : false
-              }
+                loader: 'css-loader',
+                options: {
+                    url: false,
+                    minimize: isProd
+                },
             },
             'postcss-loader',
             {
-              loader: "sass-loader", options: {
+              loader: 'sass-loader',
+              options: {
               }
             }
-          ])
-        }
-    ]
+        ])
+        },
+    ],
   },
   plugins: [
-    new WebpackNotifierPlugin({alwaysNotify: true}),
+    new webpack.optimize.CommonsChunkPlugin('vendor'),
+    new WebpackNotifierPlugin({ alwaysNotify: true }),
     new CleanWebpackPlugin(['css', 'js']),
     new ManifestPlugin(),
-    new ExtractTextPlugin( isProd ? './css/style.[hash].css' : './css/style.css' ),
+    new ExtractTextPlugin(isProd ? './css/style.[hash].css' : './css/style.css'),
     new BrowserSyncPlugin({
       host: 'localhost',
       port: 3000,
@@ -77,16 +78,19 @@ var config =  {
       snippetOptions: {
         rule: {
           match: /<\/head>/i,
-          fn: function (snippet, match) {
+          fn(snippet, match) {
             return snippet + match;
           }
         }
       },
-      files: ['./css/style.css', './*.php', './**/*.php', './**/**/*.php']
+      files: ['./*.php', './**/*.php', './**/**/*.php']
     })
   ],
   resolve: {
-    modules: ['node_modules']
+    modules: ['node_modules'],
+    alias: {
+      'vue$': 'vue/dist/vue.js'
+    }
   },
   performance: {
     maxAssetSize: 2500000,
@@ -94,7 +98,7 @@ var config =  {
   },
   devServer: {
     headers: {
-        "Access-Control-Allow-Origin": "*"
+        'Access-Control-Allow-Origin': '*'
     },
     historyApiFallback: true,
     noInfo: true,
@@ -103,7 +107,7 @@ var config =  {
   }
 };
 
-if ( isProd ) {
+if (isProd) {
     config.plugins.push(
         new UglifyJSPlugin({
           mangle: {
