@@ -64,6 +64,7 @@ let config = {
     ],
   },
   plugins: [
+  	new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.optimize.CommonsChunkPlugin('vendor'),
     new WebpackNotifierPlugin({ alwaysNotify: true }),
     new CleanWebpackPlugin(['css', 'js']),

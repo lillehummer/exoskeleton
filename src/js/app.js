@@ -1,3 +1,5 @@
+'use strict';
+
 import $ from 'jquery';
 // import Vue from 'vue';
 // import modernizr from 'modernizr';

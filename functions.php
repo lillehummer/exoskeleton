@@ -16,7 +16,7 @@ require_once( 'library/admin.php' );
  */
 function hummer_ahoy() {
 
-	add_editor_style( get_stylesheet_directory_uri() . '/library/css/editor-style.css' );
+	// add_editor_style( get_stylesheet_directory_uri() . '/library/css/editor-style.css' );
 
 	load_theme_textdomain( 'lillehummernl', get_template_directory() . '/languages' );
 
