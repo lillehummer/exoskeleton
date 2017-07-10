@@ -10,6 +10,7 @@
 require_once( 'library/hummer.php' );
 require_once( 'library/clean.php' );
 require_once( 'library/admin.php' );
+require_once( 'library/shortcodes.php' );
 
 /**
  * Setup theme.
@@ -37,6 +38,7 @@ function hummer_ahoy() {
 
 	add_filter('acf/settings/remove_wp_meta_box', '__return_true');
 
+	add_filter( 'pre_option_rg_gforms_disable_css', '__return_true' );
 }
 
 add_action( 'after_setup_theme', 'hummer_ahoy' );
@@ -112,9 +114,14 @@ function hummer_scripts_and_styles() {
 		$manifest = file_get_contents( get_stylesheet_directory() . '/manifest.json');
 		$manifest = json_decode($manifest, true);
 
-		wp_enqueue_script( 'vendor', get_stylesheet_directory_uri() . '/' . $manifest['vendor.js'], array(), '', true );
-		wp_enqueue_script( 'app', get_stylesheet_directory_uri() . '/' . $manifest['app.js'], array(), '', true );
-		wp_enqueue_style( 'style', get_stylesheet_directory_uri() . '/' . $manifest['app.css'], array(), '', 'all' );
+		$basePath = (getenv('ENVIRONMENT') == 'development') ? 'http://localhost:8080/wp-content/themes/lillehummernl' : get_stylesheet_directory_uri();
+
+		wp_enqueue_script( 'vendor', $basePath . '/' . $manifest['vendor.js'], array(), '', true );
+		wp_enqueue_script( 'app', $basePath . '/' . $manifest['app.js'], array(), '', true );
+
+		if ( getenv('ENVIRONMENT') != 'development' ) {
+			wp_enqueue_style( 'style', get_stylesheet_directory_uri() . '/' . $manifest['app.css'], array(), '', 'all' );
+		}
 	}
 }
 

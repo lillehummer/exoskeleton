@@ -23,8 +23,7 @@ let config = {
     vendor: ['jquery', 'vue', 'vuex', 'vue-router', 'vuex-router-sync', 'gsap', 'lodash']
   },
   output: {
-    filename: './js/[name].js',
-    publicPath: 'http://localhost:8080/wp-content/themes/lillehummernl/'
+    filename: './js/[name].[hash].js'
   },
   module: {
     loaders: [
@@ -42,12 +41,12 @@ let config = {
       },
       {
         test: /\.(scss)$/,
-        use: [
+        use: ExtractTextPlugin.extract([
             {
                 loader: 'css-loader',
                 options: {
                     url: false,
-                    minimize: false
+                    minimize: true
                 },
             },
             'postcss-loader',
@@ -56,8 +55,8 @@ let config = {
               options: {
               }
             }
-       	]
-      },
+        ])
+        },
     ],
   },
   plugins: [
@@ -66,24 +65,12 @@ let config = {
     new WebpackNotifierPlugin({ alwaysNotify: true }),
     new CleanWebpackPlugin(['css', 'js']),
     new ManifestPlugin(),
-    new BrowserSyncPlugin({
-      host: 'localhost',
-      port: 3000,
-      proxy: process.env.PROXY,
-      notify: false,
-      cors: true,
-      snippetOptions: {
-        rule: {
-          match: /<\/head>/i,
-          fn(snippet, match) {
-            return snippet + match;
-          }
-        }
-      },
-      files: ['./*.php', './**/*.php', './**/**/*.php']
-    }, {
-	    reload: false
-	  })
+    new ExtractTextPlugin('./css/style.[hash].css'),
+    new UglifyJSPlugin({
+      mangle: {
+        except: ['$', 'exports', 'require', 'import']
+      }
+    })
   ],
   resolve: {
     modules: ['node_modules'],
@@ -94,15 +81,6 @@ let config = {
   performance: {
     maxAssetSize: 2500000,
     maxEntrypointSize: 2500000
-  },
-  devServer: {
-    headers: {
-        'Access-Control-Allow-Origin': '*'
-    },
-    historyApiFallback: true,
-    noInfo: true,
-    compress: true,
-    quiet: true
   }
 };
 

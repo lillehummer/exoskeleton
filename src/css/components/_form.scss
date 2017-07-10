@@ -33,3 +33,291 @@ img.gform_ajax_spinner {
         }
     }
 }
+
+label {
+}
+
+input[type="text"],
+input[type="search"],
+input[type="password"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="tel"],
+input[type="file"],
+textarea,
+select {
+	&:focus {
+	}
+}
+
+input[type="file"] {
+	&:hover {
+
+	}
+}
+
+input[type="search"] {
+}
+
+select {
+}
+
+select[multiple],
+select[size] {
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+}
+
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button {
+	&:hover {
+	}
+}
+
+input[type="checkbox"],
+input[type="radio"],
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button {
+	&:focus {
+	}
+}
+
+.ginput_complex,
+.clear-multi,
+.ginput_full,
+.gf_list_2col,
+.gf_list_3col,
+.gf_list_4col,
+.gf_list_5col,
+.gf_list_inline,
+.gf_page_steps,
+.ui-datepicker-header {
+}
+
+.gform_wrapper form {
+}
+
+.gform_heading {
+	.gform_title {
+	}
+}
+
+.gsection {
+	.gsection_title {
+	}
+}
+
+.gfield_required {
+}
+
+.ginput_complex label {
+}
+
+.gform_fields {
+}
+
+.gfield {
+}
+
+.gfield_description {
+}
+
+.validation_message {
+}
+
+.gfield_checkbox,
+.gfield_radio {
+	input {
+	}
+}
+
+.gfield_radio {
+	input[type="text"] {
+	}
+}
+
+.ginput_complex {
+	.ginput_left {
+	}
+
+	.ginput_right {
+	}
+}
+
+.name_prefix {
+}
+
+.name_first {
+}
+
+.name_last {
+}
+
+.name_suffix {
+}
+
+input.datepicker_with_icon {
+}
+
+.gfield_date_month,
+.gfield_date_dropdown_month {
+}
+
+.gfield_date_day,
+.gfield_date_dropdown_day {
+}
+
+.gfield_date_year,
+.gfield_date_dropdown_year {
+}
+
+.gfield_time_hour {
+	input {
+	}
+
+	label {
+	}
+}
+
+.gfield_time_minute {
+}
+
+.gfield_time_ampm {
+}
+
+.gfield,
+.gform_footer {
+}
+
+.gf_left_half {
+}
+
+.gf_right_half {
+}
+
+.gf_left_third {
+}
+
+.gf_middle_third {
+}
+
+.gf_right_third {
+}
+
+.gf_inline {
+}
+
+.gf_list_2col li {
+}
+
+.gf_list_3col li {
+}
+
+.gf_list_4col li {
+}
+
+.gf_list_5col li {
+}
+
+.gf_list_inline li {
+}
+
+.gf_list_height_25 li {
+}
+
+.gf_list_height_50 li {
+}
+
+.gf_list_height_75 li {
+}
+
+.gf_list_height_100 li {
+}
+
+.gf_list_height_125 li {
+}
+
+.gf_list_height_150 li {
+}
+
+.gfield_list {
+}
+
+.gfield_list > tbody > tr:nth-child(odd) > td,
+.gfield_list > tbody > tr:nth-child(odd) > th {
+}
+
+.gfield_list > thead > tr > th {
+}
+
+.gf_scroll_text {
+	p:last-of-type {
+	}
+}
+
+.gf_hide_ampm {
+	.gfield_time_ampm {
+	}
+}
+
+.gf_hide_charleft {
+	.charleft {
+	}
+}
+
+.gf_page_steps {
+}
+
+.gf_step {
+	&:last-of-type {
+	}
+}
+
+.gf_step_active {
+}
+
+.gf_step_number {
+}
+
+.gfield_error {
+
+	> label,
+	.validation_message {
+	}
+
+	input,
+	textarea,
+	select {
+
+		&:focus {
+		}
+	}
+}
+
+.gform_validation_container {
+	display: none;
+	position: absolute;
+	left: -9000px;
+}
+
+.ui-datepicker {
+}
+
+.ui-datepicker-prev {
+}
+
+.ui-datepicker-next {
+}
+
+.ui-datepicker-title {
+
+	select {
+	}
+}

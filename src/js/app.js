@@ -1,5 +1,7 @@
 'use strict';
 
+import '../css/style.scss';
+
 import $ from 'jquery';
 // import Vue from 'vue';
 // import modernizr from 'modernizr';
