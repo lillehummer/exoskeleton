@@ -19,7 +19,7 @@ let WebpackNotifierPlugin = require('webpack-notifier');
 
 let config = {
   entry: {
-    app: ['./src/js/app.js'],
+    app: ['./src/js/app.js', 'webpack-hot-middleware/client'],
     vendor: ['jquery', 'vue', 'vuex', 'vue-router', 'vuex-router-sync', 'gsap', 'lodash']
   },
   output: {
@@ -61,29 +61,12 @@ let config = {
     ],
   },
   plugins: [
+  	new webpack.HotModuleReplacementPlugin(),
   	new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.optimize.CommonsChunkPlugin('vendor'),
     new WebpackNotifierPlugin({ alwaysNotify: true }),
     new CleanWebpackPlugin(['css', 'js']),
-    new ManifestPlugin(),
-    new BrowserSyncPlugin({
-      host: 'localhost',
-      port: 3000,
-      proxy: process.env.PROXY,
-      notify: false,
-      cors: true,
-      snippetOptions: {
-        rule: {
-          match: /<\/head>/i,
-          fn(snippet, match) {
-            return snippet + match;
-          }
-        }
-      },
-      files: ['./*.php', './**/*.php', './**/**/*.php']
-    }, {
-	    reload: false
-	  })
+    new ManifestPlugin()
   ],
   resolve: {
     modules: ['node_modules'],
@@ -94,15 +77,6 @@ let config = {
   performance: {
     maxAssetSize: 2500000,
     maxEntrypointSize: 2500000
-  },
-  devServer: {
-    headers: {
-        'Access-Control-Allow-Origin': '*'
-    },
-    historyApiFallback: true,
-    noInfo: true,
-    compress: true,
-    quiet: true
   }
 };
 

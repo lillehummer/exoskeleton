@@ -6,6 +6,7 @@ var gulpUtil = require('gulp-util');
 var imagemin = require('gulp-imagemin');
 var changed = require('gulp-changed');
 var pngquant = require('imagemin-pngquant');
+var kraken = require('gulp-kraken');
 var plumber = require('gulp-plumber');
 var notify = require('gulp-notify');
 var exec = require('child_process').exec;
@@ -44,6 +45,12 @@ var onError = function(err) {
                 svgoPlugins: [{removeViewBox: false}],
                 use: [pngquant()]
             }))
+            .pipe(kraken({
+	            key: '15385d7f05c98978554480e10ef224bf',
+	            secret: '0c1ee8098cd1e4884acbd671c57a73f04eca9147',
+	            lossy: true,
+	            concurrency: 6
+	        }))
             .pipe(gulp.dest('img'))
             .pipe(notify(notification));
 

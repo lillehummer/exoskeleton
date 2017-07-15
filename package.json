@@ -23,12 +23,15 @@
     "gulp-imagemin": "*",
     "gulp-changed": "*",
     "imagemin-pngquant": "*",
+    "gulp-kraken": "*",
     "gulp-plumber": "*",
     "browser-sync": "*",
     "node-sass": "*",
     "dotenv": "*",
     "cross-env": "*",
     "webpack": "^2.0.0",
+    "webpack-dev-middleware": "*",
+    "webpack-hot-middleware": "*",
     "webpack-stream": "*",
     "buble": "^0.14.2",
     "buble-loader": "^0.3.2",
@@ -63,6 +66,7 @@
     "webpack": "cross-env NODE_ENV=development webpack --progress --hide-modules",
     "dev": "cross-env NODE_ENV=development webpack --watch --progress --hide-modules",
     "hmr": "cross-env NODE_ENV=development webpack-dev-server --inline --hot",
-    "production": "cross-env NODE_ENV=production webpack --progress --hide-modules --config=webpack.production.config.js"
+    "production": "cross-env NODE_ENV=production webpack --progress --hide-modules --config=webpack.production.config.js",
+    "start": "node --harmony ./src/start.js"
   }
 }

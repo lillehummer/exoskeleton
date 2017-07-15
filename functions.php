@@ -114,14 +114,9 @@ function hummer_scripts_and_styles() {
 		$manifest = file_get_contents( get_stylesheet_directory() . '/manifest.json');
 		$manifest = json_decode($manifest, true);
 
-		$basePath = (getenv('ENVIRONMENT') == 'development') ? 'http://localhost:8080/wp-content/themes/lillehummernl' : get_stylesheet_directory_uri();
-
-		wp_enqueue_script( 'vendor', $basePath . '/' . $manifest['vendor.js'], array(), '', true );
-		wp_enqueue_script( 'app', $basePath . '/' . $manifest['app.js'], array(), '', true );
-
-		if ( getenv('ENVIRONMENT') != 'development' ) {
-			wp_enqueue_style( 'style', get_stylesheet_directory_uri() . '/' . $manifest['app.css'], array(), '', 'all' );
-		}
+		wp_enqueue_script( 'vendor', get_stylesheet_directory_uri() . '/' . $manifest['vendor.js'], array(), '', true );
+		wp_enqueue_script( 'app', get_stylesheet_directory_uri() . '/' . $manifest['app.js'], array(), '', true );
+		wp_enqueue_style( 'style', get_stylesheet_directory_uri() . '/' . $manifest['app.css'], array(), '', 'all' );
 	}
 }
 

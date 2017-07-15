@@ -1,3 +1,12 @@
-# # WordPress theme developed by Lille Hummer
+# WordPress theme developed by 101010
+============
 
-WordPress framework developed by Lille Hummer.
+## Setup
+
+### Development
+
+Run `npm run start`.
+
+### Production
+
+Run `npm run production`.
