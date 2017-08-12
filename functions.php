@@ -49,28 +49,6 @@ add_action( 'after_setup_theme', 'hummer_ahoy' );
 function hummer_setup_theme() {
 	update_option( 'image_default_link_type','none' );
 
-	$catalog = array(
-		'width' 	=> '100',
-		'height'	=> '100',
-		'crop'		=> 1,
-	);
-
-	$single = array(
-		'width' 	=> '100',
-		'height'	=> '100',
-		'crop'		=> 1,
-	);
-
-	$thumbnail = array(
-		'width' 	=> '100',
-		'height'	=> '100',
-		'crop'		=> 1,
-	);
-
-	update_option( 'shop_catalog_image_size', $catalog );
-	update_option( 'shop_single_image_size', $single );
-	update_option( 'shop_thumbnail_image_size', $thumbnail );
-
 	update_option( 'thumbnail_size_w', 100 );
 	update_option( 'thumbnail_size_h', 100 );
 	update_option( 'thumbnail_crop', 1 );
@@ -108,8 +86,7 @@ function hummer_scripts_and_styles() {
 	global $wp_styles;
 	if ( ! is_admin() ) {
 
-		wp_dequeue_script( 'jquery' );
-		wp_deregister_script( 'jquery' );
+		wp_enqueue_script( 'jquery' );
 
 		$manifest = file_get_contents( get_stylesheet_directory() . '/manifest.json');
 		$manifest = json_decode($manifest, true);

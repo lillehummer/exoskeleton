@@ -1,3 +1,7 @@
+/**
+ *
+ */
+
 var browserSync = require('browser-sync').create();
 var webpack = require('webpack');
 var webpackDevMiddleware = require('webpack-dev-middleware');

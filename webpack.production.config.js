@@ -1,10 +1,7 @@
-// TODO:
-// - Hot module reloading
-// - Performance
-// - Image optimisation, progressive JPG, SVGO
-// - More PostCSS
-// - Base64 encode small images/icons
-// - https://github.com/th0r/webpack-bundle-analyzer
+/**
+ * [webpack description]
+ * @type {[type]}
+ */
 
 let webpack = require('webpack');
 
@@ -13,17 +10,20 @@ require('dotenv').config({ path: __dirname + '/../../../.env' } );
 let ButternutWebpackPlugin = require('butternut-webpack-plugin');
 let ManifestPlugin = require('webpack-manifest-plugin');
 let ExtractTextPlugin = require('extract-text-webpack-plugin');
-let BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 let CleanWebpackPlugin = require('clean-webpack-plugin');
 let WebpackNotifierPlugin = require('webpack-notifier');
 
 let config = {
   entry: {
     app: ['./src/js/app.js'],
-    vendor: ['jquery', 'vue', 'vuex', 'vue-router', 'vuex-router-sync', 'gsap', 'lodash']
+    vendor: ['jquery'],
+    login: ['./src/css/login.scss']
   },
   output: {
     filename: './js/[name].[hash].js'
+  },
+  {
+    externals: { jquery: "jQuery" }
   },
   module: {
     loaders: [
@@ -61,11 +61,11 @@ let config = {
   },
   plugins: [
   	new webpack.optimize.ModuleConcatenationPlugin(),
-    new webpack.optimize.CommonsChunkPlugin('vendor'),
-    new WebpackNotifierPlugin({ alwaysNotify: true }),
+    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.[hash].js'),
+    new WebpackNotifierPlugin(),
     new CleanWebpackPlugin(['css', 'js']),
     new ManifestPlugin(),
-    new ExtractTextPlugin('./css/style.[hash].css'),
+    new ExtractTextPlugin('./css/[name].[hash].css'),
     new ButternutWebpackPlugin()
   ],
   resolve: {

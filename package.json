@@ -1,6 +1,6 @@
 {
   "name": "lillehummernl",
-  "description": "WordPress theme created by Lille Hummer.",
+  "description": "WordPress starter theme created by 101010.",
   "version": "0.4.0",
   "private": true,
   "maintainers": [
@@ -29,16 +29,16 @@
     "node-sass": "*",
     "dotenv": "*",
     "cross-env": "*",
-    "webpack": "^2.0.0",
+    "webpack": "*",
     "webpack-dev-middleware": "*",
     "webpack-hot-middleware": "*",
-    "webpack-stream": "*",
-    "buble": "^0.14.2",
-    "buble-loader": "^0.3.2",
+    "buble": "*",
+    "buble-loader": "*",
     "vue-loader": "*",
     "css-loader": "*",
     "style-loader": "*",
     "sass-loader": "*",
+    "file-loader": "*",
     "postcss-loader": "*",
     "extract-text-webpack-plugin": "*",
     "browser-sync-webpack-plugin": "*",
@@ -65,8 +65,8 @@
   "scripts": {
     "webpack": "cross-env NODE_ENV=development webpack --progress --hide-modules",
     "dev": "cross-env NODE_ENV=development webpack --watch --progress --hide-modules",
-    "hmr": "cross-env NODE_ENV=development webpack-dev-server --inline --hot",
     "production": "cross-env NODE_ENV=production webpack --progress --hide-modules --config=webpack.production.config.js",
-    "start": "node --harmony ./src/start.js"
+    "start": "node --harmony ./src/start.js",
+    "export": "wp search-replace lillehummernl.dev lillehummer.nl --export=export.sql"
   }
 }
