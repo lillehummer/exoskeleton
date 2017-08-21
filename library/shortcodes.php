@@ -8,7 +8,7 @@
  */
 
 add_action( 'init', 'hummer_register_shortcodes' );
-function shortcode_ui_dev_register_shortcodes() {
+function hummer_register_shortcodes() {
 	add_shortcode( 'button', 'hummer_shortcode_button' );
 }
 

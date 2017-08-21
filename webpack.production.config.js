@@ -22,9 +22,7 @@ let config = {
   output: {
     filename: './js/[name].[hash].js'
   },
-  {
-    externals: { jquery: "jQuery" }
-  },
+  externals: { jquery: "jQuery" },
   module: {
     loaders: [
       {

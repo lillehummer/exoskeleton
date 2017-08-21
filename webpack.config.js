@@ -20,9 +20,7 @@ let config = {
     filename: './js/[name].js',
     publicPath: 'http://localhost:3000/wp-content/themes/lillehummernl/'
   },
-  {
-    externals: { jquery: "jQuery" }
-  },
+  externals: { jquery: "jQuery" },
   module: {
     loaders: [
       {
