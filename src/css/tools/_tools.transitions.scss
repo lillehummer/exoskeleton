@@ -1,0 +1,15 @@
+
+/**
+ * TOOLS > TRANSITIONS
+ */
+
+@mixin pseudo-state-transition($property: all) {
+  transition: $property $animation-speed-out;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.is-active {
+    transition-duration: $animation-speed-in;
+  }
+}

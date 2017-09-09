@@ -1,0 +1,32 @@
+
+/**
+ * SETTINGS > TYPOGRAPHY
+ */
+
+// Font families.
+$font-family-body: Helvetica, Arial, sans-serif;
+
+// Font sizes.
+$font-size-xsmall: 1.2rem;
+$font-size-small: 1.6rem;
+$font-size-medium: 1.8rem;
+$font-size-large: 2.4rem;
+$font-size-xlarge: 4.8rem;
+$font-size-huge: 8.0rem;
+
+// Heading sizes.
+$font-size-h1: $font-size-xlarge;
+$font-size-h2: $font-size-large;
+$font-size-h3: $font-size-medium;
+$font-size-h4: $font-size-small;
+$font-size-h5: $font-size-small;
+$font-size-h6: $font-size-small;
+
+// Root font sizes.
+$font-size-root: 10px;
+$font-size-body: $font-size-small;
+
+// Line heights.
+$font-line-height-small: 1.2;
+$font-line-height-medium: 1.4;
+$font-line-height-large: 1.8;

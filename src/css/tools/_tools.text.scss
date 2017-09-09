@@ -1,0 +1,25 @@
+
+/**
+ * TOOLS > TEXT
+ */
+
+@mixin text-break-long-words() {
+  hyphens: auto;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+@mixin text-ellipsis($display: block, $width: 100%) {
+  display: $display;
+  max-width: $width;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin text-hide() {
+  overflow: hidden;
+  text-indent: 101%;
+  white-space: nowrap;
+}
+

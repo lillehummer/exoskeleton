@@ -43,7 +43,7 @@
     "extract-text-webpack-plugin": "*",
     "browser-sync-webpack-plugin": "*",
     "webpack-manifest-plugin": "*",
-    "butternut-webpack-plugin": "*",
+    "uglifyjs-webpack-plugin": "*",
     "clean-webpack-plugin": "*",
     "webpack-notifier": "*",
     "vue-template-compiler": "*",
@@ -52,9 +52,11 @@
     "jquery": "*",
     "modernizr": "*",
     "axios": "*",
-    "normalize.css": "*",
-    "bourbon": "*",
-    "bourbon-neat": "*"
+    "lodash": "*",
+    "ramda": "*",
+    "is_js": "*",
+    "sanitize.css": "*",
+    "sass-mq": "*"
   },
   "devDependencies": {
     "ava": "*",

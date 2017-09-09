@@ -1,18 +1,20 @@
-'use strict';
+'use strict'
 
-import '../css/style.scss';
-import '../css/login.scss';
+import '../css/style.scss'
+import '../css/login.scss'
 
 if (module.hot) {
-  module.hot.accept();
+  module.hot.accept()
 }
 
-import $ from 'jquery';
-// import Vue from 'vue';
-// import modernizr from 'modernizr';
+import $ from 'jquery'
+// import Vue from 'vue'
+// import modernizr from 'modernizr'
+// import _ from 'lodash/fp'
+// import is from 'is_js'
 
-import app from './components/app';
-import replaceSvg from './components/replace-svg';
+import global from './components/global'
+// import replaceSvg from './components/replace-svg'
 
-app.init();
-replaceSvg.init();
+global.init()
+// replaceSvg.init()

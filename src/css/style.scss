@@ -1,70 +1,76 @@
-// Imports
-@import '../../node_modules/bourbon/app/assets/stylesheets/bourbon';
-@import '../../node_modules/bourbon-neat/core/neat';
-@import '../../node_modules/normalize.css/normalize';
 
-// Variables
-@import "utils/vars";
+/**
+ * Settings.
+ */
+@import 'settings/settings.core';
+@import 'settings/settings.globals';
+@import 'settings/settings.responsive';
+@import 'settings/settings.colors';
+@import 'settings/settings.animations';
+@import 'settings/settings.typography';
 
-// Imports
-@import 'utils/functions';
-@import 'utils/mixins';
-@import 'utils/easings';
+/**
+ * Tools
+ */
+@import 'tools/tools.animation';
+@import 'tools/tools.clearfix';
+@import 'tools/tools.flexbox';
+@import 'tools/tools.placeholder';
+@import 'tools/tools.positioning';
+@import 'tools/tools.reset';
+@import 'tools/tools.text';
+@import 'tools/tools.transitions';
 
-@import 'base/typography';
-@import 'base/wp-default';
+/**
+ * Generic
+ */
+@import '../../node_modules/sanitize.css/sanitize';
+@import 'generic/generic.reset';
+@import 'generic/generic.fonts';
+@import 'generic/generic.shared';
+@import 'generic/generic.wordpress';
 
-@import 'layout/layout';
-@import 'layout/header';
-@import 'layout/footer';
+/**
+ * Elements
+ */
+@import 'elements/elements.images';
+@import 'elements/elements.table';
+@import 'elements/elements.headings';
+@import 'elements/elements.page';
 
-@import 'pages/page';
-@import 'pages/archive';
-@import 'pages/single';
-@import 'pages/home';
+/**
+ * Objects
+ */
 
-@import 'components/button';
+@import 'objects/objects.box';
+@import 'objects/objects.container';
+@import 'objects/objects.grid';
+@import 'objects/objects.page';
+@import 'objects/objects.ratio';
+@import 'objects/objects.section';
 
-//Sitewide CSS
-* {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
 
-html {
-    font-size: 10px;
-    overflow-y: scroll;
-    width: 100%;
-    height: 100%;
-    -webkit-text-size-adjust: 100%;
-}
+/**
+ * Components
+ */
+@import 'components/components.footer';
+@import 'components/components.navigation';
 
-body {
-    font-family: $body-text;
-    font-size: 1.6rem;
-    font-weight: normal;
-    line-height: 1.6;
-    width: 100%;
-    min-height: 100%;
-    color: $black;
-}
+/**
+ * Utilities
+ */
+@import 'utilities/utilities.background-image';
+@import 'utilities/utilities.clearfix';
+@import 'utilities/utilities.fills';
+@import 'utilities/utilities.headings';
+@import 'utilities/utilities.spacing';
+@import 'utilities/utilities.widths';
 
-img {
-    max-width: 100%;
-    height: auto;
-}
 
-input[type=text],
-button,
-select,
-textarea {
-    border-radius: 0;
-    outline: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-}
-
-.clearfix {
-    @include clearfix;
-}
+/*
+VENDOR
+------
+Any external dependencies, preferrably installed via yarn.
+ */
+//@import '../../node_modules/module/include'; // Preffered method
+//@import 'vendor/vendor.example';

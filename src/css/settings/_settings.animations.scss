@@ -1,3 +1,13 @@
+
+/**
+ * SETTINGS > ANIMATIONS
+ */
+
+// Animation speeds
+$animation-speed-in: 0.3s;
+$animation-speed-out: 0.8s;
+
+// Easings
 $ease-in-quad: cubic-bezier(.55, .085, .68, .53);
 $ease-in-cubic: cubic-bezier(.550, .055, .675, .19);
 $ease-in-quart: cubic-bezier(.895, .03, .685, .22);

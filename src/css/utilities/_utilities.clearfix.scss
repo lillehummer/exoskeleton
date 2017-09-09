@@ -1,0 +1,8 @@
+
+/**
+ * UTILITIES > CLEARFIX
+ */
+
+.u-clearfix {
+  @include inuit-clearfix();
+}

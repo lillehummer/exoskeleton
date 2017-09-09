@@ -1,0 +1,23 @@
+
+/**
+ * TOOLS > RESET
+ */
+
+@mixin button-reset() {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+  outline: 0;
+}
+
+@mixin fieldset-reset() {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin list-reset() {
+  list-style: none;
+  padding-left: 0;
+}

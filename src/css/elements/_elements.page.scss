@@ -1,0 +1,19 @@
+
+/**
+ * ELEMENTS > PAGE
+ */
+
+html {
+  background-color: $color-background;
+  color: $color-text;
+  font-size: $font-size-root;
+  min-height: 100%;
+  overflow-y: scroll;
+}
+
+body {
+  font-family: $font-family-body;
+  font-size: $font-size-body;
+  line-height: $font-line-height-medium;
+  min-height: 100%;
+}

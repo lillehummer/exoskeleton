@@ -7,7 +7,7 @@ let webpack = require('webpack');
 
 require('dotenv').config({ path: __dirname + '/../../../.env' } );
 
-let ButternutWebpackPlugin = require('butternut-webpack-plugin');
+let UglifyWebpackPlugin = require('uglifyjs-webpack-plugin');
 let ManifestPlugin = require('webpack-manifest-plugin');
 let ExtractTextPlugin = require('extract-text-webpack-plugin');
 let CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -64,7 +64,7 @@ let config = {
     new CleanWebpackPlugin(['css', 'js']),
     new ManifestPlugin(),
     new ExtractTextPlugin('./css/[name].[hash].css'),
-    new ButternutWebpackPlugin()
+    new UglifyWebpackPlugin()
   ],
   resolve: {
     modules: ['node_modules'],

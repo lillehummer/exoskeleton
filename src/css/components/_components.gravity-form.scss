@@ -1,3 +1,8 @@
+
+/**
+ * COMPONENTS > GRAVITY FORM
+ */
+
 img.gform_ajax_spinner {
     display: none!important;
 }
@@ -47,14 +52,14 @@ input[type="tel"],
 input[type="file"],
 textarea,
 select {
-	&:focus {
-	}
+    &:focus {
+    }
 }
 
 input[type="file"] {
-	&:hover {
+    &:hover {
 
-	}
+    }
 }
 
 input[type="search"] {
@@ -75,8 +80,8 @@ input[type="submit"],
 input[type="reset"],
 input[type="button"],
 button {
-	&:hover {
-	}
+    &:hover {
+    }
 }
 
 input[type="checkbox"],
@@ -85,8 +90,8 @@ input[type="submit"],
 input[type="reset"],
 input[type="button"],
 button {
-	&:focus {
-	}
+    &:focus {
+    }
 }
 
 .ginput_complex,
@@ -105,13 +110,13 @@ button {
 }
 
 .gform_heading {
-	.gform_title {
-	}
+    .gform_title {
+    }
 }
 
 .gsection {
-	.gsection_title {
-	}
+    .gsection_title {
+    }
 }
 
 .gfield_required {
@@ -134,21 +139,21 @@ button {
 
 .gfield_checkbox,
 .gfield_radio {
-	input {
-	}
+    input {
+    }
 }
 
 .gfield_radio {
-	input[type="text"] {
-	}
+    input[type="text"] {
+    }
 }
 
 .ginput_complex {
-	.ginput_left {
-	}
+    .ginput_left {
+    }
 
-	.ginput_right {
-	}
+    .ginput_right {
+    }
 }
 
 .name_prefix {
@@ -179,11 +184,11 @@ input.datepicker_with_icon {
 }
 
 .gfield_time_hour {
-	input {
-	}
+    input {
+    }
 
-	label {
-	}
+    label {
+    }
 }
 
 .gfield_time_minute {
@@ -258,26 +263,26 @@ input.datepicker_with_icon {
 }
 
 .gf_scroll_text {
-	p:last-of-type {
-	}
+    p:last-of-type {
+    }
 }
 
 .gf_hide_ampm {
-	.gfield_time_ampm {
-	}
+    .gfield_time_ampm {
+    }
 }
 
 .gf_hide_charleft {
-	.charleft {
-	}
+    .charleft {
+    }
 }
 
 .gf_page_steps {
 }
 
 .gf_step {
-	&:last-of-type {
-	}
+    &:last-of-type {
+    }
 }
 
 .gf_step_active {
@@ -288,23 +293,23 @@ input.datepicker_with_icon {
 
 .gfield_error {
 
-	> label,
-	.validation_message {
-	}
+    > label,
+    .validation_message {
+    }
 
-	input,
-	textarea,
-	select {
+    input,
+    textarea,
+    select {
 
-		&:focus {
-		}
-	}
+        &:focus {
+        }
+    }
 }
 
 .gform_validation_container {
-	display: none;
-	position: absolute;
-	left: -9000px;
+    display: none;
+    position: absolute;
+    left: -9000px;
 }
 
 .ui-datepicker {
@@ -318,6 +323,6 @@ input.datepicker_with_icon {
 
 .ui-datepicker-title {
 
-	select {
-	}
+    select {
+    }
 }
