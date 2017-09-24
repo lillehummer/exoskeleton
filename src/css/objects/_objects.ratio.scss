@@ -50,9 +50,6 @@ $inuit-ratios: (
   }
 
 
-
-/* stylelint-disable */
-
 /* Ratio variants.
    ========================================================================== */
 
@@ -79,8 +76,20 @@ $inuit-ratios: (
       padding-bottom: ($consequent/$antecedent) * 100%;
     }
 
+    @if (variable-exists(mq-breakpoints)) {
+
+      @each $inuit-bp-name, $inuit-bp-value in $mq-breakpoints {
+
+        @include mq($from: $inuit-bp-name) {
+          .o-ratio--#{$antecedent}\:#{$consequent}#{$inuit-widths-breakpoint-separator}#{$inuit-bp-name}:before {
+              padding-bottom: ($consequent/$antecedent) * 100%;
+            }
+        }
+
+      }
+
+    }
+
   }
 
 }
-
-/* stylelint-enable */

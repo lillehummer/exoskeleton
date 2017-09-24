@@ -3,13 +3,13 @@
  * @type {[type]}
  */
 
-let webpack = require('webpack');
+let webpack = require('webpack')
 
-require('dotenv').config({ path: __dirname + '/../../../.env' } );
+require('dotenv').config({ path: __dirname + '/../../../.env' } )
 
-let ManifestPlugin = require('webpack-manifest-plugin');
-let CleanWebpackPlugin = require('clean-webpack-plugin');
-let WebpackNotifierPlugin = require('webpack-notifier');
+let ManifestPlugin = require('webpack-manifest-plugin')
+let CleanWebpackPlugin = require('clean-webpack-plugin')
+let WebpackNotifierPlugin = require('webpack-notifier')
 
 let config = {
   entry: {
@@ -67,7 +67,14 @@ let config = {
     new webpack.HotModuleReplacementPlugin(),
     new WebpackNotifierPlugin(),
     new CleanWebpackPlugin(['css', 'js']),
-    new ManifestPlugin()
+    new ManifestPlugin({
+        writeToFileEmit: true
+    }),
+    new webpack.DefinePlugin({
+        'process.env': {
+            NODE_ENV: '"development"'
+        }
+    })
   ],
   resolve: {
     modules: ['node_modules'],
@@ -80,6 +87,6 @@ let config = {
     maxAssetSize: 2500000,
     maxEntrypointSize: 2500000
   }
-};
+}
 
-module.exports = config;
+module.exports = config

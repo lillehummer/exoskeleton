@@ -1,0 +1,31 @@
+
+/**
+ * OBJECTS > CONTENT WRAPPER
+ */
+
+$content-wrapper-width: 30rem;
+
+.o-content-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 80%;
+  min-width: $content-wrapper-width;
+  position: relative;
+  text-align: center;
+  width: $content-wrapper-width;
+  z-index: 100;
+
+  &.-move-up {
+    margin-top: -25%;
+  }
+}
+
+.o-content-wrapper--large {
+  min-width: $content-wrapper-width * 1.5;
+  width: $content-wrapper-width * 1.5;
+}
+
+.o-content-wrapper--xlarge {
+  min-width: $content-wrapper-width * 2;
+  width: $content-wrapper-width * 2;
+}

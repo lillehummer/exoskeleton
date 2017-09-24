@@ -1,7 +1,9 @@
 {
   "name": "lillehummernl",
   "description": "WordPress starter theme created by 101010.",
-  "version": "0.4.0",
+  "version": "0.5.0",
+  "license": "MIT",
+  "repository": "http://github.com/lillehummer/wabi",
   "private": true,
   "maintainers": [
     {
@@ -20,19 +22,17 @@
     "gulp": "*",
     "gulp-util": "*",
     "gulp-notify": "*",
-    "gulp-imagemin": "*",
     "gulp-changed": "*",
+    "gulp-imagemin": "*",
     "imagemin-pngquant": "*",
     "gulp-kraken": "*",
     "gulp-plumber": "*",
     "browser-sync": "*",
-    "node-sass": "*",
     "dotenv": "*",
     "cross-env": "*",
     "webpack": "*",
     "webpack-dev-middleware": "*",
     "webpack-hot-middleware": "*",
-    "buble": "*",
     "buble-loader": "*",
     "vue-loader": "*",
     "css-loader": "*",
@@ -45,9 +45,9 @@
     "webpack-manifest-plugin": "*",
     "uglifyjs-webpack-plugin": "*",
     "clean-webpack-plugin": "*",
+    "webpack-bundle-analyzer": "*",
     "webpack-notifier": "*",
     "vue-template-compiler": "*",
-    "stylelint": "*",
     "vue": "*",
     "jquery": "*",
     "modernizr": "*",
@@ -65,10 +65,11 @@
     "babel-preset-es2015": "*"
   },
   "scripts": {
-    "webpack": "cross-env NODE_ENV=development webpack --progress --hide-modules",
-    "dev": "cross-env NODE_ENV=development webpack --watch --progress --hide-modules",
-    "production": "cross-env NODE_ENV=production webpack --progress --hide-modules --config=webpack.production.config.js",
+    "webpack": "webpack --progress --hide-modules",
+    "dev": "webpack --watch --progress --hide-modules",
+    "production": "webpack --progress --hide-modules --config=webpack.production.config.js",
     "start": "node --harmony ./src/start.js",
-    "export": "wp search-replace lillehummernl.dev lillehummer.nl --export=export.sql"
+    "export": "wp search-replace lillehummernl.dev lillehummer.nl --export=export.sql",
+    "analyze": "plato -r -d report src/js"
   }
 }

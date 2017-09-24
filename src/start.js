@@ -37,6 +37,7 @@ browserSync.init({
 			fn(snippet, match) {
 				return snippet + match;
 			}
-		}
+		},
+        whitelist: ["/**"]
 	}
 });

@@ -42,8 +42,10 @@
  * Objects
  */
 
+@import 'objects/objects.background-image';
 @import 'objects/objects.box';
 @import 'objects/objects.container';
+@import 'objects/objects.content-wrapper';
 @import 'objects/objects.grid';
 @import 'objects/objects.page';
 @import 'objects/objects.ratio';
