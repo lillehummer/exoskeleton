@@ -2,15 +2,15 @@
  *
  */
 
-var browserSync = require('browser-sync').create();
-var webpack = require('webpack');
-var webpackDevMiddleware = require('webpack-dev-middleware');
-var webpackHotMiddleware = require('webpack-hot-middleware');
+var browserSync = require('browser-sync').create()
+var webpack = require('webpack')
+var webpackDevMiddleware = require('webpack-dev-middleware')
+var webpackHotMiddleware = require('webpack-hot-middleware')
 
-var webpackConfig = require('../webpack.config');
-var bundler = webpack(webpackConfig);
+var webpackConfig = require('../webpack.config')
+var bundler = webpack(webpackConfig)
 
-var LOCAL_HOST = "http://lillehummernl.dev";
+var LOCAL_HOST = "http://lillehummernl.dev"
 
 browserSync.init({
 	cors: true,
@@ -40,4 +40,4 @@ browserSync.init({
 		},
         whitelist: ["/**"]
 	}
-});
+})

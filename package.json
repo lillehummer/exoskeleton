@@ -62,7 +62,8 @@
     "ava": "*",
     "babel-register": "*",
     "browser-env": "*",
-    "babel-preset-es2015": "*"
+    "babel-preset-es2015": "*",
+    "nightmare": "*"
   },
   "scripts": {
     "webpack": "webpack --progress --hide-modules",
@@ -70,6 +71,7 @@
     "production": "webpack --progress --hide-modules --config=webpack.production.config.js",
     "start": "node --harmony ./src/start.js",
     "export": "wp search-replace lillehummernl.dev lillehummer.nl --export=export.sql",
+    "nightmare": "node ./src/nightmare.js"
     "analyze": "plato -r -d report src/js"
   }
 }
