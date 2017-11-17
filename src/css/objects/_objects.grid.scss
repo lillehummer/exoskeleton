@@ -3,12 +3,12 @@
  * OBJECTS > GRID
  */
 
-$inuit-flexgrid-spacing-sizes: (
+$flexgrid-spacing-sizes: (
     null: $spacing-gutter,
-    '--tiny': $inuit-global-spacing-unit-tiny,
-    '--small': $inuit-global-spacing-unit-small,
-    '--large': $inuit-global-spacing-unit-large,
-    '--huge': $inuit-global-spacing-unit-huge,
+    '--tiny': $global-spacing-unit-tiny,
+    '--small': $global-spacing-unit-small,
+    '--large': $global-spacing-unit-large,
+    '--huge': $global-spacing-unit-huge,
     '--flush': 0,
 ) !default;
 
@@ -34,14 +34,14 @@ $inuit-flexgrid-spacing-sizes: (
    ========================================================================== */
 
 /**
- * 1. The variable $inuit-flexgrid-spacing-sizes contains a `null` key which
+ * 1. The variable $flexgrid-spacing-sizes contains a `null` key which
  *    will be our default gutter size.
  * 2. Add a negative margin only on one side. That way we aren't required to
  *    use a wrapper with the same amount of spacing, though it's common to do so.
  * 3. Neutralize the left margin on `o-grid`.
  */
 
-@each $size-namespace, $size in $inuit-flexgrid-spacing-sizes {
+@each $size-namespace, $size in $flexgrid-spacing-sizes {
     .o-grid#{$size-namespace} { /* [1] */
         margin-left: -$size; /* [2] */
         & > .o-grid__cell {

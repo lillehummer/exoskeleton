@@ -1,0 +1,11 @@
+
+////
+/// Create new stacking context.
+/// @group tools
+/// @author Charles Beaumont
+////
+
+@mixin new-stacking-context {
+  position: relative;
+  z-index: 0;
+}

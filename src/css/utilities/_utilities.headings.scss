@@ -13,25 +13,21 @@
  */
 
 .u-h1 {
-  font-size: $font-size-h1;
+  @include text-h1;
 }
 
 .u-h2 {
-  font-size: $font-size-h2;
+  @include text-h2;
 }
 
 .u-h3 {
-  font-size: $font-size-h3;
+  @include text-h3;
 }
 
 .u-h4 {
-  font-size: $font-size-h4;
+  @include text-h4;
 }
 
 .u-h5 {
-  font-size: $font-size-h5;
-}
-
-.u-h6 {
-  font-size: $font-size-h6;
+  @include text-h5;
 }

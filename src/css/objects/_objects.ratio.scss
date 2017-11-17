@@ -5,7 +5,7 @@
 
 // A list of aspect ratios that get generated as modifier classes.
 
-$inuit-ratios: (
+$ratios: (
   (2:1),
   (4:3),
   (16:9),
@@ -60,7 +60,7 @@ $inuit-ratios: (
  *
  */
 
-@each $ratio in $inuit-ratios {
+@each $ratio in $ratios {
 
   @each $antecedent, $consequent in $ratio {
 
@@ -74,20 +74,6 @@ $inuit-ratios: (
 
     .o-ratio--#{$antecedent}\:#{$consequent}:before {
       padding-bottom: ($consequent/$antecedent) * 100%;
-    }
-
-    @if (variable-exists(mq-breakpoints)) {
-
-      @each $inuit-bp-name, $inuit-bp-value in $mq-breakpoints {
-
-        @include mq($from: $inuit-bp-name) {
-          .o-ratio--#{$antecedent}\:#{$consequent}#{$inuit-widths-breakpoint-separator}#{$inuit-bp-name}:before {
-              padding-bottom: ($consequent/$antecedent) * 100%;
-            }
-        }
-
-      }
-
     }
 
   }

@@ -1,0 +1,47 @@
+@mixin text-body() {
+  @include text-primary-font-light();
+  color: rgba($color-config-body-text, 0.8);
+}
+
+@mixin text-heading() {
+  font-weight: normal;
+  text-align: center;
+}
+
+@mixin text-h1() {
+  @include text-heading();
+  font-size: $font-size-h1;
+  line-height: $font-line-height-small;
+
+  @include mq($until: tablet) {
+    font-size: $font-size-h2;
+  }
+}
+
+@mixin text-h2() {
+  @include text-heading();
+  font-size: $font-size-h2;
+  line-height: $font-line-height-small;
+
+  @include mq($until: tablet) {
+    font-size: $font-size-h3;
+  }
+}
+
+@mixin text-h3() {
+  @include text-heading();
+  font-size: $font-size-h3;
+  line-height: $font-line-height-small;
+}
+
+@mixin text-h4() {
+  @include text-heading();
+  font-size: $font-size-h4;
+  line-height: $font-line-height-small;
+}
+
+@mixin text-h5() {
+  @include text-heading();
+  font-size: $font-size-h5;
+  line-height: $font-line-height-small;
+}

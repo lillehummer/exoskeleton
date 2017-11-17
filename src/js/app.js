@@ -1,7 +1,6 @@
 'use strict'
 
 import '../css/styles.scss'
-import '../css/login.scss'
 
 if (module.hot) {
   module.hot.accept()
@@ -16,5 +15,9 @@ import $ from 'jquery'
 import global from './components/global'
 // import replaceSvg from './components/replace-svg'
 
-global.init()
-// replaceSvg.init()
+const loadPage = () => {
+  global.init()
+  // replaceSvg.init()
+}
+
+document.addEventListener('DOMContentLoaded', loadPage)

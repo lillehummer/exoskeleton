@@ -18,8 +18,10 @@
 @import 'tools/tools.placeholder';
 @import 'tools/tools.positioning';
 @import 'tools/tools.reset';
+@import 'tools/tools.stacking-context';
 @import 'tools/tools.text';
 @import 'tools/tools.transitions';
+@import 'tools/tools.typography';
 
 /**
  * Generic
@@ -34,7 +36,7 @@
  * Elements
  */
 @import 'elements/elements.images';
-@import 'elements/elements.table';
+@import 'elements/elements.tables';
 @import 'elements/elements.headings';
 @import 'elements/elements.page';
 
@@ -65,6 +67,7 @@
 @import 'utilities/utilities.clearfix';
 @import 'utilities/utilities.fills';
 @import 'utilities/utilities.headings';
+@import 'utilities/utilities.hide';
 @import 'utilities/utilities.spacing';
 @import 'utilities/utilities.widths';
 

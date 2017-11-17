@@ -2,7 +2,51 @@
 /**
  * SETTINGS > CORE
  */
-$inuit-global-font-size: 16px;
-$inuit-global-line-height: $inuit-global-font-size * 1.25;
+$global-font-size: 16px;
+$global-line-height: $global-font-size * 1.25;
 
-@import '../../../node_modules/inuitcss/settings/settings.core';
+$global-spacing-unit: round($global-line-height) !default;
+
+$global-spacing-unit-factor-tiny:   0.25 !default;
+$global-spacing-unit-factor-small:  0.5  !default;
+$global-spacing-unit-factor-large:  2    !default;
+$global-spacing-unit-factor-huge:   4    !default;
+
+@each $_inuit-font-globals in
+      $global-font-size
+      $global-line-height {
+
+  @if (type-of($_inuit-font-globals) == number) {
+
+    @if (unit($_inuit-font-globals) != "px") {
+      @error "`#{$_inuit-font-globals}` needs to be a pixel value.";
+    }
+
+  } @else {
+    @error "`#{$_inuit-font-globals}` needs to be a number.";
+  }
+
+}
+
+@each $_inuit-spacing-unit in
+      $global-spacing-unit-factor-tiny
+      $global-spacing-unit-factor-small
+      $global-spacing-unit-factor-large
+      $global-spacing-unit-factor-huge {
+
+  @if (type-of($_inuit-spacing-unit) == number) {
+
+    @if (unitless($_inuit-spacing-unit) == false) {
+      @error "`#{$_inuit-spacing-unit}` needs to be unitless.";
+    }
+
+  } @else {
+    @error "`#{$_inuit-spacing-unit}` needs to be a number.";
+  }
+
+}
+
+$global-spacing-unit-tiny:  round($global-spacing-unit * $global-spacing-unit-factor-tiny);
+$global-spacing-unit-small: round($global-spacing-unit * $global-spacing-unit-factor-small);
+$global-spacing-unit-large: round($global-spacing-unit * $global-spacing-unit-factor-large);
+$global-spacing-unit-huge:  round($global-spacing-unit * $global-spacing-unit-factor-huge);

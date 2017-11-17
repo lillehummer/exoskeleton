@@ -11,39 +11,37 @@
  */
 
 .o-box {
-  @include inuit-clearfix();
-  display: block; /* [1] */
-  padding: $inuit-global-spacing-unit;
+  @include clearfix();
+  display: block;
+  padding: $global-spacing-unit;
 
   > :last-child {
     margin-bottom: 0;
   }
 
+  &.-flush {
+    padding: 0;
+  }
+
+  &.-tiny {
+    padding: $global-spacing-unit-tiny;
+  }
+
+  &.-small {
+    padding: $global-spacing-unit-small;
+  }
+
+  &.-large {
+    padding: $global-spacing-unit-large;
+  }
+
+  &.-huge {
+    padding: $global-spacing-unit-huge;
+  }
 }
 
-
-
-
-
-/* Size variants
-   ========================================================================== */
-
-.o-box--flush {
-  padding: 0;
-}
-
-.o-box--tiny {
-  padding: $inuit-global-spacing-unit-tiny;
-}
-
-.o-box--small {
-  padding: $inuit-global-spacing-unit-small;
-}
-
-.o-box--large {
-  padding: $inuit-global-spacing-unit-large;
-}
-
-.o-box--huge {
-  padding: $inuit-global-spacing-unit-huge;
+.o-box--center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
