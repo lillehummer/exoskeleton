@@ -21,7 +21,7 @@ let config = {
     login: ['./src/css/login.scss']
   },
   output: {
-    filename: './js/[name].[hash].js'
+    filename: './js/[name].[chunkhash].js'
   },
   externals: { jquery: "jQuery" },
   module: {
@@ -67,7 +67,7 @@ let config = {
     new WebpackNotifierPlugin(),
     new CleanWebpackPlugin(['css', 'js']),
     new ManifestPlugin(),
-    new ExtractTextPlugin('./css/[name].[hash].css'),
+    new ExtractTextPlugin('./css/[name].[chunkhash].css'),
     new UglifyWebpackPlugin(),
     new BundleAnalyzerPlugin({
         analyzerMode: 'static'

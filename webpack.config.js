@@ -10,6 +10,7 @@ require('dotenv').config({ path: __dirname + '/../../../.env' } )
 let ManifestPlugin = require('webpack-manifest-plugin')
 let CleanWebpackPlugin = require('clean-webpack-plugin')
 let WebpackNotifierPlugin = require('webpack-notifier')
+let WebpackMonitor = require('webpack-monitor')
 
 let config = {
   entry: {
@@ -30,6 +31,10 @@ let config = {
           loader: 'buble-loader',
           options: { objectAssign: 'Object.assign' }
         }]
+      },
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader'
       },
       {
         test: /\.vue$/,
@@ -74,6 +79,10 @@ let config = {
         'process.env': {
             NODE_ENV: '"development"'
         }
+    }),
+    new WebpackMonitor({
+      capture: true,
+      launch: true,
     })
   ],
   resolve: {
@@ -81,7 +90,7 @@ let config = {
     alias: {
       'vue$': 'vue/dist/vue.js'
     },
-    extensions: ['.js', '.css', '.scss']
+    extensions: ['.ts', '.tsx', '.js', '.css', '.scss']
   },
   performance: {
     maxAssetSize: 2500000,

@@ -1,6 +1,6 @@
 'use strict'
 
-import '../css/style.scss'
+import '../css/styles.scss'
 import '../css/login.scss'
 
 if (module.hot) {
