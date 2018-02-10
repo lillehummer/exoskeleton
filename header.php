@@ -7,8 +7,8 @@
  * @package lillehummernl
  */
 
-header("Link: </wp-content/themes/lillehummernl/css/style.css>; rel=preload; as=style", false);
-header("Link: </wp-content/themes/lillehummernl/js/app.js>; rel=preload; as=script", false);
+// header("Link: </wp-content/themes/lillehummernl/css/style.css>; rel=preload; as=style", false);
+// header("Link: </wp-content/themes/lillehummernl/js/app.js>; rel=preload; as=script", false);
 ?><!doctype html>
 
 <html <?php language_attributes(); ?>>
@@ -16,7 +16,10 @@ header("Link: </wp-content/themes/lillehummernl/js/app.js>; rel=preload; as=scri
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" href="/wp-content/themes/lillehummernl/icon.png">
 
 	<meta name="HandheldFriendly" content="True">
 	<meta name="MobileOptimized" content="375">

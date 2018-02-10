@@ -16,9 +16,7 @@ var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlug
 
 let config = {
   entry: {
-    app: ['./src/js/app.js'],
-    vendor: ['jquery'],
-    login: ['./src/css/login.scss']
+    app: ['./src/js/app.js']
   },
   output: {
     filename: './js/[name].[chunkhash].js'
@@ -57,12 +55,21 @@ let config = {
         ])
         },
     ],
+    noParse: function(content) {
+        return /jquery|lodash/.test(content);
+    }
   },
   plugins: [
   	new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
-        name: "vendor.js",
-        minChunks: module => /node_modules/.test(module.resource)
+        name: "vendor",
+        minChunks: function(module){
+          return module.context && module.context.includes("node_modules");
+        }
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+        name: "manifest",
+        minChunks: Infinity
     }),
     new WebpackNotifierPlugin(),
     new CleanWebpackPlugin(['css', 'js']),

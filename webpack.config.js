@@ -10,7 +10,6 @@ require('dotenv').config({ path: __dirname + '/../../../.env' } )
 let ManifestPlugin = require('webpack-manifest-plugin')
 let CleanWebpackPlugin = require('clean-webpack-plugin')
 let WebpackNotifierPlugin = require('webpack-notifier')
-let WebpackMonitor = require('webpack-monitor')
 
 let config = {
   entry: {
@@ -66,7 +65,10 @@ let config = {
           limit: 10000
         }
       }
-    ]
+    ],
+    noParse: function(content) {
+        return /jquery|lodash/.test(content);
+    }
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -79,10 +81,6 @@ let config = {
         'process.env': {
             NODE_ENV: '"development"'
         }
-    }),
-    new WebpackMonitor({
-      capture: true,
-      launch: true,
     })
   ],
   resolve: {
