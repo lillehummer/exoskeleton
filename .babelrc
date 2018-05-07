@@ -1,5 +1,17 @@
 {
-	"presets": [
-	  ["es2015", { "modules": false }]
-	]
+  "presets": [
+    "stage-3",
+    "env", {
+      "targets": {
+        "browsers": [
+          ">0.25%",
+          "not ie 11",
+          "not op_mini all"
+        ]
+      }
+    }
+  ],
+  "plugins": [
+      "syntax-dynamic-import"
+  ]
 }

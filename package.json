@@ -18,6 +18,9 @@
       "./test/helpers/setup-browser-env.js"
     ]
   },
+  "lint-staged": {
+    "*.{js,vue}": ["eslint --fix", "git add"]
+  },
   "dependencies": {
     "gulp": "*",
     "gulp-util": "*",
@@ -56,7 +59,14 @@
     "ramda": "*",
     "is_js": "*",
     "sanitize.css": "*",
-    "sass-mq": "*"
+    "sass-mq": "*",
+    "eslint-config-standard": "*",
+    "eslint-plugin-vue": "*",
+    "eslint": "*",
+    "eslint-plugin-import": "*",
+    "eslint-plugin-node": "*",
+    "eslint-plugin-promise": "*",
+    "babel-preset-env": "*"
   },
   "devDependencies": {
     "ava": "*",
@@ -66,12 +76,11 @@
     "nightmare": "*"
   },
   "scripts": {
-    "webpack": "webpack --progress --hide-modules",
-    "dev": "webpack --watch --progress --hide-modules",
     "production": "webpack --progress --hide-modules --config=webpack.production.config.js",
     "start": "node --harmony ./src/start.js",
     "export": "wp search-replace lillehummernl.dev lillehummer.nl --export=export.sql",
     "nightmare": "node ./src/nightmare.js"
-    "analyze": "plato -r -d report src/js"
+    "analyze": "plato -r -d report src/js",
+    "precommit": "lint-staged"
   }
 }
