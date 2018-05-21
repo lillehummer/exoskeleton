@@ -1,17 +1,9 @@
 {
   "presets": [
-    "stage-3",
-    "env", {
-      "targets": {
-        "browsers": [
-          ">0.25%",
-          "not ie 11",
-          "not op_mini all"
-        ]
-      }
-    }
+    "@babel/preset-stage-3",
+    "@babel/preset-env"
   ],
   "plugins": [
-      "syntax-dynamic-import"
+      "@babel/plugin-syntax-dynamic-import"
   ]
 }

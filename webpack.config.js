@@ -4,49 +4,48 @@
  */
 
 let webpack = require('webpack')
+let path = require('path')
 
-require('dotenv').config({ path: __dirname + '/../../../.env' } )
-
+let { VueLoaderPlugin } = require('vue-loader')
 let ManifestPlugin = require('webpack-manifest-plugin')
-let CleanWebpackPlugin = require('clean-webpack-plugin')
-let WebpackNotifierPlugin = require('webpack-notifier')
 
 let config = {
+  mode: 'development',
   entry: {
-    app: ['webpack-hot-middleware/client', './src/js/app.js'],
-    vendor: ['jquery']
+    app: ['webpack-hot-middleware/client', './src/js/app.js']
   },
   output: {
-    filename: './js/[name].js',
-    publicPath: 'http://localhost:3000/wp-content/themes/lillehummernl/'
+    filename: 'js/[name].js',
+    publicPath: '/wp-content/themes/lillehummernl/'
   },
-  externals: { jquery: "jQuery" },
+  externals: {
+  },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         exclude: [/(node_modules|bower)/],
         use: [{
-          loader: 'buble-loader',
-          options: { objectAssign: 'Object.assign' }
+          loader: 'babel-loader'
         }]
       },
       {
-        test: /\.tsx?$/,
-        loader: 'ts-loader'
-      },
-      {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
+        options: {
+          loaders: {
+            js: 'babel-loader'
+          }
+        }
       },
       {
-      test: /\.scss$/,
+        test: /\.scss$/,
         use: [
           'style-loader',
           {
             loader: 'css-loader',
             options: {
-              url: false,
+              url: true,
               minimize: false
             }
           },
@@ -65,30 +64,28 @@ let config = {
           limit: 10000
         }
       }
-    ],
-    noParse: function(content) {
-        return /jquery|lodash/.test(content);
-    }
+    ]
   },
+  devtool: 'source-map',
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new WebpackNotifierPlugin(),
-    new CleanWebpackPlugin(['css', 'js']),
+    new VueLoaderPlugin(),
     new ManifestPlugin({
-        writeToFileEmit: true
+      fileName: path.resolve(__dirname, './manifest.json'),
+      publicPath: '',
+      writeToFileEmit: true
     }),
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
-        'process.env': {
-            NODE_ENV: '"development"'
-        }
+      'process.env': {
+        NODE_ENV: '"development"'
+      }
     })
   ],
   resolve: {
     modules: ['node_modules'],
     alias: {
-      'vue$': 'vue/dist/vue.js'
     },
-    extensions: ['.ts', '.tsx', '.js', '.css', '.scss']
+    extensions: ['.js', '.css', '.scss']
   },
   performance: {
     maxAssetSize: 2500000,
