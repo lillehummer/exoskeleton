@@ -1,4 +1,4 @@
-# WordPress starter theme developed by 101010
+# WordPress starter theme developed by lillehummer
 
 ## Style guide
 

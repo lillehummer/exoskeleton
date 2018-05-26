@@ -6,7 +6,9 @@
 let webpack = require('webpack')
 let path = require('path')
 
-let ExtractTextPlugin = require('extract-text-webpack-plugin')
+let UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+let MiniCssExtractPlugin = require('mini-css-extract-plugin')
+let OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 let CleanWebpackPlugin = require('clean-webpack-plugin')
 let ManifestPlugin = require('webpack-manifest-plugin')
 var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
@@ -19,7 +21,8 @@ let config = {
     app: ['./src/js/app.js']
   },
   output: {
-    filename: './js/[name].[chunkhash].js'
+    filename: 'js/[name].[chunkhash].js',
+    path: path.resolve(__dirname)
   },
   module: {
     rules: [
@@ -41,7 +44,8 @@ let config = {
       },
       {
         test: /\.(scss)$/,
-        use: ExtractTextPlugin.extract([
+        use: [
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
@@ -55,17 +59,28 @@ let config = {
             options: {
             }
           }
-        ])
+        ]
       }
     ]
   },
   optimization: {
-    concatenateModules: true
+    concatenateModules: true,
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true // set to true if you want JS source maps
+      }),
+      new OptimizeCSSAssetsPlugin({})
+    ]
   },
   plugins: [
     new VueLoaderPlugin(),
-    new CleanWebpackPlugin(['/static/css', '/static/js']),
-    new ExtractTextPlugin('./css/[name].[chunkhash].css'),
+    new CleanWebpackPlugin(['/js', '/css']),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].[chunkhash].css',
+      chunkFilename: '[id].[chunkhash].css'
+    }),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"'
