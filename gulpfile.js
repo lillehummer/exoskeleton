@@ -4,10 +4,6 @@ const BrowserSync = require('browser-sync')
 const gulp = require('gulp')
 
 // Include plugins
-const imagemin = require('gulp-imagemin')
-const gulpUtil = require('gulp-util')
-const changed = require('gulp-changed')
-const plumber = require('gulp-plumber')
 const notify = require('gulp-notify')
 const webpack = require('webpack')
 const webpackDevMiddleware = require('webpack-dev-middleware')
@@ -57,23 +53,4 @@ gulp.task('dev', function () {
       './**/**/*.php'
     ]
   })
-})
-
-/**
- *
- */
-gulp.task('images', function () {
-  const pngquant = require('imagemin-pngquant')
-
-  return gulp.src('src/img/**/*')
-    .pipe(plumber({errorHandler: onError}))
-    .pipe(changed('img'))
-    .pipe(imagemin({
-      optimizationLevel: 3,
-      interlaced: true,
-      progressive: true,
-      svgoPlugins: [{removeViewBox: false}],
-      use: [pngquant()]
-    }))
-    .pipe(gulp.dest('img'))
 })

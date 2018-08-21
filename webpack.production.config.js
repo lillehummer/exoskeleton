@@ -14,6 +14,8 @@ let ManifestPlugin = require('webpack-manifest-plugin')
 var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 let WebpackMonitor = require('webpack-monitor')
 let { VueLoaderPlugin } = require('vue-loader')
+let ImageminPlugin = require('imagemin-webpack-plugin').default
+let CopyWebpackPlugin = require('copy-webpack-plugin')
 
 let config = {
   mode: 'production',
@@ -89,6 +91,22 @@ let config = {
     new ManifestPlugin({
       fileName: path.resolve(__dirname, './manifest.json'),
       publicPath: ''
+    }),
+    new CopyWebpackPlugin([{
+      from: 'src/img/',
+      to: 'img/'
+    }]),
+    new ImageminPlugin({
+      test: /\.(jpe?g|png|gif|svg)$/i,
+      pngquant: {
+        quality: '95-100'
+      },
+      svgo: {
+        removeViewBox: false
+      },
+      jpegtran: {
+        progressive: true
+      }
     }),
     new WebpackMonitor({
       capture: true,

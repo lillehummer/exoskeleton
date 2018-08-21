@@ -6,6 +6,8 @@
 let webpack = require('webpack')
 let path = require('path')
 
+let ImageminPlugin = require('imagemin-webpack-plugin').default
+let CopyWebpackPlugin = require('copy-webpack-plugin')
 let { VueLoaderPlugin } = require('vue-loader')
 let ManifestPlugin = require('webpack-manifest-plugin')
 
@@ -78,6 +80,22 @@ let config = {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"development"'
+      }
+    }),
+    new CopyWebpackPlugin([{
+      from: 'src/img/',
+      to: 'img/'
+    }]),
+    new ImageminPlugin({
+      test: /\.(jpe?g|png|gif|svg)$/i,
+      pngquant: {
+        quality: '95-100'
+      },
+      svgo: {
+        removeViewBox: false
+      },
+      jpegtran: {
+        progressive: true
       }
     })
   ],
